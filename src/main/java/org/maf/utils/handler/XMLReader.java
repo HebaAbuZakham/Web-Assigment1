@@ -1,7 +1,6 @@
 package org.maf.utils.handler;
 
 import org.maf.core.instance.BetaDriver.base;
-import org.maf.core.instance.BetaDriver.WebBase;
 import org.maf.utils.PropReader;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -25,7 +24,6 @@ public class XMLReader  {
     static {
         map = new HashMap<> ();
         map.put (base.xmlPathName, PropReader.readConfig("xml-path-reengineering"));
-        map.put (WebBase.xmlPathName, PropReader.readConfig("xml-path-web"));
 
     }
 

@@ -53,6 +53,8 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
+
+
     public void clickOnMafLogo() {
         mafLogo.click();
     }

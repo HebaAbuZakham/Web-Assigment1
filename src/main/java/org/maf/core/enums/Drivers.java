@@ -1,7 +1,6 @@
 package org.maf.core.enums;
 
 
-import org.maf.core.selenium_drivers.Safari;
 
 public enum Drivers {
     /**
