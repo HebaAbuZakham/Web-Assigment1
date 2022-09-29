@@ -18,7 +18,7 @@ public class ExtentManager {
     private static ExtentReports extent;
 
     // todo have the report name configured for each CC based on the run
-    private static String reportFileName = "SMBU-WEB-Re-Engineering";
+    private static String reportFileName = "SKI-Dubai-Automation Report";
     private static String macPath = System.getProperty("user.dir") +"/target/"+ "/TestReport";
     private static String windowsPath = System.getProperty("user.dir") + "/target/"+"\\TestReport";
     private static String macReportFileLoc = macPath + "/" + reportFileName;
@@ -42,7 +42,7 @@ public class ExtentManager {
         htmlReporter.config().setTheme(Theme.DARK);
         htmlReporter.config().setDocumentTitle(fileName);
         htmlReporter.config().setEncoding(UTF_8);
-        htmlReporter.config().setReportName("SMBU-WEB-Re-Engineering-Automation report");
+        htmlReporter.config().setReportName("SKI-Dubai-Automation Report");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         return extent;

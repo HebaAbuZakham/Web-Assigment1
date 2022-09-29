@@ -1,11 +1,8 @@
 package org.maf.utils.common;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.maf.core.instance.BetaDriver.WebBase;
 import org.maf.core.instance.SelInstance;
-import org.maf.utils.PropReader;
-import org.maf.utils.handler.ElementHelper;
-import org.maf.web_pages.*;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +15,6 @@ import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import static org.maf.core.instance.BetaDriver.WebBase.*;
 
 public class SharedMethods extends SelInstance {
     WebDriver driver;
@@ -155,109 +151,5 @@ public class SharedMethods extends SelInstance {
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
 
     }
-
-    public static void addProductToTheCart() {
-        HomePage homePage = new HomePage(getDriver());
-        waitElementToBecomeClickable(homePage.shopLink);
-        pageBottom();
-        mouseClickAction(homePage.findStoreLink);
-        FindStorePage findStorePage = new FindStorePage(getDriver());
-        findStorePage.getSearchIcon().click();
-        findStorePage.getSearchField ().click ();
-        findStorePage.getSearchField().sendKeys("Automation");
-        findStorePage.getFirstAutomationStore().click();
-        ProductListingPage productListingPage = new ProductListingPage(getDriver());
-        waitElementToBecomeClickable (productListingPage.addToCartCTA);
-        productListingPage.addToCartCTA.click();
-        WebBase.waitElementTillAppear(productListingPage.confirmMSG);
-    }
-
-    public static void addNewAddressAndPayment(){
-        HomePage homePage = new HomePage(getDriver());
-        doLogin(emailGenerator);
-        ProfilePage profilePage = new ProfilePage(getDriver());
-        waitElementToBecomeClickable (profilePage.paymentsMethods);
-        getDriver().navigate().refresh();
-        waitElementToBecomeClickable (profilePage.paymentsMethods);
-        profilePage.paymentsMethods.click();
-        ifElementAppears(profilePage.addNewCardEmpty);
-        ifElementAppears(profilePage.addNewCard);
-        profilePage.cardHolderName.sendKeys(objXMLReader.getXMLData ("firstname"));
-        profilePage.cardNumber.sendKeys(objXMLReader.getXMLData ("masterCard1"));
-        profilePage.cardExpiry.sendKeys("1234");
-        profilePage.cardCVV.sendKeys("123");
-        profilePage.submitPayment.click();
-        waitElementToBecomeClickable(profilePage.formSubmit);
-        profilePage.switchToForm();
-        waitElementToBecomeClickable(profilePage.myAddresses);
-        getDriver().navigate().refresh();
-        waitElementToBecomeClickable(profilePage.myAddresses);
-        profilePage.myAddresses.click();
-        ifElementAppears(profilePage.addNewAddressEmptyState);
-        ifElementAppears(profilePage.addNewAddress);
-        profilePage.fillAddress(generateRandomString(),"test","test","12","abdallah",
-                "501234567",objXMLReader.getXMLData("username"));
-        profilePage.selectCity();
-        profilePage.saveAddress.click();
-        waitElementToBecomeClickable(profilePage.confirmMSGAddresses);
-        jsScrollUp(homePage.logoTag);
-        getDriver ().quit ();
-        SelInstance.threadLocalDriver.remove ();
-    }
-
-    public static void doLogin(String userName){
-        LoginPage loginPage;
-        loginPage= new LoginPage(getDriver ());
-        HomePage homePage = new HomePage(getDriver ());
-        ProfilePage profilePage = new ProfilePage(getDriver());
-        waitElementToBecomeClickable(homePage.loginIcon);
-        homePage.loginIcon.click();
-        loginPage.userName.click();
-        loginPage.userName.sendKeys(userName);
-        loginPage.password.click();
-        loginPage.password.sendKeys(objXMLReader.getXMLData ("password"));
-        loginPage.loginCTA.click();
-        ElementHelper.elementWaitSeconds(2);
-        ifElementAppears(loginPage.gender);
-        waitElementToBecomeClickable(profilePage.myWishlistTab);
-    }
-
-    public static void verifyUser(){
-        SignupPage signupPage = new SignupPage(getDriver());
-        GmailPage gmailPage = new GmailPage(getDriver());
-        HomePage homePage = new HomePage(getDriver());
-        signupPage.makeSignup();
-        getDriver().navigate().to(objXMLReader.getXMLData ("googleURL"));
-        gmailPage.languageChange.click();
-        getDriver().navigate().to(objXMLReader.getXMLData ("gmailURL"));
-        gmailPage.gMailSignInCTA.click();
-        gmailPage.gMailUsername.sendKeys(objXMLReader.getXMLData ("gmailUserName"));
-        gmailPage.gMailNext.click();
-        if(PropReader.readConfig("is-headless") .equals("false")){
-            gmailPage.gMailPassword.click();
-            gmailPage.gMailPassword.sendKeys(objXMLReader.getXMLData ("password"));
-        }
-        else{
-
-            gmailPage.gMailPasswordHeadless.click();
-            gmailPage.gMailPasswordHeadless.sendKeys(objXMLReader.getXMLData ("password"));
-        }
-        gmailPage.gMailNext.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        gmailPage.gMailFirstEmail.click();
-        try {
-            gmailPage.emailThread.click();
-        }catch (Exception e){}
-        gmailPage.verifyEmail.click();
-        waitElementToBecomeClickable(homePage.loginIcon);
-        getDriver().quit();
-        SelInstance.threadLocalDriver.remove ();
-    }
-
-
 
 }
