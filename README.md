@@ -8,7 +8,7 @@ Here we go :
 3. Use IntelliJ to open the project
 4. Download the latest JDK LTS from: https://www.oracle.com/java/technologies/downloads/
 5. type ```java –version``` on terminal
-8. select Intellij -> File -> Project structure
+6. select Intellij -> File -> Project structure
     1. from Project make sure that your Java JDK is selected as SDK
 
 will update this regularly as how the time allow
