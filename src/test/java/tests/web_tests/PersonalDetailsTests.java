@@ -11,17 +11,12 @@ import org.testng.annotations.Test;
 
 
 @Listeners(TestListener.class)
-public class HomePageTest extends base {
+public class PersonalDetailsTests extends base {
 
 
-    @Test(description = "Validate that user is able to navigate to homepage and accept cookies",retryAnalyzer = RetryAnalyzer.class)
-    public void validateThatUserIsAbleToNavigateToHomePageAndAcceptCookies() {
-        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        sKiHomePage.getAcceptCookiesButton ().click ();
-    }
+    @Test(description = "Validate that the user can interact with the personal details form",retryAnalyzer = RetryAnalyzer.class)
+    public void validateThatUserCanInterActWithPersonalDetailsTab()  {
 
-    @Test(description = "Validate that user can select slop from passes and packages DropDown")
-    public void validateThatUserCanSelectSlopeFromPassesAndPackagesDropDown()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
@@ -37,12 +32,30 @@ public class HomePageTest extends base {
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
         sKiHomePage.getSlopeOption ().click ();
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
         SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
-        Assert.assertTrue (passesAndPackages.getSlopePassesHeader ().isDisplayed ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getAddMainAddOnsButton ());
+        addOnsScreen.getAddMainAddOnsButton ().click ();
+        SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton());
+        SharedMethods.mouseClickAction (addOnsScreen.getNextMonthButton ());
+        SharedMethods.mouseClickAction (addOnsScreen.getMonthSelection ());
+        SharedMethods.waitTillElementDisAppear (addOnsScreen.getCalenderFrame ());
+        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown());
+        SharedMethods.threadSleep (7000);
+        SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
+        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton ().click ();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        personalDetailsPage.getContinueToPayment ().click ();
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
 
     }
-
-    }
+}

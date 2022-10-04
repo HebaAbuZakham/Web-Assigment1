@@ -17,14 +17,9 @@ import java.util.concurrent.TimeUnit;
 
 
 public class SharedMethods extends SelInstance {
-    WebDriver driver;
-    public String winHandleBefore ;
+    public static String winHandleBefore ;
 
-    public SharedMethods(WebDriver driver) {
-        this.driver = driver;
-        //This initElements method will create  all WebElements
-        PageFactory.initElements(driver, this);
-    }
+
 
     public static String generateRandomString(){
         int length = 10;
@@ -34,7 +29,7 @@ public class SharedMethods extends SelInstance {
     }
 
 
-    public void MouseOverAction(WebElement Locator)
+    public static void MouseOverAction(WebElement Locator)
     {
         String javaScript = "var evObj = document.createEvent('MouseEvents');" +
                 "evObj.initMouseEvent(\"mouseover\",true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);" +
@@ -42,7 +37,7 @@ public class SharedMethods extends SelInstance {
         ((JavascriptExecutor)getDriver ()).executeScript(javaScript, Locator);
     }
 
-    public void MouseClickAction(WebElement Locator)
+    public static void MouseClickAction(WebElement Locator)
     {
         //JavascriptExecutor ex=(JavascriptExecutor)driver;
         //ex.executeScript("arguments[0].click()", Locator);
@@ -51,7 +46,7 @@ public class SharedMethods extends SelInstance {
     }
 
 
-    public void clickAction(WebElement Locator)
+    public static void clickAction(WebElement Locator)
     {
         Actions actions = new Actions(getDriver ());
         actions.moveToElement(Locator).click().build().perform();
@@ -59,7 +54,7 @@ public class SharedMethods extends SelInstance {
 
 
     //small hint here please don't forget to switch back to your main tap after calling this method and do your test :)
-    public void SwitchToNewTap(WebElement element)
+    public static void SwitchToNewTap(WebElement element)
     {
         JavascriptExecutor Js1 = (JavascriptExecutor) getDriver ();
 
@@ -74,7 +69,7 @@ public class SharedMethods extends SelInstance {
         getDriver ().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
-    public void SwitchToNewTapUsingSelenium(WebElement element){
+    public static void SwitchToNewTapUsingSelenium(WebElement element){
 
         element.click();
 
@@ -86,7 +81,7 @@ public class SharedMethods extends SelInstance {
 
     }
 
-      public  int getCurrentDay() {
+      public static int getCurrentDay() {
 
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
         //Get Current Day as a number
@@ -95,12 +90,12 @@ public class SharedMethods extends SelInstance {
     }
 
 
-    public void waitUntilElementVisible(WebElement webElement)
+    public static void waitUntilElementVisible(WebElement webElement)
     {
         WebDriverWait wait = new WebDriverWait(getDriver (),30);
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
-    public void waitUntilElementClickable(WebElement webElement)
+    public static void waitUntilElementClickable(WebElement webElement)
     {
         WebDriverWait wait = new WebDriverWait(getDriver (),30);
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
@@ -120,7 +115,7 @@ public class SharedMethods extends SelInstance {
         js.executeScript("window.scrollBy(0,-350)", Locator);
     }
 
-    public void jsScrollDown(WebElement Locator)
+    public static void jsScrollDown(WebElement Locator)
     {
         JavascriptExecutor js = (JavascriptExecutor) getDriver ();
         js.executeScript("window.scrollBy(0,350)", Locator);
@@ -135,13 +130,19 @@ public class SharedMethods extends SelInstance {
     }
 
 
-    public void waitElement(WebElement Locator)
+    public static void waitTillClickAble (WebElement Locator)
     {
-        WebDriverWait wait = new WebDriverWait(getDriver (),10);
+        WebDriverWait wait = new WebDriverWait(getDriver (),20);
         wait.until(ExpectedConditions.elementToBeClickable((Locator)));
     }
 
-    public void changeAttire(WebElement locator){
+    public static void waitTillElementDisAppear (WebElement Locator)
+    {
+        WebDriverWait wait = new WebDriverWait(getDriver (),10);
+        wait.until(ExpectedConditions.invisibilityOf ((Locator)));
+    }
+
+    public static void changeAttire(WebElement locator){
         JavascriptExecutor js = (JavascriptExecutor) getDriver ();
         js.executeScript("arguments[0].removeAttribute('disabled','disabled')",locator);
     }
@@ -150,6 +151,14 @@ public class SharedMethods extends SelInstance {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
 
+    }
+
+    public static void threadSleep(int time){
+        try {
+            Thread.sleep (time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException (e);
+        }
     }
 
 }

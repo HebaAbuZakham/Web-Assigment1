@@ -55,7 +55,7 @@ public class SelInstance {
         WebDriver driver = map.get (driverType).getBrowser (getHeadlessFlag ());
         driver.manage ().window ().maximize ();
         driver.manage()
-                .timeouts().implicitlyWait (6, TimeUnit.SECONDS);
+                .timeouts().implicitlyWait (10, TimeUnit.SECONDS);
         return driver;
 
     }

@@ -2,16 +2,20 @@ package org.maf.core.selenium_drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.bytebuddy.implementation.bytecode.Throw;
+import org.maf.core.enums.Drivers;
 import org.maf.core.enums.HeadlessStrategyOperator;
 import org.maf.core.instance.SelInstance;
 import org.maf.utils.PropReader;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class Chrome implements SelDriverProvider {
 
     public static final String TRUE = "true";
+    ChromeOptions options = (ChromeOptions) OptionsFactory.getOptions (Drivers.CHROME);
 
     @Override
     public WebDriver getBrowser(boolean isHeadless) {
@@ -20,6 +24,7 @@ public class Chrome implements SelDriverProvider {
 
         }
         else {
+
             WebDriverManager.chromedriver ().setup ();
         }
 
@@ -28,7 +33,8 @@ public class Chrome implements SelDriverProvider {
             return HeadlessStrategyOperator.CHROME.execute ();
 
         } else {
-            return new ChromeDriver();
+            System.out.println ("Helllllooo");
+            return new ChromeDriver(options);
         }
     }
 }
