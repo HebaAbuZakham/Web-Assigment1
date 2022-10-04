@@ -23,7 +23,7 @@ public class XMLReader  {
 
     static {
         map = new HashMap<> ();
-        map.put (base.xmlPathName, PropReader.readConfig("xml-path-reengineering"));
+        map.put (base.xmlPathName, PropReader.readConfig("xml-path-lec"));
 
     }
 

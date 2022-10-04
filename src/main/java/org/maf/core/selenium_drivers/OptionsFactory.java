@@ -29,8 +29,19 @@ public class OptionsFactory {
 
             }
             case CHROME: {
+                ChromeOptions options = new ChromeOptions ();
+                options.addArguments("--window-size=1400,600");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--ignore-certificate-errors");
+                options.addArguments("--ignore-ssl-errors");
+            //    options.addArguments("--disable-dev-shm-usage");
+           //     options.addArguments("--disable-gpu");
+                options.setCapability ("enable-features","NetworkServiceInProcess");
+                options.setCapability ("enable-features","NetworkService");
+                options.addArguments ("--enable-javascript");
+                return options;
 
-                return new ChromeOptions ();
+
 
 
             }
