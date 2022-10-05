@@ -51,7 +51,6 @@ public class AddOnsTest extends base {
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
-        SharedMethods.threadSleep (1200000);
 
     }
 
