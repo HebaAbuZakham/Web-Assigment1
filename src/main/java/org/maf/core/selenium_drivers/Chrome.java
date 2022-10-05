@@ -33,7 +33,6 @@ public class Chrome implements SelDriverProvider {
             return HeadlessStrategyOperator.CHROME.execute ();
 
         } else {
-            System.out.println ("Helllllooo");
             return new ChromeDriver(options);
         }
     }

@@ -51,6 +51,35 @@ public class AddOnsTest extends base {
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        SharedMethods.threadSleep (1200000);
+
+    }
+
+    @Test(description = "Validate 'required Supervision ticket' for Slope on Add-Ons ",retryAnalyzer = RetryAnalyzer.class)
+    public void validateThatTheUserSeeSupervisionTicketOnAddOns ()  {
+
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        addOnsScreen.getGuestsDropDownList ().click ();
+        SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
+        SharedMethods.waitTillElementDisAppear (addOnsScreen.getRemoveAdultGuest ());
+        SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        Assert.assertTrue (addOnsScreen.getSupervisionAddOnsTicket().isDisplayed ());
+        Assert.assertTrue (addOnsScreen.getNeedSupervisionTicketMsg().isDisplayed ());
 
     }
 
