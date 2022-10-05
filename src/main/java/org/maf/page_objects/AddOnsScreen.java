@@ -40,6 +40,9 @@ public class AddOnsScreen {
     @FindBy(xpath = "//span[text()=\"This ticket requires adult supervision.\"]")
     private WebElement needSupervisionTicketMsg;
 
+    @FindBy(xpath = "//span[text()=\"This pass requires an adult ticket.\"]")
+    private WebElement needAdultTicketMsg;
+
     @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
     private WebElement continueButton;
 
@@ -147,5 +150,13 @@ public class AddOnsScreen {
 
     public void setNeedSupervisionTicketMsg(WebElement needSupervisionTicketMsg) {
         this.needSupervisionTicketMsg = needSupervisionTicketMsg;
+    }
+
+    public WebElement getNeedAdultTicketMsg() {
+        return needAdultTicketMsg;
+    }
+
+    public void setNeedAdultTicketMsg(WebElement needAdultTicketMsg) {
+        this.needAdultTicketMsg = needAdultTicketMsg;
     }
 }

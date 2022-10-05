@@ -7,8 +7,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PassesAndPackages {
 
+//    Slope tab
     @FindBy(xpath = "//p[text()[normalize-space()='Slope Passes']]")
     private WebElement slopePassesHeader;
+
+//    Snow park tab
+    @FindBy(xpath = "//p[text()[normalize-space()='Snow Park pass']]")
+    private WebElement SnowParkPassesHeader;
+
+    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")
+    private WebElement SnowParkPassBuyButton;
 
     @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
     private WebElement fullDaySlopePassBuyButton;
@@ -32,5 +40,21 @@ public class PassesAndPackages {
 
     public void setSlopePassesHeader (WebElement slopePassesHeader) {
         this.slopePassesHeader = slopePassesHeader;
+    }
+
+    public WebElement getSnowParkPassesHeader() {
+        return SnowParkPassesHeader;
+    }
+
+    public void setSnowParkPassesHeader(WebElement snowParkPassesHeader) {
+        SnowParkPassesHeader = snowParkPassesHeader;
+    }
+
+    public WebElement getSnowParkPassBuyButton() {
+        return SnowParkPassBuyButton;
+    }
+
+    public void setSnowParkPassBuyButton(WebElement snowParkPassBuyButton) {
+        SnowParkPassBuyButton = snowParkPassBuyButton;
     }
 }

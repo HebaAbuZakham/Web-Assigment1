@@ -24,7 +24,8 @@ public class SKiHomePage {
     @FindBy(xpath = "//a[@href='/en/passes-packages/ski-snowboard']")
     private WebElement slopeOption;
 
-
+    @FindBy(xpath = "//a[@href='/en/passes-packages/snowpark']")
+    private WebElement snowParkOption;
 
 
     public SKiHomePage (WebDriver driver) {
@@ -72,4 +73,11 @@ public class SKiHomePage {
     }
 
 
+    public WebElement getSnowParkOption() {
+        return snowParkOption;
+    }
+
+    public void setSnowParkOption(WebElement snowParkOption) {
+        this.snowParkOption = snowParkOption;
+    }
 }
