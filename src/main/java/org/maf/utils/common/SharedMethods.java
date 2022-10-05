@@ -160,5 +160,4 @@ public class SharedMethods extends SelInstance {
             throw new RuntimeException (e);
         }
     }
-
 }
