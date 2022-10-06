@@ -8,6 +8,7 @@ import org.maf.page_objects.SKiHomePage;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
 import org.maf.utils.error_handlers.RetryAnalyzer;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -44,5 +45,20 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         Assert.assertTrue (addOnsScreen.getAddMainAddOnsButton().isDisplayed ());
 
+    }
+
+    @Test(description = "Validate user select Snow Cinema Ticket",retryAnalyzer = RetryAnalyzer.class)
+    public void validateThatUserSelectSnowCinemaBuyButton() {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowCinemaOption ());
+        sKiHomePage.getSnowCinemaOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowCinemaPassesHeader ());
+        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowCinemaPassBuyButton());
+        SharedMethods.urlShouldInclude("https://uae.voxcinemas.com/");
     }
 }

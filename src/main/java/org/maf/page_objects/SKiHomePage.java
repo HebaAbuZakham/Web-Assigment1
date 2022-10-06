@@ -27,6 +27,8 @@ public class SKiHomePage {
     @FindBy(xpath = "//a[@href='/en/passes-packages/snowpark']")
     private WebElement snowParkOption;
 
+    @FindBy(xpath = "//a[@href='/en/passes-packages/snowcinema']")
+    private WebElement snowCinemaOption;
 
     public SKiHomePage (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -79,5 +81,13 @@ public class SKiHomePage {
 
     public void setSnowParkOption(WebElement snowParkOption) {
         this.snowParkOption = snowParkOption;
+    }
+
+    public WebElement getSnowCinemaOption() {
+        return snowCinemaOption;
+    }
+
+    public void setSnowCinemaOption(WebElement snowCinemaOption) {
+        this.snowCinemaOption = snowCinemaOption;
     }
 }
