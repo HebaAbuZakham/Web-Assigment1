@@ -54,7 +54,7 @@ public class PassesAndPackages {
     }
 
     public void setSnowParkPassesHeader(WebElement snowParkPassesHeader) {
-        SnowParkPassesHeader = snowParkPassesHeader;
+        this.SnowParkPassesHeader = snowParkPassesHeader;
     }
 
     public WebElement getSnowParkPassBuyButton() {
@@ -62,7 +62,7 @@ public class PassesAndPackages {
     }
 
     public void setSnowParkPassBuyButton(WebElement snowParkPassBuyButton) {
-        SnowParkPassBuyButton = snowParkPassBuyButton;
+        this.SnowParkPassBuyButton = snowParkPassBuyButton;
     }
 
     public WebElement getSnowCinemaPassBuyButton() {
@@ -78,6 +78,6 @@ public class PassesAndPackages {
     }
 
     public void setSnowCinemaPassesHeader(WebElement snowCinemaPassesHeader) {
-        SnowCinemaPassesHeader = snowCinemaPassesHeader;
+        this.SnowCinemaPassesHeader = snowCinemaPassesHeader;
     }
 }

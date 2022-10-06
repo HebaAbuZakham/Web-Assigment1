@@ -59,6 +59,6 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.threadSleep (1000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowCinemaPassesHeader ());
         SharedMethods.SwitchToNewTap(passesAndPackages.getSnowCinemaPassBuyButton());
-        SharedMethods.urlShouldInclude("https://uae.voxcinemas.com/");
+        Assert.assertTrue(SharedMethods.urlShouldInclude( objXMLReader.getXMLData("VOX-URL")));
     }
 }

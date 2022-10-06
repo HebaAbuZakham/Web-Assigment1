@@ -162,9 +162,9 @@ public class SharedMethods extends SelInstance {
         }
     }
 
-    public static void urlShouldInclude(String url){
+    public static boolean urlShouldInclude(String url){
         String URL = getDriver ().getCurrentUrl();
-        Assert.assertTrue(URL.contains(url));
+        return (URL.contains(url));
     }
 
 }
