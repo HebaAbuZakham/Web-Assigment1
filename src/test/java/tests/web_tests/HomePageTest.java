@@ -45,4 +45,17 @@ public class HomePageTest extends base {
 
     }
 
+    @Test(description = "Validate that Dubai is exist in the locations DropDown ")
+    public void validateThatDubaiIsExistInTheLocationsDropDown(){
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getLocationsList());
+        SharedMethods.waitUntilElementClickable(sKiHomePage.getLocationsList());
+        sKiHomePage.getLocationsList().click();
+        Assert.assertEquals(sKiHomePage.getDubaiLocation().getText(), "Ski Dubai");
+       // Assert.assertTrue(sKiHomePage.getDubaiLocation().isDisplayed());
+        
+
+    }
+
     }

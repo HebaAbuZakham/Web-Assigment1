@@ -12,6 +12,13 @@ public class SKiHomePage {
     @FindBy(xpath = "//button[text()='Accept']")
     private WebElement acceptCookiesButton;
 
+    @FindBy (className = "//div[contains(@class,'gh-item flex')]")
+    private WebElement locationsList;
+
+    @FindBy (className = "//div[contains(@class,'gh-item flex')]")
+    private WebElement dubaiLocation;
+
+
     @FindBy (className = "btn-sign-in")
     private WebElement signInButton;
 
@@ -70,6 +77,10 @@ public class SKiHomePage {
     public void setSignInButton (WebElement signInButton) {
         this.signInButton = signInButton;
     }
+
+    public WebElement getLocationsList(){ return locationsList; }
+
+    public WebElement getDubaiLocation(){return dubaiLocation;}
 
 
 }
