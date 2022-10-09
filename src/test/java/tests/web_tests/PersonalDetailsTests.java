@@ -58,4 +58,39 @@ public class PersonalDetailsTests extends base {
         Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
 
     }
+
+
+    @Test(description = "Logged in user-Verify editing personal details info is saved")
+    // cant be run without flow
+    public void testFillingEditForm()
+    {
+
+        PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
+        personalDetailsObj.clickingOnEditProfile();
+        personalDetailsObj.typeFirstName();
+        personalDetailsObj.typeLastName();
+        personalDetailsObj.clickingOnSaveButton();
+    }
+
+    @Test(description = "Guest user-Verify filling guest user info")
+    public void testGuestUser() {
+
+        PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
+
+    }
+
+    @Test(description = "Guest user-Verify user is not able to processed for tickets required login")
+    public void testTicketRequiredLogin() {
+
+        PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
+
+    }
+    @Test(description = "Logged in user-Verify Verify editing ticket info")
+    public void testEditingTicketInfo() {
+
+        PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
+
+    }
+
+
 }
