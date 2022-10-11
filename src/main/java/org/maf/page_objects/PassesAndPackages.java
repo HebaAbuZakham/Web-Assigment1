@@ -8,26 +8,32 @@ import org.openqa.selenium.support.PageFactory;
 public class PassesAndPackages {
 
 //    Slope tab
-    @FindBy(xpath = "//p[text()[normalize-space()='Slope Passes']]")
+    @FindBy(xpath = "//li[text()[normalize-space()='Slope']]")
     private WebElement slopePassesHeader;
 
     @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
     private WebElement fullDaySlopePassBuyButton;
 
 //    Snow park tab
-    @FindBy(xpath = "//p[text()[normalize-space()='Snow Park pass']]")
+    @FindBy(xpath = "//p[text()[normalize-space()='Snow Park']]")
     private WebElement SnowParkPassesHeader;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")
     private WebElement SnowParkPassBuyButton;
 
     //    Snow cinema tab
-    @FindBy(xpath = "//p[text()[normalize-space()='SNOW CINEMA PASS']]")
+    @FindBy(xpath = "//li[contains(text(),'Snow Cinema')]")
     private WebElement SnowCinemaPassesHeader;
 
-    @FindBy(xpath = "//a[contains(text(),\"Buy tickets\")][ancestor::div[@class=\"passes-card-content\"]//div[contains(text(),\"Snow Cinema\")]]")
+   @FindBy(xpath = "//a[@class='passes-btn']")
     private WebElement snowCinemaPassBuyButton;
 
+   // Penguin Encounter tab
+   @FindBy(xpath = "//li[text()[normalize-space()='Penguin Encounter']]")
+   private WebElement penguinEncounterPassesHeader;
+
+   @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
+   private WebElement penguinEncounterPassBuyButton;
 
     public PassesAndPackages (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -79,5 +85,17 @@ public class PassesAndPackages {
 
     public void setSnowCinemaPassesHeader(WebElement snowCinemaPassesHeader) {
         this.SnowCinemaPassesHeader = snowCinemaPassesHeader;
+    }
+
+    public WebElement getPenguinEncounterPassesHeader(){return penguinEncounterPassesHeader;}
+
+    public void setPenguinEncounterPassesHeader (WebElement penguinEncounterPassesHeader){
+        this.penguinEncounterPassesHeader = penguinEncounterPassesHeader;
+    }
+
+    public WebElement getPenguinEncounterPassBuyButton(){return penguinEncounterPassBuyButton;}
+
+    public void setPenguinEncounterPassBuyButton(WebElement penguinEncounterPassBuyButton){
+        this.penguinEncounterPassBuyButton= penguinEncounterPassBuyButton;
     }
 }
