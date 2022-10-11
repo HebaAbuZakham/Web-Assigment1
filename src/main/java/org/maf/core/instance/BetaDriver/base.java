@@ -26,7 +26,7 @@ public static final String xmlPathName = "reengineering";
     WebDriver driver = doBrowserSetup();
     WaitHelper.handleImplicit (driver);
     threadLocalDriver.set(driver);
-    threadLocalDriver.get ().get ("https://d1rn2v69f0btvp.cloudfront.net/en");
+    threadLocalDriver.get ().get ("https://dxb-stg.skidxb.com/en");
 
 }
     //get thread-safe driver

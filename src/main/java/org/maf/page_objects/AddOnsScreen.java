@@ -28,13 +28,26 @@ public class AddOnsScreen {
     @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(2)>div>div:nth-of-type(2)>button:nth-of-type(2)")
     private WebElement numberOfJuniors;
 
+    @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[2]/div[2]/button")
+    private WebElement guestsDropDownList;
+
+    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(1)")
+    private WebElement removeAdultGuest;
+
+    @FindBy(xpath = "//div[@class=\"addOnsItem\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
+    private WebElement supervisionAddOnsTicket;
+
+    @FindBy(xpath = "//span[text()=\"This ticket requires adult supervision.\"]")
+    private WebElement needSupervisionTicketMsg;
+
+    @FindBy(xpath = "//span[text()=\"This pass requires an adult ticket.\"]")
+    private WebElement needAdultTicketMsg;
 
     @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
     private WebElement continueButton;
 
     @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']")
     private WebElement calenderFrame;
-
 
 
     public AddOnsScreen (WebDriver driver) {
@@ -98,6 +111,16 @@ public class AddOnsScreen {
         this.numberOfJuniors = numberOfJuniors;
     }
 
+    public WebElement getGuestsDropDownList () {return guestsDropDownList;}
+
+    public  void setGuestsDropDownList (WebElement guestsDropDownList){ this.guestsDropDownList = guestsDropDownList;}
+
+    public WebElement getRemoveAdultGuest () {return removeAdultGuest;}
+
+    public void setRemoveAdultGuest(WebElement removeAdultGuest) {
+        this.removeAdultGuest = removeAdultGuest;
+    }
+
     public WebElement getAddOnsLabel () {
         return addOnsLabel;
     }
@@ -115,4 +138,25 @@ public class AddOnsScreen {
     }
 
 
+    public WebElement getSupervisionAddOnsTicket() { return supervisionAddOnsTicket;}
+
+    public void setSupervisionAddOnsTicket(WebElement supervisionAddOnsTicket) {
+        this.supervisionAddOnsTicket = supervisionAddOnsTicket;
+    }
+
+    public WebElement getNeedSupervisionTicketMsg() {
+        return needSupervisionTicketMsg;
+    }
+
+    public void setNeedSupervisionTicketMsg(WebElement needSupervisionTicketMsg) {
+        this.needSupervisionTicketMsg = needSupervisionTicketMsg;
+    }
+
+    public WebElement getNeedAdultTicketMsg() {
+        return needAdultTicketMsg;
+    }
+
+    public void setNeedAdultTicketMsg(WebElement needAdultTicketMsg) {
+        this.needAdultTicketMsg = needAdultTicketMsg;
+    }
 }

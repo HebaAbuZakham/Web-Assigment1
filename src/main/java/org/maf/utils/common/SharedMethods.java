@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -159,6 +160,11 @@ public class SharedMethods extends SelInstance {
         } catch (InterruptedException e) {
             throw new RuntimeException (e);
         }
+    }
+
+    public static boolean urlShouldInclude(String url){
+        String URL = getDriver ().getCurrentUrl();
+        return (URL.contains(url));
     }
 
 }
