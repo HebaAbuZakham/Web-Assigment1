@@ -49,6 +49,11 @@ public class AddOnsScreen {
     @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']")
     private WebElement calenderFrame;
 
+    @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]]")
+    private WebElement supervisionTicketPlusButton;
+
+    @FindBy(xpath = "//*[@class=\"AddOnsSideContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
+    private WebElement addedSupervisionToBookingCard;
 
     public AddOnsScreen (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -158,5 +163,21 @@ public class AddOnsScreen {
 
     public void setNeedAdultTicketMsg(WebElement needAdultTicketMsg) {
         this.needAdultTicketMsg = needAdultTicketMsg;
+    }
+
+    public WebElement getSupervisionTicketPlusButton() {
+        return supervisionTicketPlusButton;
+    }
+
+    public void setSupervisionTicketPlusButton(WebElement supervisionTicketPlusButton) {
+        this.supervisionTicketPlusButton = supervisionTicketPlusButton;
+    }
+
+    public WebElement getAddedSupervisionToBookingCard() {
+        return addedSupervisionToBookingCard;
+    }
+
+    public void setAddedSupervisionToBookingCard(WebElement addedSupervisionToBookingCard) {
+        this.addedSupervisionToBookingCard = addedSupervisionToBookingCard;
     }
 }
