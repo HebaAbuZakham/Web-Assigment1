@@ -73,7 +73,7 @@ public class PersonalDetailsTests extends base {
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
-        sKiHomePage.getAcceptCookiesButton ().click ();
+       // sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
@@ -100,10 +100,13 @@ public class PersonalDetailsTests extends base {
 
         PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
         personalDetailsObj.clickingOnEditProfile();
-        personalDetailsObj.getFirstName().sendKeys ( objXMLReader.getXMLData ("firstName"));
-        personalDetailsObj.getFirstName().sendKeys ( objXMLReader.getXMLData ("lastName"));
+        String name = objXMLReader.getXMLData ("firstName");
+        String surname = objXMLReader.getXMLData ("lastName");
+
+        personalDetailsObj.getFirstName().sendKeys(name);
+        personalDetailsObj.getFirstName().sendKeys (surname);
         personalDetailsObj.clickingOnSaveButton();
-        //Assert.assertTrue( personalDetailsObj.getNameLabel());
+        Assert.assertEquals( personalDetailsObj.getNameLabel(), name + " " +surname);
     }
 
     @Test(description = "Guest user-Verify filling guest user info")
@@ -136,18 +139,47 @@ public class PersonalDetailsTests extends base {
         addOnsScreen.getContinueButton ().click ();
 
         PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
-        personalDetailsObj.clickingOnEditProfile();
-        personalDetailsObj.getFirstName().sendKeys ( objXMLReader.getXMLData ("firstName"));
-        personalDetailsObj.getFirstName().sendKeys ( objXMLReader.getXMLData ("lastName"));
+        personalDetailsObj.clickingMissRadioButton();
+        personalDetailsObj.getFirstName().sendKeys(objXMLReader.getXMLData ("firstName"));
+        personalDetailsObj.getFirstName().sendKeys (objXMLReader.getXMLData ("lastName"));
+        personalDetailsObj.getMobileNum().sendKeys (objXMLReader.getXMLData ("phoneNumber"));
+        personalDetailsObj.getEmail().sendKeys (objXMLReader.getXMLData ("email"));
+        personalDetailsObj.clickingBookingInfo();
+        personalDetailsObj.clickingtermsCond();
+
+
         personalDetailsObj.clickingOnSaveButton();
-        //Assert.assertTrue( personalDetailsObj.getNameLabel());
 
     }
 
     @Test(description = "Guest user-Verify user is not able to processed for tickets required login")
     public void testTicketRequiredLogin() {
 
-        PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getAddMainAddOnsButton ());
+        addOnsScreen.getAddMainAddOnsButton ().click ();
+        SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton());
+        SharedMethods.mouseClickAction (addOnsScreen.getNextMonthButton ());
+        SharedMethods.mouseClickAction (addOnsScreen.getMonthSelection ());
+        SharedMethods.waitTillElementDisAppear (addOnsScreen.getCalenderFrame ());
+        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown());
+        SharedMethods.threadSleep (7000);
+        SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
+        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton ().click ();
 
     }
     @Test(description = "Logged in user-Verify Verify editing ticket info")

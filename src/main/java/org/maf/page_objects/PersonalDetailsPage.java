@@ -8,6 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 public class PersonalDetailsPage {
 
 
+
+    @FindBy (xpath="(//span[contains(@class,'w-2 h-2')])[3]")
+    WebElement missRadioButton;
     @FindBy(id = "first name")
     WebElement firstName;
 
@@ -60,6 +63,10 @@ public class PersonalDetailsPage {
         PageFactory.initElements (driver,this);
     }
 
+
+    public void clickingMissRadioButton() {
+        missRadioButton.click();
+    }
     public WebElement getFirstName() {
         return firstName;
     }
@@ -73,6 +80,32 @@ public class PersonalDetailsPage {
 
     public void setLastName (WebElement lastName) {
         this.lastName = lastName;}
+
+    public WebElement getMobileNum() {
+        return mobileNumber;
+    }
+
+    public void setMobileNum (WebElement mobileNumber) {
+        this.mobileNumber = mobileNumber;}
+
+    public WebElement getEmail() {
+        return email;
+    }
+
+    public void setEmail (WebElement email) {
+        this.email = email;}
+
+
+    public void clickingBookingInfo()
+    {
+        bookingInformation.click();
+    }
+
+    public void clickingtermsCond()
+    {
+        termsConditonsCheckbox.click();
+    }
+
 
     public void clickingOnEditProfile() {
         editProfileButton.click();
