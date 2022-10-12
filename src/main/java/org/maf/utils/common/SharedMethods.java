@@ -167,10 +167,13 @@ public class SharedMethods extends SelInstance {
         return (URL.contains(url));
     }
 
+    public static void clickOn(WebElement element){
+        waitUntilElementClickable(element);
+        element. click();
+    }
+
     public static void moveToElement(WebElement locator) {
         new Actions(getDriver()).moveToElement(locator).build().perform();
     }
-
-
 
 }
