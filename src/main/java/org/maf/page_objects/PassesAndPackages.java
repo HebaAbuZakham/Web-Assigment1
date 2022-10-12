@@ -2,6 +2,7 @@ package org.maf.page_objects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -35,8 +36,61 @@ public class PassesAndPackages {
    @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
    private WebElement penguinEncounterPassBuyButton;
 
+    @FindBy(css = ".tabs-list > li:nth-of-type(1)")
+    @CacheLookup
+    private WebElement slopeTab;
+
+    @FindBy(css = ".tabs-list > li:nth-of-type(2)")
+    @CacheLookup
+    private WebElement snowParkTab;
+
+    @FindBy(css = ".tabs-list > li:nth-of-type(3)")
+    @CacheLookup
+    private WebElement penguinEncounterTab;
+
+    @FindBy(css = ".tabs-list > li:nth-of-type(4)")
+    @CacheLookup
+    private WebElement snowCinemaTab;
+
+
+
+
+
     public PassesAndPackages (WebDriver driver) {
         PageFactory.initElements (driver,this);
+    }
+
+
+    public WebElement getSlopeTab () {
+        return slopeTab;
+    }
+
+    public void setSlopeTab (WebElement slopeTab) {
+        this.slopeTab = slopeTab;
+    }
+
+    public WebElement getSnowParkTab () {
+        return snowParkTab;
+    }
+
+    public void setSnowParkTab (WebElement snowParkTab) {
+        this.snowParkTab = snowParkTab;
+    }
+
+    public WebElement getPenguinEncounterTab () {
+        return penguinEncounterTab;
+    }
+
+    public void setPenguinEncounterTab (WebElement penguinEncounterTab) {
+        this.penguinEncounterTab = penguinEncounterTab;
+    }
+
+    public WebElement getSnowCinemaTab () {
+        return snowCinemaTab;
+    }
+
+    public void setSnowCinemaTab (WebElement snowCinemaTab) {
+        this.snowCinemaTab = snowCinemaTab;
     }
 
     public WebElement getFullDaySlopePassBuyButton () {
