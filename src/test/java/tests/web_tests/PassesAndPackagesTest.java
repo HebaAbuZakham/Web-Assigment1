@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 public class PassesAndPackagesTest extends base {
 
 
-    @Test(description = "Validate that user can click on slope buy button",retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validate that user can click on slope buy button")
     public void validateThatUserCanSelectBuySlope()  {
 
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
@@ -43,7 +43,7 @@ public class PassesAndPackagesTest extends base {
 
     }
 
-    @Test(description = "Validate user select Snow Cinema Ticket",retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validate user select Snow Cinema Ticket")
     public void validateThatUserSelectSnowCinemaBuyButton() {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
