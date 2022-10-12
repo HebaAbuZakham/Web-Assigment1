@@ -40,10 +40,10 @@ public class SharedMethods extends SelInstance {
 
     public static void MouseClickAction(WebElement Locator)
     {
-        //JavascriptExecutor ex=(JavascriptExecutor)driver;
-        //ex.executeScript("arguments[0].click()", Locator);
-        JavascriptExecutor jse = (JavascriptExecutor)getDriver ();
-        jse.executeScript("document.getElementByXpath('"+ Locator +"').click();");
+        JavascriptExecutor ex=(JavascriptExecutor)getDriver();
+        ex.executeScript("arguments[0].click()", Locator);
+//        JavascriptExecutor jse = (JavascriptExecutor)getDriver ();
+//        jse.executeScript("document.getElementByXpath('"+ Locator +"').click();");
     }
 
 

@@ -42,7 +42,7 @@ public class HomePageTest extends base {
         sKiHomePage.getLocationsListLink().click();
         sKiHomePage.getSnowAbuDhabiLink().click();
         SharedMethods.threadSleep(3000);
-        sKiHomePage.getCloseCookiesBanner().click();
+//        sKiHomePage.getCloseCookiesBanner().click();
         sKiHomePage.getCloseYellowBanner().click();
         softAssert.assertEquals(sKiHomePage.getLocalizationLink().getText(), "Snow Abu Dhabi");
 
@@ -58,7 +58,7 @@ public class HomePageTest extends base {
         sKiHomePage.getLocationsListLink().click();
         sKiHomePage.getSnowOmanLink().click();
         SharedMethods.threadSleep(3000);
-        sKiHomePage.getCloseCookiesBanner().click();
+//        sKiHomePage.getCloseCookiesBanner().click();
         softAssert.assertEquals(sKiHomePage.getLocalizationOman().getText(), "Snow Oman");
 
 

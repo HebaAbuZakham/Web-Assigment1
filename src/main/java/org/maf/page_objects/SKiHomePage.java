@@ -21,7 +21,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement locationsListLink;
 
-    @FindBy (id = "onetrust-close-btn-container")
+    @FindBy (css = "#onetrust-close-btn-container")
     @CacheLookup
     private WebElement closeCookiesBanner;
 
