@@ -5,7 +5,6 @@ import org.maf.page_objects.*;
 import org.maf.utils.Common_steps.SharedSteps;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
-import org.maf.utils.error_handlers.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -75,7 +74,6 @@ public class AddOnsTest extends base {
         SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
         addOnsScreen.getGuestsDropDownList ().click ();
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-        SharedMethods.waitTillElementDisAppear (addOnsScreen.getRemoveAdultGuest ());
         SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
         SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
         Assert.assertTrue (addOnsScreen.getSupervisionAddOnsTicket().isDisplayed ());
@@ -104,7 +102,6 @@ public class AddOnsTest extends base {
         SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
         addOnsScreen.getGuestsDropDownList ().click ();
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-        SharedMethods.waitTillElementDisAppear (addOnsScreen.getRemoveAdultGuest ());
         SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
         SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
         Assert.assertTrue (addOnsScreen.getNeedAdultTicketMsg().isDisplayed ());
@@ -121,7 +118,7 @@ public class AddOnsTest extends base {
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
         sKiHomePage.getSlopeOption ().click ();
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.threadSleep (2000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
         SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
@@ -132,28 +129,12 @@ public class AddOnsTest extends base {
         SharedMethods.threadSleep (1000);
         addOnsScreen.getGuestsDropDownList ().click ();
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-//        SharedMethods.waitTillElementDisAppear (addOnsScreen.getRemoveAdultGuest ());
         SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.clickOn(addOnsScreen.getGuestsDropDownList ());
         Assert.assertTrue (addOnsScreen.getSupervisionAddOnsTicket().isDisplayed ());
         Assert.assertTrue (addOnsScreen.getNeedSupervisionTicketMsg().isDisplayed ());
-        addOnsScreen.getSupervisionTicketPlusButton ().click ();
+        SharedMethods.clickOn(addOnsScreen.getSupervisionTicketPlusButton ());
         Assert.assertTrue (addOnsScreen.getAddedSupervisionToBookingCard().isDisplayed ());
-        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
-        addOnsScreen.getContinueButton ().click ();
-        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
-        SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
-        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
-        personalDetailsPage.getContinueToPayment ().click ();
-        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
-        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("masterCard1"));
-        paymentDetailsPage.getCardExpiry ().sendKeys (objXMLReader.getXMLData ("cardExp"));
-        paymentDetailsPage.getCardCSV ().sendKeys (objXMLReader.getXMLData ("cardCSV"));
-        SharedMethods.threadSleep (1000);
-        paymentDetailsPage.getPay ().click ();
-
-        SharedMethods.threadSleep (1000000);
 
     }
 }

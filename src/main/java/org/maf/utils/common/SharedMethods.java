@@ -166,5 +166,9 @@ public class SharedMethods extends SelInstance {
         String URL = getDriver ().getCurrentUrl();
         return (URL.contains(url));
     }
-
+    
+    public static void clickOn(WebElement element){
+        waitUntilElementClickable(element);
+        element. click();
+    }
 }

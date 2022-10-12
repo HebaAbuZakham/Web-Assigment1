@@ -2,6 +2,7 @@ package tests.web_tests;
 
 import org.maf.core.instance.BetaDriver.base;
 import org.maf.page_objects.*;
+import org.maf.utils.Common_steps.SharedSteps;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
 import org.maf.utils.error_handlers.RetryAnalyzer;
@@ -26,7 +27,7 @@ public class PaymentDetailsTests extends base {
         loginPage.getPassword ().sendKeys (objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
-        sKiHomePage.getAcceptCookiesButton ().click ();
+//        sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
@@ -55,11 +56,12 @@ public class PaymentDetailsTests extends base {
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("masterCard1"));
-        paymentDetailsPage.getCardExpiry ().sendKeys (objXMLReader.getXMLData ("cardExp"));
-        paymentDetailsPage.getCardCSV ().sendKeys (objXMLReader.getXMLData ("cardCSV"));
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
         SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         paymentDetailsPage.getPay ().click ();
+
     }
 
 }
