@@ -40,10 +40,10 @@ public class SharedMethods extends SelInstance {
 
     public static void MouseClickAction(WebElement Locator)
     {
-        //JavascriptExecutor ex=(JavascriptExecutor)driver;
-        //ex.executeScript("arguments[0].click()", Locator);
-        JavascriptExecutor jse = (JavascriptExecutor)getDriver ();
-        jse.executeScript("document.getElementByXpath('"+ Locator +"').click();");
+        JavascriptExecutor ex=(JavascriptExecutor)getDriver();
+        ex.executeScript("arguments[0].click()", Locator);
+//        JavascriptExecutor jse = (JavascriptExecutor)getDriver ();
+//        jse.executeScript("document.getElementByXpath('"+ Locator +"').click();");
     }
 
 
@@ -165,6 +165,15 @@ public class SharedMethods extends SelInstance {
     public static boolean urlShouldInclude(String url){
         String URL = getDriver ().getCurrentUrl();
         return (URL.contains(url));
+    }
+
+    public static void clickOn(WebElement element){
+        waitUntilElementClickable(element);
+        element. click();
+    }
+
+    public static void moveToElement(WebElement locator) {
+        new Actions(getDriver()).moveToElement(locator).build().perform();
     }
 
 }
