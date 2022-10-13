@@ -46,6 +46,12 @@ public class SharedMethods extends SelInstance {
 //        jse.executeScript("document.getElementByXpath('"+ Locator +"').click();");
     }
 
+    public static void clearField(WebElement Locator){
+        JavascriptExecutor js = (JavascriptExecutor)getDriver();
+        js.executeScript("arguments[0].value='';", Locator);
+//        js.executeScript("document.getElementByXpath('"+ Locator +"').clear();");
+    }
+
 
     public static void clickAction(WebElement Locator)
     {

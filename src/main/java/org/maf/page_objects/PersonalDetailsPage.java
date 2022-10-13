@@ -16,7 +16,7 @@ public class PersonalDetailsPage {
     @FindBy(id = "first name")
     WebElement firstName;
 
-    @FindBy(id = "last name")
+    @FindBy(css = "#last\\ name")
     WebElement lastName;
 
     @FindBy(id="mobile number")
