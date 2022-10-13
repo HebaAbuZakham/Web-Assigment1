@@ -15,44 +15,40 @@ import org.testng.annotations.Test;
 public class PaymentDetailsTests extends base {
 
 
-    @Test(description = "Validate that the user can fill payment details info and submit payment",retryAnalyzer = RetryAnalyzer.class)
+    @Test(description = "Validate that the user can fill payment details info and submit payment")
     public void ValidateThatUserCanFillPaymentDetailsInfo() {
 
-        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        sKiHomePage.getAcceptCookiesButton ().click ();
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
         sKiHomePage.getSignInButton ().click ();
         LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys (objXMLReader.getXMLData ("userName"));
-        loginPage.getPassword ().sendKeys (objXMLReader.getXMLData ("passWord"));
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
-//        sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
-        sKiHomePage.getSlopeOption ().click ();
-        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
-        SharedMethods.threadSleep (1000);
-        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
-        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton ());
-        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
-        SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getAddMainAddOnsButton ());
-        addOnsScreen.getAddMainAddOnsButton ().click ();
-        SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton ());
+        SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
+        addOnsScreen.getContinueButton ().click ();
+        SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton());
         SharedMethods.mouseClickAction (addOnsScreen.getNextMonthButton ());
         SharedMethods.mouseClickAction (addOnsScreen.getMonthSelection ());
         SharedMethods.waitTillElementDisAppear (addOnsScreen.getCalenderFrame ());
-        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown ());
+        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown());
         SharedMethods.threadSleep (7000);
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton ());
-        addOnsScreen.getContinueButton ().click ();
+
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
-        SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment ());
+        SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());

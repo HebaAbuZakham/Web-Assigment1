@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 public class PersonalDetailsPage {
 
 
+    @FindBy (xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[1]/div/div/h1")
+    WebElement personalDetailsHeader;
 
     @FindBy (xpath="(//span[contains(@class,'w-2 h-2')])[3]")
     WebElement missRadioButton;
@@ -29,7 +31,7 @@ public class PersonalDetailsPage {
     @FindBy(id="termsConditsCheckbox")
     WebElement termsConditonsCheckbox;
 
-    @FindBy(xpath="//button[@class='gs-base-button-default-styles w-fit']")
+    @FindBy(xpath="//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div/span/form/div[4]/button[2]")
     WebElement saveButton;
 
     @FindBy(xpath="user-name")
@@ -39,7 +41,7 @@ public class PersonalDetailsPage {
     WebElement removeButton;
 
 
-    @FindBy(xpath="//button[@class='gs-base-button-default-styles w-fit']")
+    @FindBy(xpath="//*[@id='layout']/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div[2]/div[2]/button")
     WebElement editProfileButton;
 
 
@@ -51,7 +53,7 @@ public class PersonalDetailsPage {
 
     @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[1]/div/a")
     WebElement editTicketInfo;
-    @FindBy(xpath = "//button[text()[normalize-space()='Continue to payment']]")
+    @FindBy(xpath = "(//button[@class='gs-base-button-default-styles w-fit'])[2]")
     private WebElement continueToPayment ;
 
     @FindBy(xpath= "//*[@id=\"layout\"]/div[2]/main/div[2]/div/div/div[1]/div[1]/button")
@@ -62,6 +64,13 @@ public class PersonalDetailsPage {
     public PersonalDetailsPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
+    public WebElement getPersonalDetailsHeader() {
+        return personalDetailsHeader;
+    }
+
+    public void setPersonalDetailsHeader (WebElement personalDetailsHeader) {
+        this.personalDetailsHeader = personalDetailsHeader;}
+
 
 
     public void clickingMissRadioButton() {
@@ -106,14 +115,24 @@ public class PersonalDetailsPage {
         termsConditonsCheckbox.click();
     }
 
-
-    public void clickingOnEditProfile() {
-        editProfileButton.click();
+    public WebElement getEditProfileButton () {
+        return editProfileButton;
     }
 
-    public void clickingOnSaveButton() {
-        saveButton.click();
+    public void setEditProfileButton(WebElement editProfileButton) {
+        this.editProfileButton = editProfileButton;
     }
+
+    public WebElement getSaveButton () {
+        return saveButton;
+    }
+
+    public void setSaveButton(WebElement saveButton) {
+        this.saveButton = saveButton;
+    }
+
+
+
 
 
     public WebElement getContinueToPayment () {
@@ -123,6 +142,16 @@ public class PersonalDetailsPage {
     public void setContinueToPayment (WebElement continueToPayment) {
         this.continueToPayment = continueToPayment;
     }
+
+    public WebElement getCreateAccount () {
+        return createAccount;
+    }
+
+    public void setCreateAccount (WebElement createAccount) {
+        this.createAccount = createAccount;
+    }
+
+
     public WebElement getNameLabel () {
         return nameLabel;
     }
