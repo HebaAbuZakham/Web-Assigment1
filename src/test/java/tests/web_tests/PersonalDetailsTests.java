@@ -64,8 +64,8 @@ public class PersonalDetailsTests extends base {
 
     public void testFillingEditForm()
     {
-        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        sKiHomePage.getAcceptCookiesButton ().click ();
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
         sKiHomePage.getSignInButton ().click ();
         LoginPage loginPage = new LoginPage (getDriver ());
@@ -73,30 +73,19 @@ public class PersonalDetailsTests extends base {
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
-       // sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
-        sKiHomePage.getSlopeOption ().click ();
-        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
-        SharedMethods.threadSleep (1000);
-        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
-        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
-        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+       // SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+//        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
-        SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getAddMainAddOnsButton ());
-        addOnsScreen.getAddMainAddOnsButton ().click ();
-        SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton());
-        SharedMethods.mouseClickAction (addOnsScreen.getNextMonthButton ());
-        SharedMethods.mouseClickAction (addOnsScreen.getMonthSelection ());
-        SharedMethods.waitTillElementDisAppear (addOnsScreen.getCalenderFrame ());
-        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown());
-        SharedMethods.threadSleep (7000);
-        SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
-        addOnsScreen.getContinueButton ().click ();
+        SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
+        SharedMethods.clickAction (addOnsScreen.getContinueButton());
+
 
         PersonalDetailsPage personalDetailsObj= new PersonalDetailsPage(getDriver());
         personalDetailsObj.clickingOnEditProfile();
