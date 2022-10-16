@@ -7,25 +7,25 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SignUp {
 
-    @FindBy(xpath = "((//span[text()='Don’t have an account?']/following-sibling::span")
+    @FindBy(xpath = "//span[text()='Sign Up']")
     private WebElement signupButton;
-    @FindBy(xpath = "((//label[contains(@class,'flex items-center')]//span)[3]")
+    @FindBy(xpath = "//span[contains(@class,'radiobtn-lable w-5')]")
     private WebElement radiobutton;
 
-    @FindBy(xpath = "(//div[contains(@class,'relative label-floating')]//span")
+    @FindBy(id = "first name")
     private WebElement firstname;
 
 
-    @FindBy(xpath = "(//div[contains(@class,'relative label-floating')]//span)[2]")
+    @FindBy(id = "last name")
     private WebElement lastname;
 
-    @FindBy(xpath = "((//input[contains(@class,'w-full p-3')])[3]")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(xpath = "((//input[@placeholder='i.e. 501234567']")
+    @FindBy(id = "phone number")
     private WebElement phoneNumber;
 
-    @FindBy(xpath = "((//div[contains(@class,'absolute top-0')]/following-sibling::div)[3]")
+    @FindBy(xpath = "(//div[contains(@class,'absolute top-0')]/following-sibling::div)[3]")
     private WebElement date;
 
     @FindBy(xpath = "((//h3[text()[normalize-space()='2022']]")
