@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -182,4 +184,22 @@ public class SharedMethods extends SelInstance {
         new Actions(getDriver()).moveToElement(locator).build().perform();
     }
 
+    public static boolean elementContainsText(WebElement locator, String text) {
+        waitUntilElementVisible(locator);
+        threadSleep(1000);
+        String locatorText = locator.getText();
+        System.out.println(locatorText);
+        return locatorText.contains(text);
+    }
+    private static final long MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
+
+    public static String findNextDay(int days)
+    {
+        Date nextDate = new Date(new Date().getTime() + MILLIS_IN_A_DAY * days);
+
+        String timeStamp = new SimpleDateFormat("dd MMM yyyy").format(nextDate);
+
+        return timeStamp;
+
+    }
 }
