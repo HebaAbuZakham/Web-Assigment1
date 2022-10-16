@@ -12,6 +12,18 @@ public class ConfirmationPage {
     @FindBy(xpath = "//div[@class=\"collection-name add-on\" and contains(text(), \"supervision ticket\")]")
     private WebElement supervisionTicket;
 
+    @FindBy(xpath = "//div[@class=\"cell activity w-1/2\"]")
+    private WebElement firstActivityName;
+
+    @FindBy(xpath = "//div[@class=\"cell w-1/2\"]")
+    private WebElement firstActivityDate;
+
+    @FindBy(xpath = "//div[@class=\"payment-details extra-detials\"][//div[contains(text(),\"Payment method\")]]/div[@class=\"value\"]")
+    private WebElement paymentMethod;
+
+    @FindBy(xpath = "//div[@class=\"cell flex items-center w-1/5\"]")
+    private WebElement firstTicketNumber;
+
     public ConfirmationPage(WebDriver driver) {
         PageFactory.initElements (driver, this);
     }
@@ -30,5 +42,37 @@ public class ConfirmationPage {
 
     public void setBookingConfirmation(WebElement bookingConfirmation) {
         this.bookingConfirmation = bookingConfirmation;
+    }
+
+    public WebElement getFirstActivityName() {
+        return firstActivityName;
+    }
+
+    public void setFirstActivityName(WebElement firstActivityName) {
+        this.firstActivityName = firstActivityName;
+    }
+
+    public WebElement getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(WebElement paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public WebElement getFirstActivityDate() {
+        return firstActivityDate;
+    }
+
+    public void setFirstActivityDate(WebElement firstActivityDate) {
+        this.firstActivityDate = firstActivityDate;
+    }
+
+    public WebElement getFirstTicketNumber() {
+        return firstTicketNumber;
+    }
+
+    public void setFirstTicketNumber(WebElement firstTicketNumber) {
+        this.firstTicketNumber = firstTicketNumber;
     }
 }
