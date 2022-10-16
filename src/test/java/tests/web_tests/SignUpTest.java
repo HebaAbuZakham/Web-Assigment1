@@ -29,11 +29,11 @@ public class SignUpTest extends base {
         SignUp signupPage = new SignUp(getDriver());
         signupPage.getSignUpButtton().click();
         signupPage.getRadiobutton().click();
-        signupPage.getFirstName().sendKeys(new CharSequence[]{objXMLReader.getXMLData("firstName")});
-        signupPage.getLastName().sendKeys(new CharSequence[]{objXMLReader.getXMLData("lastName")});
+        signupPage.getFirstname().sendKeys(new CharSequence[]{objXMLReader.getXMLData("firstName")});
+        signupPage.getLastname().sendKeys(new CharSequence[]{objXMLReader.getXMLData("lastName")});
         signupPage.getEmail().sendKeys(new CharSequence[]{objXMLReader.getXMLData("email")});
         signupPage.getPhoneNumber().sendKeys(new CharSequence[]{objXMLReader.getXMLData("phoneNumber")});
-        signupPage.getDateInput().click();
+        signupPage.getDate().click();
         signupPage.getSelectYear().click();
         signupPage.getYear().click();
         signupPage.getMonth().click();
