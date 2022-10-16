@@ -24,6 +24,9 @@ public class ConfirmationPage {
     @FindBy(xpath = "//div[@class=\"cell flex items-center w-1/5\"]")
     private WebElement firstTicketNumber;
 
+    @FindBy(xpath = "//div[@class=\"total-price-details\"]//div[@class=\"total-amount\"]")
+    private WebElement totalPriceAmount;
+
     public ConfirmationPage(WebDriver driver) {
         PageFactory.initElements (driver, this);
     }
@@ -74,5 +77,13 @@ public class ConfirmationPage {
 
     public void setFirstTicketNumber(WebElement firstTicketNumber) {
         this.firstTicketNumber = firstTicketNumber;
+    }
+
+    public WebElement getTotalPriceAmount() {
+        return totalPriceAmount;
+    }
+
+    public void setTotalPriceAmount(WebElement totalPriceAmount) {
+        this.totalPriceAmount = totalPriceAmount;
     }
 }

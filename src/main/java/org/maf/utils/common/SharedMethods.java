@@ -182,7 +182,6 @@ public class SharedMethods extends SelInstance {
         waitUntilElementVisible(locator);
         threadSleep(1000);
         String locatorText = locator.getText();
-        System.out.println(locatorText);
         return locatorText.contains(text);
     }
     private static final long MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
@@ -190,10 +189,7 @@ public class SharedMethods extends SelInstance {
     public static String findNextDay(int days)
     {
         Date nextDate = new Date(new Date().getTime() + MILLIS_IN_A_DAY * days);
-
         String timeStamp = new SimpleDateFormat("dd MMM yyyy").format(nextDate);
-
         return timeStamp;
-
     }
 }
