@@ -15,6 +15,8 @@ import org.testng.annotations.Test;
 
 @Listeners({TestListener.class})
 public class SignUpTest extends base {
+    public SignUpTest() {
+    }
 
     @Test(description = "Validate that user is able to signup and fill all needed data properly")
     public void validateThatUserIsAbleToSignUp() throws InterruptedException {
@@ -31,15 +33,14 @@ public class SignUpTest extends base {
         signupPage.getEmail().sendKeys(objXMLReader.getXMLData("email"));
         signupPage.getPhoneNumber().sendKeys(objXMLReader.getXMLData("phoneNumber"));
         signupPage.getDate().click();
-//        signupPage.getSelectYear().click();
-//        signupPage.getYear().click();
-//        signupPage.getMonth().click();
-//        signupPage.getDay().click();
-//        signupPage.getNationality().click();
-//        signupPage.getDropdownNationality().click();
-//        signupPage.getCountryOfResidence().click();
-//        signupPage.getDropdownCountry().click();
-//        signupPage.getPassword().sendKeys(new CharSequence[]{objXMLReader.getXMLData("password")});
-//        signupPage.getSubmit().click();
+        signupPage.getSelectYear().click();
+        signupPage.getYear().click();
+        signupPage.getOkButton().click();
+        signupPage.getNationality().click();
+        signupPage.getDropdownNationality().click();
+        signupPage.getCountryOfResidence().click();
+        signupPage.getDropdownCountry().click();
+        signupPage.getPassword().sendKeys(objXMLReader.getXMLData("password"));
+        signupPage.getSubmit().click();
     }
 }

@@ -28,24 +28,21 @@ public class SignUp {
     @FindBy(xpath = "(//div[contains(@class,'absolute top-0')]/following-sibling::div)[3]")
     private WebElement date;
 
-    @FindBy(xpath = "((//h3[text()[normalize-space()='2022']]")
+    @FindBy(xpath = "//h3[text()[normalize-space()='2022']]")
     private WebElement selectYear;
-    @FindBy(xpath = "((//div[text()[normalize-space()='1998']]")
+    @FindBy(xpath = "//div[@id='1995-calendar-year']")
     private WebElement year;
 
-    @FindBy(xpath = "((//button[text()[normalize-space()='August']]")
-    private WebElement month;
+    @FindBy(xpath = "//button[@class='text-primary']/following-sibling::button[1]")
+    private WebElement okButton;
 
-    @FindBy(xpath = "((//button[@class='text-primary']/following-sibling::button[1]")
-    private WebElement day;
-
-    @FindBy(xpath = "((//div[@id='app']/div[1]/div[1]/main[1]/div[1]/span[1]/form[1]/div[5]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/div[2]")
+    @FindBy(xpath = "//div[@id='app']/div[1]/div[1]/main[1]/div[1]/span[1]/form[1]/div[5]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/div[2]")
     private WebElement nationality;
 
-    @FindBy(xpath = "((//span[text()='Andorra']")
+    @FindBy(xpath = "//span[text()='Algeria']")
     private WebElement dropdownNationality;
 
-    @FindBy(xpath = "((//div[@id='app']/div[1]/div[1]/main[1]/div[1]/span[1]/form[1]/div[5]/div[3]/div[1]/div[1]/div[1]/div[1]/span[1]/div[2]")
+    @FindBy(xpath = "//div[@id='app']/div[1]/div[1]/main[1]/div[1]/span[1]/form[1]/div[5]/div[3]/div[1]/div[1]/div[1]/div[1]/span[1]/div[2]")
     private WebElement countryOfResidence;
 
     @FindBy(xpath = "((//span[text()='Antigua and Barbuda']")
@@ -112,12 +109,11 @@ public class SignUp {
     public void setDate (WebElement date) {
         this.date = date;
     }
-
     public WebElement getSelectYear() {
         return selectYear;
     }
 
-    public void setSelectYear(WebElement selectYear) {
+    public void setSelectYear (WebElement selectYear) {
         this.selectYear = selectYear;
     }
 
@@ -129,20 +125,12 @@ public class SignUp {
         this.year = year;
     }
 
-    public WebElement getMonth() {
-        return month;
+    public WebElement getOkButton() {
+        return okButton;
     }
 
-    public void setMonth (WebElement month) {
-        this.month = month;
-    }
-
-    public WebElement getDay() {
-        return day;
-    }
-
-    public void setDay (WebElement day) {
-        this.day = day;
+    public void setOkButton (WebElement okButton) {
+        this.okButton = okButton;
     }
 
     public WebElement getNationality() {
