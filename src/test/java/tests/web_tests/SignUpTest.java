@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 public class SignUpTest extends base {
 
     @Test(description = "Validate that user is able to signup and fill all needed data properly")
-    public void validateThatUserIsAbleToSignUp() throws InterruptedException {
+    public void validateThatUserIsAbleToSignUp()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitTillClickAble(sKiHomePage.getSignInButton());
