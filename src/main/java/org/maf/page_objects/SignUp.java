@@ -45,13 +45,13 @@ public class SignUp {
     @FindBy(xpath = "//div[@id='app']/div[1]/div[1]/main[1]/div[1]/span[1]/form[1]/div[5]/div[3]/div[1]/div[1]/div[1]/div[1]/span[1]/div[2]")
     private WebElement countryOfResidence;
 
-    @FindBy(xpath = "((//span[text()='Antigua and Barbuda']")
+    @FindBy(xpath = "//span[text()='United Arab Emirates']")
     private WebElement dropdownCountry;
 
-    @FindBy(xpath = "((//input[@placeholder='Password']")
+    @FindBy(id = "password")
     private WebElement password;
 
-    @FindBy(xpath = "((//button[text()=' create account']")
+    @FindBy(id = "submit-button")
     private WebElement submit;
 
     public WebElement getSignUpButtton () {
