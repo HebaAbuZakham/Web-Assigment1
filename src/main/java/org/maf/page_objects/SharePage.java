@@ -1,6 +1,7 @@
 package org.maf.page_objects;
 
 
+
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;

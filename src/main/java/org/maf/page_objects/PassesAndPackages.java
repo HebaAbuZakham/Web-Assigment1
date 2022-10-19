@@ -12,7 +12,7 @@ public class PassesAndPackages {
     @FindBy(xpath = "//li[text()[normalize-space()='Slope']]")
     private WebElement slopePassesHeader;
 
-    @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
+    @FindBy (xpath = "//span[@class='passes-price']/following-sibling::button")
     private WebElement fullDaySlopePassBuyButton;
 
 //    Snow park tab

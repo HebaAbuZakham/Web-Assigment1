@@ -46,7 +46,7 @@ public class AddOnsScreen {
     @FindBy(xpath = "//span[text()=\"This pass requires an adult ticket.\"]")
     private WebElement needAdultTicketMsg;
 
-    @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    @FindBy(xpath = "//button[text()[normalize-space()='Continue']]")
     private WebElement continueButton;
 
     @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']")
