@@ -2,26 +2,26 @@
 
 <Data>
 
-    <gender>Female</gender>
-    <firstName>Aya </firstName>
-    <lastName>ahmad </lastName>
-    <email>aya@jar.com </email>
-    <password>Test@123</password>
-    <randomEmailDomain>@gmail.com</randomEmailDomain>
-    <message>This message for testing purpose</message>
-    <ShowProgramName>Test Program</ShowProgramName>
-    <TheApplicationNam>MAF APP</TheApplicationNam>
-    <CoverageType>School / University Project</CoverageType>
-    <NoOfCrewMembers>1</NoOfCrewMembers>
-    <TextArea>hi this is the text area</TextArea>
-    <phoneNumber>509876543</phoneNumber>
-    <Other>Other</Other>
-    <OrganisationChannelName>Female</OrganisationChannelName>
+<gender>Female</gender>
+<firstName>Ayaw</firstName>
+<lastName>ahmad</lastName>
+<email>aya@yahoo.com</email>
+<phone>501234567</phone>
+<message>This message for testing purpose</message>
+<ShowProgramName>Test Program</ShowProgramName>
+<TheApplicationNam>MAF APP</TheApplicationNam>
+<CoverageType>School / University Project</CoverageType>
+<NoOfCrewMembers>1</NoOfCrewMembers>
+<TextArea>hi this is the text area</TextArea>
+<phoneNumber>509876543</phoneNumber>
+<Other>Other</Other>
+<OrganisationChannelName>Female</OrganisationChannelName>
 
     <visaCard1>4456530000001005</visaCard1>
     <visaCard2>4456530000001096</visaCard2>
     <masterCard1>5200000000001005</masterCard1>
     <masterCard2>5200000000001096</masterCard2>
+    <amexCard1>377400111111115</amexCard1>
     <cardExp>2929</cardExp>
     <cardCSV>333</cardCSV>
     <userName>pahosov850@exoacre.com</userName>
