@@ -3,9 +3,9 @@
 <Data>
 
 <gender>Female</gender>
-<firstName>Aya </firstName>
-<lastName>ahmad </lastName>
-<email>aya@jar.com </email>
+<firstName>Aya</firstName>
+<lastName>ahmad</lastName>
+<email>aya@yahoo.com</email>
 <phone>501234567</phone>
 <message>This message for testing purpose</message>
 <ShowProgramName>Test Program</ShowProgramName>
@@ -21,6 +21,7 @@
     <visaCard2>4456530000001096</visaCard2>
     <masterCard1>5200000000001005</masterCard1>
     <masterCard2>5200000000001096</masterCard2>
+    <amexCard1>377400111111115</amexCard1>
     <cardExp>2929</cardExp>
     <cardCSV>333</cardCSV>
     <userName>pahosov850@exoacre.com</userName>

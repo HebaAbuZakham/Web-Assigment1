@@ -33,31 +33,74 @@ public class PaymentDetailsTests extends base {
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
-        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowParkPassBuyButton());
-        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
+        SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
+        SharedMethods.threadSleep (1000);
         addOnsScreen.getContinueButton ().click ();
-        SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton());
-        SharedMethods.mouseClickAction (addOnsScreen.getNextMonthButton ());
-        SharedMethods.mouseClickAction (addOnsScreen.getMonthSelection ());
-        SharedMethods.waitTillElementDisAppear (addOnsScreen.getCalenderFrame ());
-        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown());
-        SharedMethods.threadSleep (7000);
-        SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+        //SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("visaCard1"),
                 objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
         SharedMethods.threadSleep (1000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         paymentDetailsPage.getPay ().click ();
+        SharedMethods.threadSleep (5000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+    }
+
+
+    @Test(description = "Verify that the user is able to pay using visa payment")
+    public void ValidatePaymentWithVisaCard(){
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        SharedMethods.threadSleep (12000);
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
+        SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
+        SharedMethods.threadSleep (1000);
+        addOnsScreen.getContinueButton ().click ();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        personalDetailsPage.getContinueToPayment ().click ();
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        //SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("visaCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        paymentDetailsPage.getPay ().click ();
+        SharedMethods.threadSleep (5000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+
+
 
     }
+    @Test(description = "Verify that the user is not able to pay using amex payment")
+    public void ValidatePaymentWithAmexCard()
+    {}
 
 }

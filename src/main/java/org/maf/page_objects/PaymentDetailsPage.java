@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 public class PaymentDetailsPage {
 
 
+
+    @FindBy(id = "//h2[text()[normalize-space()='PAYMENT DETAILS']]\n")
+    private WebElement paymentHead;
+
     @FindBy(id = "cardNumber")
     private WebElement cardNumberField;
 
@@ -25,6 +29,15 @@ public class PaymentDetailsPage {
     public PaymentDetailsPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
+
+    public WebElement getPaymentHead () {
+        return paymentHead;
+    }
+
+    public void setPaymentHead (WebElement paymentHead) {
+        this.paymentHead = paymentHead;
+    }
+
 
 
     public WebElement getSubmitSecurePopUp () {
