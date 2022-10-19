@@ -28,6 +28,9 @@ public class AddOnsScreen {
     @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(2)>div>div:nth-of-type(2)>button:nth-of-type(2)")
     private WebElement numberOfJuniors;
 
+    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(2)")
+    private WebElement addAdultGuest;
+
     @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[2]/div[2]/button")
     private WebElement guestsDropDownList;
 
@@ -179,5 +182,13 @@ public class AddOnsScreen {
 
     public void setAddedSupervisionToBookingCard(WebElement addedSupervisionToBookingCard) {
         this.addedSupervisionToBookingCard = addedSupervisionToBookingCard;
+    }
+
+    public WebElement getAddAdultGuest() {
+        return addAdultGuest;
+    }
+
+    public void setAddAdultGuest(WebElement addAdultGuest) {
+        this.addAdultGuest = addAdultGuest;
     }
 }

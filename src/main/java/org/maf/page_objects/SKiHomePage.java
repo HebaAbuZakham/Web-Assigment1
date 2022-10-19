@@ -181,7 +181,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement passesAndPackages;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/ski-snowboard']")
+    @FindBy(xpath = "//a[@href='/en/passes-packages/slope']")
     @CacheLookup
     private WebElement slopeOption;
 
