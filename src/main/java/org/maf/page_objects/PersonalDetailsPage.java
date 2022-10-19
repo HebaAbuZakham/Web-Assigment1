@@ -171,6 +171,10 @@ public class PersonalDetailsPage {
         return continueToPayment;
     }
 
+    public WebElement getMissRadioButton () {
+        return missRadioButton;
+    }
+
     public void setContinueToPayment (WebElement continueToPayment) {
         this.continueToPayment = continueToPayment;
     }
