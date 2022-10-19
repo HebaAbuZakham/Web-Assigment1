@@ -264,4 +264,44 @@ public class ConfirmationPageTest  extends base {
 
     }
 
+    @Test(description = "Validate User book Pass with Promo Code 50% - check Payment method from booking confirmation")
+    public void validateThatTheUserBookPassWithPartialPromoCode ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowParkOption ());
+        sKiHomePage.getSnowParkOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowParkPassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getSnowParkPassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton ());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        SharedMethods.threadSleep (3000);
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedSteps.userFillPromoCodePayment(objXMLReader.getXMLData ("snowParkPartialPromoCode"));
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (20000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        SharedMethods.threadSleep (2000);
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getUsedPromoCode(),objXMLReader.getXMLData("snowParkPartialPromoCode")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("masterCard")) );
+
+    }
+
 }
