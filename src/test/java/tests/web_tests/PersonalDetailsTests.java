@@ -42,6 +42,7 @@ public class PersonalDetailsTests extends base {
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
         Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
 
     }
@@ -82,7 +83,7 @@ public class PersonalDetailsTests extends base {
         personalDetailsPage.getLastName().sendKeys(objXMLReader.getXMLData ("lastName"));
         SharedMethods.waitTillClickAble (personalDetailsPage.getSaveButton());
         personalDetailsPage.getSaveButton().click ();
-        Assert.assertEquals( personalDetailsPage.getNameLabel().getText(), name + " " +surname);
+        Assert.assertEquals(personalDetailsPage.getNameLabel().getText(), name.toUpperCase() + " " +surname.toUpperCase());
     }
 
     @Test(description = "Guest user-Verify filling guest user info")
@@ -112,6 +113,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment ());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
 
 

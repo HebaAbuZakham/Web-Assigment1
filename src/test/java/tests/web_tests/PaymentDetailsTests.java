@@ -85,7 +85,7 @@ public class PaymentDetailsTests extends base {
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        //SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
         SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("visaCard1"),
                 objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
         SharedMethods.threadSleep (1000);
@@ -99,8 +99,6 @@ public class PaymentDetailsTests extends base {
 
 
     }
-    @Test(description = "Verify that the user is not able to pay using amex payment")
-    public void ValidatePaymentWithAmexCard()
-    {}
+
 
 }

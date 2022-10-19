@@ -42,7 +42,7 @@ public class PersonalDetailsPage {
     @FindBy(xpath="//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div/span/form/div[4]/button[2]")
     WebElement saveButton;
 
-    @FindBy(xpath="user-name")
+    @FindBy(xpath="//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div[1]/div[2]/h3")
     WebElement nameLabel;
 
     @FindBy(xpath="//*[@id=\"tickets-container\"]/div[3]/button")
