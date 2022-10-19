@@ -15,7 +15,7 @@ public class SharedSteps {
 
   public static void userLogInToTheSite(String userName, String passWord){
       SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-      sKiHomePage.getAcceptCookiesButton ().click ();
+//      sKiHomePage.getAcceptCookiesButton ().click ();
       SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
       sKiHomePage.getSignInButton ().click ();
       LoginPage loginPage = new LoginPage (getDriver ());
@@ -31,4 +31,12 @@ public class SharedSteps {
         paymentDetailsPage.getCardExpiry ().sendKeys (cardExp);
         paymentDetailsPage.getCardCSV ().sendKeys (cardCSV);
     }
+
+    public static void userFillPromoCodePayment(String code){
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.clickOn(paymentDetailsPage.getPromoCodeLabel());
+        paymentDetailsPage.getCouponCodeInput ().sendKeys (code);
+        SharedMethods.clickOn(paymentDetailsPage.getApplyPromoCode());
+    }
 }
+

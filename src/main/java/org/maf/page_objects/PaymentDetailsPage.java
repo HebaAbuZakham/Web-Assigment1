@@ -19,8 +19,18 @@ public class PaymentDetailsPage {
 
     @FindBy(xpath = "//button[text()[normalize-space()='Pay']]")
     private WebElement pay;
+
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement submitSecurePopUp;
+
+    @FindBy(xpath = "//*[contains(text(),\"promo code\")]")
+    private WebElement promoCodeLabel;
+
+    @FindBy(name = "couponCode")
+    private WebElement couponCodeInput;
+
+    @FindBy(xpath = "//*[@id=\"promoCode\"]//form/button")
+    private WebElement applyPromoCode;
 
     public PaymentDetailsPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -65,5 +75,29 @@ public class PaymentDetailsPage {
 
     public void setPay (WebElement pay) {
         this.pay = pay;
+    }
+
+    public WebElement getPromoCodeLabel() {
+        return promoCodeLabel;
+    }
+
+    public void setPromoCodeLabel(WebElement promoCodeLabel) {
+        this.promoCodeLabel = promoCodeLabel;
+    }
+
+    public WebElement getCouponCodeInput() {
+        return couponCodeInput;
+    }
+
+    public void setCouponCodeInput(WebElement couponCodeInput) {
+        this.couponCodeInput = couponCodeInput;
+    }
+
+    public WebElement getApplyPromoCode() {
+        return applyPromoCode;
+    }
+
+    public void setApplyPromoCode(WebElement applyPromoCode) {
+        this.applyPromoCode = applyPromoCode;
     }
 }

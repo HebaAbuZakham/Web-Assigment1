@@ -28,10 +28,13 @@
 
 <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
 <FullDaySlope>Full Day Slope Pass</FullDaySlope>
+<SnowPark>Snow Park</SnowPark>
 <FullDaySlopePrice>340</FullDaySlopePrice>
+<SnowParkPrice>175</SnowParkPrice>
 <AdultLabel>Adult</AdultLabel>
 <TicketLabel>Ticket</TicketLabel>
 <masterCard>mastercard</masterCard>
 <visaCard>visa</visaCard>
-
+<coupon>Coupon</coupon>
+<snowParkFullPromoCode>SNOWFREE</snowParkFullPromoCode>
 </Data>
