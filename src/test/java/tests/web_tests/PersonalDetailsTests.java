@@ -79,13 +79,10 @@ public class PersonalDetailsTests extends base {
         SharedMethods.clearField(personalDetailsPage.getFirstName());
         personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData ("firstName"));
         SharedMethods.clearField(personalDetailsPage.getLastName());
-        System.out.println(personalDetailsPage.getLastName().getAttribute("value"));
-        SharedMethods.threadSleep(40000);
         personalDetailsPage.getLastName().sendKeys(objXMLReader.getXMLData ("lastName"));
-        SharedMethods.threadSleep(300000);
         SharedMethods.waitTillClickAble (personalDetailsPage.getSaveButton());
         personalDetailsPage.getSaveButton().click ();
-//        Assert.assertEquals( personalDetailsPage.getNameLabel(), name + " " +surname);
+        Assert.assertEquals( personalDetailsPage.getNameLabel().getText(), name + " " +surname);
     }
 
     @Test(description = "Guest user-Verify filling guest user info")
@@ -97,7 +94,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-//        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+       SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
@@ -109,15 +106,10 @@ public class PersonalDetailsTests extends base {
         personalDetailsPage.getLastName().sendKeys (objXMLReader.getXMLData ("lastName"));
         personalDetailsPage.getMobileNum().sendKeys (objXMLReader.getXMLData ("phone"));
         personalDetailsPage.getEmail().sendKeys (objXMLReader.getXMLData ("email"));
-        personalDetailsPage.getTermsConditonsCheckbox().click();
-        personalDetailsPage.getBookingInformation().click();
-        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
-        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
         personalDetailsPage.getCountryDropDownList().click();
         SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
-        SharedMethods.threadSleep(1000);
-        //personalDetailsPage.getContinueToPayment ().click ();
-        SharedMethods.threadSleep(1000000);
+        SharedMethods.mouseClickAction (personalDetailsPage.getBookingInformation());
+        SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment ());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
