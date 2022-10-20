@@ -1,10 +1,15 @@
 package org.maf.page_objects;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
+@Setter
 public class AddOnsScreen {
 
 
@@ -57,6 +62,18 @@ public class AddOnsScreen {
 
     @FindBy(xpath = "//*[@class=\"AddOnsSideContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement addedSupervisionToBookingCard;
+
+    @FindBy(css = "div#tickets-container button[type=\"button\"].counter-buttons.minus-button.active-button")
+    @CacheLookup
+    private WebElement removeIcon;
+
+    @FindBy(css = "div#tickets-container ul#booking-bar-guest-ddl > .lg\\:py-4.opacity-0.py-\\[2\\.563rem\\] > .ticket-count-container > .flex.flex-row.lg\\:ltr\\:mr-0.lg\\:rtl\\:ml-0.ltr\\:mr-\\[-3px\\].rtl\\:ml-\\[-3px\\].ticket-counter-container > .counter-buttons.plus-button")
+    @CacheLookup
+    private WebElement AddJunior;
+
+    @FindBy(css = "div#tickets-container ul#booking-bar-guest-ddl > li:nth-of-type(3)  .flex.flex-row.lg\\:ltr\\:mr-0.lg\\:rtl\\:ml-0.ltr\\:mr-\\[-3px\\].rtl\\:ml-\\[-3px\\].ticket-counter-container > .counter-buttons.plus-button")
+    @CacheLookup
+    private WebElement AddChild;
 
     public AddOnsScreen (WebDriver driver) {
         PageFactory.initElements (driver,this);

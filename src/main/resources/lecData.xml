@@ -2,20 +2,20 @@
 
 <Data>
 
-<gender>Female</gender>
-<firstName>Ayaw</firstName>
-<lastName>ahmad</lastName>
-<email>aya@yahoo.com</email>
-<phone>501234567</phone>
-<message>This message for testing purpose</message>
-<ShowProgramName>Test Program</ShowProgramName>
-<TheApplicationNam>MAF APP</TheApplicationNam>
-<CoverageType>School / University Project</CoverageType>
-<NoOfCrewMembers>1</NoOfCrewMembers>
-<TextArea>hi this is the text area</TextArea>
-<phoneNumber>509876543</phoneNumber>
-<Other>Other</Other>
-<OrganisationChannelName>Female</OrganisationChannelName>
+    <gender>Female</gender>
+    <firstName>Ayaw</firstName>
+    <lastName>ahmad</lastName>
+    <email>aya@yahoo.com</email>
+    <phone>501234567</phone>
+    <message>This message for testing purpose</message>
+    <ShowProgramName>Test Program</ShowProgramName>
+    <TheApplicationNam>MAF APP</TheApplicationNam>
+    <CoverageType>School / University Project</CoverageType>
+    <NoOfCrewMembers>1</NoOfCrewMembers>
+    <TextArea>hi this is the text area</TextArea>
+    <phoneNumber>509876543</phoneNumber>
+    <Other>Other</Other>
+    <OrganisationChannelName>Female</OrganisationChannelName>
 
     <visaCard1>4456530000001005</visaCard1>
     <visaCard2>4456530000001096</visaCard2>
@@ -26,17 +26,23 @@
     <cardCSV>333</cardCSV>
     <userName>pahosov850@exoacre.com</userName>
     <passWord>P@ssw0rd147</passWord>
-<VOX-URL>https://uae.voxcinemas.com</VOX-URL>
-<FullDaySlope>Full Day Slope Pass</FullDaySlope>
-<SnowPark>Snow Park</SnowPark>
-<FullDaySlopePrice>340</FullDaySlopePrice>
-<SnowParkPrice>175</SnowParkPrice>
-<AdultLabel>Adult</AdultLabel>
-<TicketLabel>Ticket</TicketLabel>
-<masterCard>mastercard</masterCard>
-<visaCard>visa</visaCard>
-<coupon>Coupon</coupon>
-<snowParkFullPromoCode>SNOWFREE</snowParkFullPromoCode>
-<snowParkPartialPromoCode>SP50</snowParkPartialPromoCode>
+
+
+    <guestFirstName>Ali</guestFirstName>
+    <guestLastName>Mohammad</guestLastName>
+
+
+    <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
+    <FullDaySlope>Full Day Slope Pass</FullDaySlope>
+    <SnowPark>Snow Park</SnowPark>
+    <FullDaySlopePrice>340</FullDaySlopePrice>
+    <SnowParkPrice>175</SnowParkPrice>
+    <AdultLabel>Adult</AdultLabel>
+    <TicketLabel>Ticket</TicketLabel>
+    <masterCard>mastercard</masterCard>
+    <visaCard>visa</visaCard>
+    <coupon>Coupon</coupon>
+    <snowParkFullPromoCode>SNOWFREE</snowParkFullPromoCode>
+    <snowParkPartialPromoCode>SP50</snowParkPartialPromoCode>
 
 </Data>
