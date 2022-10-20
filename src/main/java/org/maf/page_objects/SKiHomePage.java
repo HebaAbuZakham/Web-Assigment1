@@ -173,7 +173,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement signInButton;
 
-    @FindBy(className = "user-avatar")
+    @FindBy(xpath = "//div[@class='user-avatar-container']//div[1]")
     @CacheLookup
     private  WebElement userAvatar;
 
@@ -439,6 +439,9 @@ public class SKiHomePage {
     @FindBy(id = "onetrust-reject-all-handler")
     @CacheLookup
     private WebElement rejectCookies;
+
+    @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]/img[1]")
+    private WebElement paymentOption;
 
 
 
@@ -1352,6 +1355,10 @@ public class SKiHomePage {
     public WebElement getLocationsListLink(){ return locationsListLink; }
 
     //public WebElement getDubaiLocation(){return dubaiLocation;}
+
+    public WebElement getPaymentOption(){return paymentOption;}
+
+    public void setPaymentOption(WebElement paymentIcons) {this.paymentIcons=paymentIcons;}
 
 
 }

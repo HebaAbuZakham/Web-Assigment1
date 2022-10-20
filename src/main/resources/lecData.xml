@@ -44,5 +44,7 @@
     <coupon>Coupon</coupon>
     <snowParkFullPromoCode>SNOWFREE</snowParkFullPromoCode>
     <snowParkPartialPromoCode>SP50</snowParkPartialPromoCode>
+    <ThreeDSCard> 4242424242424242</ThreeDSCard>
+    <amexCard>376000000000006</amexCard>
 
 </Data>
