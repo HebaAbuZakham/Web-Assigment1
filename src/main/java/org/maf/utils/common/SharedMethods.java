@@ -4,6 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.maf.core.instance.SelInstance;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -46,6 +47,13 @@ public class SharedMethods extends SelInstance {
         ex.executeScript("arguments[0].click()", Locator);
 //        JavascriptExecutor jse = (JavascriptExecutor)getDriver ();
 //        jse.executeScript("document.getElementByXpath('"+ Locator +"').click();");
+    }
+
+    public static void clearField(WebElement Locator){
+        JavascriptExecutor js = (JavascriptExecutor)getDriver();
+        while(!Locator.getAttribute("value").equals("")){
+            Locator.sendKeys(Keys.BACK_SPACE);
+        }
     }
 
 
@@ -182,7 +190,6 @@ public class SharedMethods extends SelInstance {
         waitUntilElementVisible(locator);
         threadSleep(1000);
         String locatorText = locator.getText();
-        System.out.println(locatorText);
         return locatorText.contains(text);
     }
     private static final long MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
@@ -190,10 +197,7 @@ public class SharedMethods extends SelInstance {
     public static String findNextDay(int days)
     {
         Date nextDate = new Date(new Date().getTime() + MILLIS_IN_A_DAY * days);
-
         String timeStamp = new SimpleDateFormat("dd MMM yyyy").format(nextDate);
-
         return timeStamp;
-
     }
 }

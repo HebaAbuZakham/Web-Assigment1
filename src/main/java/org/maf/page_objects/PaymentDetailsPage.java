@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 public class PaymentDetailsPage {
 
 
+
+    @FindBy(id = "//h2[text()[normalize-space()='PAYMENT DETAILS']]\n")
+    private WebElement paymentHead;
+
     @FindBy(id = "cardNumber")
     private WebElement cardNumberField;
 
@@ -19,12 +23,31 @@ public class PaymentDetailsPage {
 
     @FindBy(xpath = "//button[text()[normalize-space()='Pay']]")
     private WebElement pay;
+
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement submitSecurePopUp;
+
+    @FindBy(xpath = "//*[contains(text(),\"promo code\")]")
+    private WebElement promoCodeLabel;
+
+    @FindBy(name = "couponCode")
+    private WebElement couponCodeInput;
+
+    @FindBy(xpath = "//*[@id=\"promoCode\"]//form/button")
+    private WebElement applyPromoCode;
 
     public PaymentDetailsPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
+
+    public WebElement getPaymentHead () {
+        return paymentHead;
+    }
+
+    public void setPaymentHead (WebElement paymentHead) {
+        this.paymentHead = paymentHead;
+    }
+
 
 
     public WebElement getSubmitSecurePopUp () {
@@ -65,5 +88,29 @@ public class PaymentDetailsPage {
 
     public void setPay (WebElement pay) {
         this.pay = pay;
+    }
+
+    public WebElement getPromoCodeLabel() {
+        return promoCodeLabel;
+    }
+
+    public void setPromoCodeLabel(WebElement promoCodeLabel) {
+        this.promoCodeLabel = promoCodeLabel;
+    }
+
+    public WebElement getCouponCodeInput() {
+        return couponCodeInput;
+    }
+
+    public void setCouponCodeInput(WebElement couponCodeInput) {
+        this.couponCodeInput = couponCodeInput;
+    }
+
+    public WebElement getApplyPromoCode() {
+        return applyPromoCode;
+    }
+
+    public void setApplyPromoCode(WebElement applyPromoCode) {
+        this.applyPromoCode = applyPromoCode;
     }
 }
