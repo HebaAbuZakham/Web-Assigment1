@@ -38,5 +38,19 @@ public class SharedSteps {
         paymentDetailsPage.getCouponCodeInput ().sendKeys (code);
         SharedMethods.clickOn(paymentDetailsPage.getApplyPromoCode());
     }
+    public static void userFillCCInfo( String cardExp, String cardCSV){
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("masterCard1"));
+        paymentDetailsPage.getCardExpiry ().sendKeys (objXMLReader.getXMLData ("cardExp"));
+        paymentDetailsPage.getCardCSV ().sendKeys (objXMLReader.getXMLData ("cardCSV"));
+    }
+
+    public static void userApplyPromoCode (String promoCode){
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.clickAction(paymentDetailsPage.getPromoCodeRadio());
+        paymentDetailsPage.getPromoCodeField ().sendKeys (objXMLReader.getXMLData ("promoCode"));
+        paymentDetailsPage.getApplyPromoCode().click();
+
+    }
 }
 

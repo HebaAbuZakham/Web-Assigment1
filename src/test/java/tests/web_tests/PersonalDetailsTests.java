@@ -86,7 +86,7 @@ public class PersonalDetailsTests extends base {
         Assert.assertEquals(personalDetailsPage.getNameLabel().getText(), name.toUpperCase() + " " +surname.toUpperCase());
     }
 
-    @Test(description = "Guest user-Verify filling guest user info")
+    @Test(description = "Guest user-Verify filling the guest user with valid info is working fine")
     public void testGuestUser() {
         SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
@@ -115,8 +115,6 @@ public class PersonalDetailsTests extends base {
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
-
-
     }
 
 
