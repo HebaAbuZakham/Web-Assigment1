@@ -9,7 +9,7 @@ public class PaymentDetailsPage {
 
 
 
-    @FindBy(id = "//h2[text()[normalize-space()='PAYMENT DETAILS']]\n")
+    @FindBy(xpath = "//button[@class='uppercase text-light-yellow']")
     private WebElement paymentHead;
 
     @FindBy(id = "cardNumber")
@@ -20,6 +20,22 @@ public class PaymentDetailsPage {
 
     @FindBy(id = "cardCvc")
     private WebElement cardCSV;
+
+    @FindBy(xpath = "//*[@id=\"promoCode\"]/div[1]/span")
+    private WebElement promoCodeRadio;
+
+
+    @FindBy(xpath = "//*[@id=\"promoCode\"]/div[2]/div[2]/div[1]/form/input")
+    private WebElement promoCodeField;
+
+    @FindBy(xpath = "//button[text()[normalize-space()='Redeem']]\n")
+    private WebElement redeemButton;
+
+    @FindBy(xpath = "//input[@placeholder='AED amount']")
+    private WebElement redeemAmount;
+
+    @FindBy(xpath = "//button[text()[normalize-space()='Apply']]\n")
+    private WebElement applyRedeemPoints;
 
     @FindBy(xpath = "//button[text()[normalize-space()='Pay']]")
     private WebElement pay;
@@ -82,6 +98,59 @@ public class PaymentDetailsPage {
         this.cardCSV = cardCSV;
     }
 
+    public WebElement  getPromoCodeRadio ()
+    {
+        return promoCodeRadio;
+    }
+
+    public void setPromoCodeRadio (WebElement promoCodeRadio) {
+        this.promoCodeRadio = promoCodeRadio;
+    }
+
+    public WebElement getPromoCodeField ()
+    {
+        return promoCodeField;
+    }
+
+    public void setPromoCodeField (WebElement promoCodeField) {
+        this.promoCodeField = promoCodeField;
+    }
+
+    public WebElement getApplyPromoCode ()
+    {
+        return applyPromoCode;
+    }
+
+    public void setApplyPromoCode (WebElement applyPromoCode) {
+        this.applyPromoCode = applyPromoCode;
+    }
+
+    public WebElement getRedeemButton ()
+    {
+        return redeemButton;
+    }
+
+    public void setRedeemButton (WebElement redeemButton) {
+        this.redeemButton = redeemButton;
+    }
+
+    public WebElement getRedeemAmount ()
+    {
+        return redeemAmount;
+    }
+
+    public void setRedeemAmount (WebElement redeemAmount) {
+        this.redeemAmount = redeemAmount;
+    }
+
+    public WebElement getApplyRedeemPoints ()
+    {
+        return applyRedeemPoints;
+    }
+
+    public void setApplyRedeemPoints (WebElement applyRedeemPoints) {
+        this.applyRedeemPoints = applyRedeemPoints;
+    }
     public WebElement getPay () {
         return pay;
     }
@@ -106,11 +175,5 @@ public class PaymentDetailsPage {
         this.couponCodeInput = couponCodeInput;
     }
 
-    public WebElement getApplyPromoCode() {
-        return applyPromoCode;
-    }
 
-    public void setApplyPromoCode(WebElement applyPromoCode) {
-        this.applyPromoCode = applyPromoCode;
-    }
 }
