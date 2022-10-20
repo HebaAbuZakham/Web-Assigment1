@@ -3,9 +3,9 @@
 <Data>
 
     <gender>Female</gender>
-    <firstName>Aya </firstName>
-    <lastName>ahmad </lastName>
-    <email>aya@jar.com </email>
+    <firstName>Aya</firstName>
+    <lastName>ahmad</lastName>
+    <email>aya@jar.com</email>
     <password>Test@123</password>
     <randomEmailDomain>@gmail.com</randomEmailDomain>
     <message>This message for testing purpose</message>
@@ -29,10 +29,14 @@
     <userName>pahosov850@exoacre.com</userName>
     <passWord>P@ssw0rd147</passWord>
 
-<VOX-URL>https://uae.voxcinemas.com</VOX-URL>
-<FullDaySlope>Full Day Slope Pass</FullDaySlope>
-<AdultLabel>Adult</AdultLabel>
-<TicketLabel>Ticket</TicketLabel>
-<masterCard>mastercard</masterCard>
+    <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
+    <FullDaySlope>Full Day Slope Pass</FullDaySlope>
+    <AdultLabel>Adult</AdultLabel>
+    <TicketLabel>Ticket</TicketLabel>
+    <masterCard>mastercard</masterCard>
+
+    <guestFirstName>Ali</guestFirstName>
+    <guestLastName>Mohammad</guestLastName>
+
 
 </Data>
