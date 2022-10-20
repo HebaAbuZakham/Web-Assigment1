@@ -1,10 +1,15 @@
 package org.maf.page_objects;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
+@Setter
 public class ConfirmationPage {
     @FindBy(xpath = "//h2[contains(text(),\"Booking confirmed\")]")
     private WebElement bookingConfirmation;
@@ -23,6 +28,11 @@ public class ConfirmationPage {
 
     @FindBy(xpath = "//div[@class=\"cell flex items-center w-1/5\"]")
     private WebElement firstTicketNumber;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a[1]/div[2]")
+    @CacheLookup
+    private WebElement addGuestButton;
+
 
     public ConfirmationPage(WebDriver driver) {
         PageFactory.initElements (driver, this);
