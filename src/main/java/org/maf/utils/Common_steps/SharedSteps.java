@@ -15,7 +15,7 @@ public class SharedSteps {
 
   public static void userLogInToTheSite(String userName, String passWord){
       SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-      sKiHomePage.getAcceptCookiesButton ().click ();
+//      sKiHomePage.getAcceptCookiesButton ().click ();
       SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
       sKiHomePage.getSignInButton ().click ();
       LoginPage loginPage = new LoginPage (getDriver ());
@@ -25,11 +25,18 @@ public class SharedSteps {
       SharedMethods.threadSleep (12000);
   }
 
-    public static void userFillCCPayment(String masterCard1, String cardExp, String cardCSV){
+    public static void userFillCCPayment(String Card, String cardExp, String cardCSV){
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("masterCard1"));
-        paymentDetailsPage.getCardExpiry ().sendKeys (objXMLReader.getXMLData ("cardExp"));
-        paymentDetailsPage.getCardCSV ().sendKeys (objXMLReader.getXMLData ("cardCSV"));
+        paymentDetailsPage.getCardNumberField ().sendKeys (Card);
+        paymentDetailsPage.getCardExpiry ().sendKeys (cardExp);
+        paymentDetailsPage.getCardCSV ().sendKeys (cardCSV);
+    }
+
+    public static void userFillPromoCodePayment(String code){
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.clickOn(paymentDetailsPage.getPromoCodeLabel());
+        paymentDetailsPage.getCouponCodeInput ().sendKeys (code);
+        SharedMethods.clickOn(paymentDetailsPage.getApplyPromoCode());
     }
     public static void userFillCCInfo( String cardExp, String cardCSV){
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
@@ -46,3 +53,4 @@ public class SharedSteps {
 
     }
 }
+

@@ -54,8 +54,6 @@ public class PassesAndPackages {
 
 
 
-
-
     public PassesAndPackages (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
@@ -152,4 +150,5 @@ public class PassesAndPackages {
     public void setPenguinEncounterPassBuyButton(WebElement penguinEncounterPassBuyButton){
         this.penguinEncounterPassBuyButton= penguinEncounterPassBuyButton;
     }
+
 }

@@ -170,7 +170,7 @@ public class PaymentDetailsTests extends base {
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData ("promoCode"));
+        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData ("snowParkFullPromoCode"));
         SharedMethods.threadSleep (1000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         paymentDetailsPage.getPay ().click ();
@@ -210,7 +210,7 @@ public class PaymentDetailsTests extends base {
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
         SharedMethods.clickAction(paymentDetailsPage.getPromoCodeRadio());
-        paymentDetailsPage.getPromoCodeField ().sendKeys (objXMLReader.getXMLData ("promoCode2"));
+        paymentDetailsPage.getPromoCodeField ().sendKeys (objXMLReader.getXMLData ("snowParkPartialPromoCode"));
         paymentDetailsPage.getApplyPromoCode().click();
         paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("visaCard1"));
         SharedSteps.userFillCCInfo(objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
