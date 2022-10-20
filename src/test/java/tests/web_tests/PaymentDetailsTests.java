@@ -87,7 +87,7 @@ public class PaymentDetailsTests extends base {
         personalDetailsPage.getContinueToPayment ().click ();
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
-        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("visa1"));
+        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("visaCard1"));
         SharedSteps.userFillCCInfo(objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
         SharedMethods.threadSleep (1000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
@@ -222,7 +222,7 @@ public class PaymentDetailsTests extends base {
         SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
         Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
     }
-    @Test(description = "Verify that the user is able to pay using share")
+    @Test(description = "Verify that the user is able to pay using share (Partial)")
     public void ValidatePaymentWithShare(){
         SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
@@ -252,6 +252,10 @@ public class PaymentDetailsTests extends base {
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
         paymentDetailsPage.getRedeemButton().click();
+        paymentDetailsPage.getRedeemAmount().sendKeys ("1");
+        paymentDetailsPage.getApplyRedeemPoints().click();
+        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("visaCard1"));
+        SharedSteps.userFillCCInfo(objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
         SharedMethods.threadSleep (1000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         paymentDetailsPage.getPay ().click ();

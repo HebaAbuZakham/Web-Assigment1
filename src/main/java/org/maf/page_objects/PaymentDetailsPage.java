@@ -31,6 +31,12 @@ public class PaymentDetailsPage {
     @FindBy(xpath = "//button[text()[normalize-space()='Redeem']]\n")
     private WebElement redeemButton;
 
+    @FindBy(xpath = "//input[@placeholder='AED amount']")
+    private WebElement redeemAmount;
+
+    @FindBy(xpath = "//button[text()[normalize-space()='Apply']]\n")
+    private WebElement applyRedeemPoints;
+
     @FindBy(xpath = "//button[text()[normalize-space()='Pay']]")
     private WebElement pay;
 
@@ -128,6 +134,23 @@ public class PaymentDetailsPage {
         this.redeemButton = redeemButton;
     }
 
+    public WebElement getRedeemAmount ()
+    {
+        return redeemAmount;
+    }
+
+    public void setRedeemAmount (WebElement redeemAmount) {
+        this.redeemAmount = redeemAmount;
+    }
+
+    public WebElement getApplyRedeemPoints ()
+    {
+        return applyRedeemPoints;
+    }
+
+    public void setApplyRedeemPoints (WebElement applyRedeemPoints) {
+        this.applyRedeemPoints = applyRedeemPoints;
+    }
     public WebElement getPay () {
         return pay;
     }
