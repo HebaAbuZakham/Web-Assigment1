@@ -32,5 +32,8 @@
 <AdultLabel>Adult</AdultLabel>
 <TicketLabel>Ticket</TicketLabel>
 <masterCard>mastercard</masterCard>
+    <promoCode1>snowfree</promoCode1>
+    <promoCode2>sp50</promoCode2>
+
 
 </Data>
