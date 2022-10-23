@@ -34,8 +34,9 @@ public class PersonalDetailsTests extends base {
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
-        SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
