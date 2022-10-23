@@ -2,6 +2,7 @@ package org.maf.page_objects;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -442,6 +443,11 @@ public class SKiHomePage {
 
     @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]/img[1]")
     private WebElement paymentOption;
+
+//    /penguin-encounters
+    @FindBy(xpath = "//a[@href='/en/passes-packages/penguin-encounters']")
+    @CacheLookup
+    private WebElement penguinEncountersOption;
 
 
 
@@ -1353,6 +1359,14 @@ public class SKiHomePage {
     }
 
     public WebElement getLocationsListLink(){ return locationsListLink; }
+
+    public WebElement getPenguinEncountersOption() {
+        return penguinEncountersOption;
+    }
+
+    public void setPenguinEncountersOption(WebElement penguinEncountersOption) {
+        this.penguinEncountersOption = penguinEncountersOption;
+    }
 
     //public WebElement getDubaiLocation(){return dubaiLocation;}
 

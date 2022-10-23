@@ -1,10 +1,8 @@
 package org.maf.utils.Common_steps;
 
+import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.maf.page_objects.LoginPage;
-import org.maf.page_objects.PassesAndPackages;
-import org.maf.page_objects.PaymentDetailsPage;
-import org.maf.page_objects.SKiHomePage;
+import org.maf.page_objects.*;
 import org.maf.utils.common.SharedMethods;
 import org.openqa.selenium.WebElement;
 
@@ -52,5 +50,51 @@ public class SharedSteps {
         paymentDetailsPage.getApplyPromoCode().click();
 
     }
+
+    public static void userBookPassForm(WebElement tab, WebElement passCard){
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (tab);
+        SharedMethods.clickOn(tab);
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passCard);
+        SharedMethods.waitUntilElementClickable (passCard);
+        SharedMethods.jsScrollDown (passCard);
+        SharedMethods.mouseClickAction (passCard);
+    }
+
+    public static void userFillGuestFormWithRandomData(){
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
+        Faker faker = new Faker();
+        personalDetailsPage.clickingMissRadioButton();
+        personalDetailsPage.getFirstName().sendKeys(faker.name().firstName());
+        personalDetailsPage.getLastName().sendKeys (faker.name().lastName());
+        personalDetailsPage.getMobileNum().sendKeys (faker.numerify("50#######"));
+        personalDetailsPage.getEmail().sendKeys (faker.internet().emailAddress());
+        personalDetailsPage.getCountryDropDownList().click();
+        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
+        SharedMethods.mouseClickAction (personalDetailsPage.getBookingInformation());
+        SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
+    }
+
+    public static void userAddGuestsAs(int Adults, int Junior, int Children){
+        ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
+        SharedMethods.waitUntilElementClickable (activityPage.getGuestsDropDownList ());
+        SharedMethods.clickOn(activityPage.getGuestsDropDownList ());
+        for (int i = 0; i < Adults; i++) {
+            SharedMethods.waitUntilElementClickable(activityPage.getAddAdultGuest ());
+            SharedMethods.mouseClickAction (activityPage.getAddAdultGuest ());
+        }
+        for (int i = 0; i < Junior; i++) {
+            SharedMethods.waitUntilElementClickable(activityPage.getNumberOfJuniors ());
+            SharedMethods.mouseClickAction (activityPage.getNumberOfJuniors ());
+        }
+        for (int i = 0; i < Children; i++) {
+            SharedMethods.waitUntilElementClickable(activityPage.getAddChildGuest ());
+            SharedMethods.mouseClickAction (activityPage.getAddChildGuest ());
+        }
+    }
+
 }
 

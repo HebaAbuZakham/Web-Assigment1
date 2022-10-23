@@ -36,6 +36,10 @@ public class PassesAndPackages {
    @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
    private WebElement penguinEncounterPassBuyButton;
 
+    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Breakfast with Penguins\"]]")
+    private WebElement BreakfastWithPenguinPassBuyButton;
+
+    // Header tabs locators
     @FindBy(css = ".tabs-list > li:nth-of-type(1)")
     @CacheLookup
     private WebElement slopeTab;
@@ -151,4 +155,11 @@ public class PassesAndPackages {
         this.penguinEncounterPassBuyButton= penguinEncounterPassBuyButton;
     }
 
+    public WebElement getBreakfastWithPenguinPassBuyButton() {
+        return BreakfastWithPenguinPassBuyButton;
+    }
+
+    public void setBreakfastWithPenguinPassBuyButton(WebElement breakfastWithPenguinPassBuyButton) {
+        BreakfastWithPenguinPassBuyButton = breakfastWithPenguinPassBuyButton;
+    }
 }
