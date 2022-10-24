@@ -14,7 +14,8 @@ public class AddOnsScreen extends BookingSharedComponent{
 
     @FindBy(xpath = "//h1[text()[normalize-space()='add-ons']]")
     private WebElement addOnsLabel;
-    @FindBy(xpath = "//button[contains(@class,'counter-buttons plus-button')]")
+    //@FindBy(xpath = "//button[contains(@class,'counter-buttons plus-button')]")
+    @FindBy(xpath = "//div[contains(@class,'relative counter-number')]/following-sibling::button")
     private WebElement addMainAddOnsButton;
 
     @FindBy(xpath = "//div[@class=\"addOnsItem\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
