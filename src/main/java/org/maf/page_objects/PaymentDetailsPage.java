@@ -34,6 +34,9 @@ public class PaymentDetailsPage {
     @FindBy(xpath = "//input[@placeholder='AED amount']")
     private WebElement redeemAmount;
 
+    @FindBy(xpath = "//input[@name='useAllMySharePoints']/following-sibling::span[1]")
+    private WebElement useAllMyShareToggle;
+
     @FindBy(xpath = "//button[text()[normalize-space()='Apply']]\n")
     private WebElement applyRedeemPoints;
 
@@ -150,6 +153,14 @@ public class PaymentDetailsPage {
 
     public void setApplyRedeemPoints (WebElement applyRedeemPoints) {
         this.applyRedeemPoints = applyRedeemPoints;
+    }
+
+    public WebElement getUseAllMyShareToggle() {
+        return useAllMyShareToggle;
+    }
+
+    public void setUseAllMyShareToggle (WebElement useAllMyShareToggle) {
+        this.useAllMyShareToggle = useAllMyShareToggle;
     }
     public WebElement getPay () {
         return pay;
