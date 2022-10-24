@@ -130,6 +130,9 @@ public class SKiHomePage {
     @FindBy(css = "li:nth-of-type(4) > .navbar-item-container > .navbar-item.navbar-item-common-styles")
     private WebElement whatsOnNav;
 
+    @FindBy(xpath = "//p[@class=\"title\"][contains(text(),\"Ladies' Night\")]")
+    private WebElement ladiesNightCard;
+
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e .navbar-item-menu-container")
     private WebElement whatsOnPopUp;
 
@@ -448,6 +451,7 @@ public class SKiHomePage {
     @FindBy(xpath = "//a[@href='/en/passes-packages/penguin-encounters']")
     @CacheLookup
     private WebElement penguinEncountersOption;
+
 
 
 
@@ -1375,4 +1379,11 @@ public class SKiHomePage {
     public void setPaymentOption(WebElement paymentIcons) {this.paymentIcons=paymentIcons;}
 
 
+    public WebElement getLadiesNightCard() {
+        return ladiesNightCard;
+    }
+
+    public void setLadiesNightCard(WebElement ladiesNightCard) {
+        this.ladiesNightCard = ladiesNightCard;
+    }
 }
