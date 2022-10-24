@@ -29,6 +29,7 @@
     <userName>pahosov850@exoacre.com</userName>
     <passWord>P@ssw0rd147</passWord>
 
+<<<<<<< HEAD
     <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
     <FullDaySlope>Full Day Slope Pass</FullDaySlope>
     <AdultLabel>Adult</AdultLabel>
@@ -37,6 +38,15 @@
 
     <guestFirstName>Ali</guestFirstName>
     <guestLastName>Mohammad</guestLastName>
+=======
+<VOX-URL>https://uae.voxcinemas.com</VOX-URL>
+<FullDaySlope>Full Day Slope Pass</FullDaySlope>
+<FullDaySlopePrice>340</FullDaySlopePrice>
+<AdultLabel>Adult</AdultLabel>
+<TicketLabel>Ticket</TicketLabel>
+<masterCard>mastercard</masterCard>
+<visaCard>visa</visaCard>
+>>>>>>> 6c6b45d (Validate User book Pass - check Visa payment method from booking confirmation)
 
 
 </Data>

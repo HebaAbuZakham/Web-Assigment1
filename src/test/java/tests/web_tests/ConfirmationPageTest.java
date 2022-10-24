@@ -104,5 +104,90 @@ public class ConfirmationPageTest  extends base {
 
     }
 
+<<<<<<< HEAD
+=======
+    @Test(description = "Validate User book Pass - check Visa payment method from booking confirmation")
+    public void validateThatTheUserBookPassWithVisa ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton ());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.waitTillClickAble (personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        personalDetailsPage.getContinueToPayment ().click ();
+        SharedMethods.threadSleep (3000);
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (9000);
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("visaCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (5000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        SharedMethods.threadSleep (2000);
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("FullDaySlope")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("visaCard")) );
+
+    }
+
+    @Test(description = "Validate User book Pass - check Price from booking confirmation")
+    public void validateThatTheUserBookPassSeeRightPrice ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.clickOn(addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.clickOn(addOnsScreen.getAddAdultGuest ());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton ());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.waitTillClickAble (personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        personalDetailsPage.getContinueToPayment ().click ();
+        SharedMethods.threadSleep (3000);
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (5000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        SharedMethods.threadSleep (2000);
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(), objXMLReader.getXMLData("FullDaySlope")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getTotalPriceAmount(), String.format("%2d", Integer.parseInt(objXMLReader.getXMLData("FullDaySlopePrice"))*2)));
+    }
+>>>>>>> 6c6b45d (Validate User book Pass - check Visa payment method from booking confirmation)
 
 }

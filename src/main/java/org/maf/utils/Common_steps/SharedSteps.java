@@ -25,10 +25,10 @@ public class SharedSteps {
       SharedMethods.threadSleep (12000);
   }
 
-    public static void userFillCCPayment(String masterCard1, String cardExp, String cardCSV){
+    public static void userFillCCPayment(String Card, String cardExp, String cardCSV){
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("masterCard1"));
-        paymentDetailsPage.getCardExpiry ().sendKeys (objXMLReader.getXMLData ("cardExp"));
-        paymentDetailsPage.getCardCSV ().sendKeys (objXMLReader.getXMLData ("cardCSV"));
+        paymentDetailsPage.getCardNumberField ().sendKeys (Card);
+        paymentDetailsPage.getCardExpiry ().sendKeys (cardExp);
+        paymentDetailsPage.getCardCSV ().sendKeys (cardCSV);
     }
 }
