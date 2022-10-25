@@ -34,6 +34,9 @@ public class PaymentDetailsPage {
     @FindBy(xpath = "//input[@placeholder='AED amount']")
     private WebElement redeemAmount;
 
+    @FindBy(xpath = "//input[@name='useAllMySharePoints']/following-sibling::span[1]")
+    private WebElement useAllMyShareToggle;
+
     @FindBy(xpath = "//button[text()[normalize-space()='Apply']]\n")
     private WebElement applyRedeemPoints;
 
@@ -51,6 +54,12 @@ public class PaymentDetailsPage {
 
     @FindBy(xpath = "//*[@id=\"promoCode\"]//form/button")
     private WebElement applyPromoCode;
+
+    @FindBy(id = "cardNumber")
+    private WebElement ccField;
+
+    @FindBy(id="save-details-for-future-purchases")
+    private WebElement saveCCDetailsCheckbox;
 
     public PaymentDetailsPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -151,6 +160,14 @@ public class PaymentDetailsPage {
     public void setApplyRedeemPoints (WebElement applyRedeemPoints) {
         this.applyRedeemPoints = applyRedeemPoints;
     }
+
+    public WebElement getUseAllMyShareToggle() {
+        return useAllMyShareToggle;
+    }
+
+    public void setUseAllMyShareToggle (WebElement useAllMyShareToggle) {
+        this.useAllMyShareToggle = useAllMyShareToggle;
+    }
     public WebElement getPay () {
         return pay;
     }
@@ -175,5 +192,18 @@ public class PaymentDetailsPage {
         this.couponCodeInput = couponCodeInput;
     }
 
+    public WebElement getCcField() {
+        return ccField;
+    }
 
+    public void setCcField(WebElement ccField) {
+        this.ccField = ccField;
+    }
+    public WebElement getSaveCCDetailsCheckbox() {
+        return saveCCDetailsCheckbox;
+    }
+
+    public void setSaveCCDetailsCheckbox(WebElement saveCCDetailsCheckbox) {
+        this.saveCCDetailsCheckbox = saveCCDetailsCheckbox;
+    }
 }

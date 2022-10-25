@@ -1,10 +1,7 @@
 package org.maf.utils.Common_steps;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.maf.page_objects.LoginPage;
-import org.maf.page_objects.PassesAndPackages;
-import org.maf.page_objects.PaymentDetailsPage;
-import org.maf.page_objects.SKiHomePage;
+import org.maf.page_objects.*;
 import org.maf.utils.common.SharedMethods;
 import org.openqa.selenium.WebElement;
 
@@ -40,7 +37,6 @@ public class SharedSteps {
     }
     public static void userFillCCInfo( String cardExp, String cardCSV){
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-        paymentDetailsPage.getCardNumberField ().sendKeys (objXMLReader.getXMLData ("masterCard1"));
         paymentDetailsPage.getCardExpiry ().sendKeys (objXMLReader.getXMLData ("cardExp"));
         paymentDetailsPage.getCardCSV ().sendKeys (objXMLReader.getXMLData ("cardCSV"));
     }
@@ -52,5 +48,7 @@ public class SharedSteps {
         paymentDetailsPage.getApplyPromoCode().click();
 
     }
+
+
 }
 
