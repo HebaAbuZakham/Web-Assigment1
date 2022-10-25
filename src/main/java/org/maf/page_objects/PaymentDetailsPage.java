@@ -55,6 +55,12 @@ public class PaymentDetailsPage {
     @FindBy(xpath = "//*[@id=\"promoCode\"]//form/button")
     private WebElement applyPromoCode;
 
+    @FindBy(id = "cardNumber")
+    private WebElement ccField;
+
+    @FindBy(id="save-details-for-future-purchases")
+    private WebElement saveCCDetailsCheckbox;
+
     public PaymentDetailsPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
@@ -186,5 +192,18 @@ public class PaymentDetailsPage {
         this.couponCodeInput = couponCodeInput;
     }
 
+    public WebElement getCcField() {
+        return ccField;
+    }
 
+    public void setCcField(WebElement ccField) {
+        this.ccField = ccField;
+    }
+    public WebElement getSaveCCDetailsCheckbox() {
+        return saveCCDetailsCheckbox;
+    }
+
+    public void setSaveCCDetailsCheckbox(WebElement saveCCDetailsCheckbox) {
+        this.saveCCDetailsCheckbox = saveCCDetailsCheckbox;
+    }
 }
