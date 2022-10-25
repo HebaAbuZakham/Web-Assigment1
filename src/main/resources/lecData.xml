@@ -44,7 +44,12 @@
     <masterCard>mastercard</masterCard>
     <visaCard>visa</visaCard>
     <coupon>Coupon</coupon>
+    <promoCode>sp100</promoCode>
     <snowParkFullPromoCode>SNOWFREE</snowParkFullPromoCode>
     <snowParkPartialPromoCode>SP50</snowParkPartialPromoCode>
+    <ThreeDSCard> 4242424242424242</ThreeDSCard>
+    <amexCard>376000000000006</amexCard>
+    <randomEmailDomain>@gmail.com</randomEmailDomain>
+    <password>Test@1234</password>
 
 </Data>

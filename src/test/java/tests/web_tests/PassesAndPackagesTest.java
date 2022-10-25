@@ -49,8 +49,8 @@ public class PassesAndPackagesTest extends base {
         sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowCinemaOption ());
-        sKiHomePage.getSnowCinemaOption ().click ();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowCinemaLink ());
+        sKiHomePage.getSnowCinemaLink ().click ();
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
         SharedMethods.threadSleep (1000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowCinemaPassesHeader ());

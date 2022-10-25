@@ -38,7 +38,7 @@ public class PaymentDetailsTests extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
@@ -79,7 +79,7 @@ public class PaymentDetailsTests extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
@@ -205,7 +205,7 @@ public class PaymentDetailsTests extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
@@ -246,7 +246,7 @@ public class PaymentDetailsTests extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
@@ -285,7 +285,7 @@ public class PaymentDetailsTests extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
@@ -327,7 +327,7 @@ public class PaymentDetailsTests extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementVisible (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.waitUntilElementVisible(addOnsScreen.getContinueButton ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
