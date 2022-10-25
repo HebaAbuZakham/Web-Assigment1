@@ -340,8 +340,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    // disable till we fix the Add-on payment bug
-    @Test(description =  "Validate The User user books event with add ons - see selected time & date from confirmation screen ", enabled=false)
+    @Test(description =  "Validate The User user books event with add ons - see selected time & date from confirmation screen ")
     public void validateUserBookEventWithAddOns ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         SharedMethods.threadSleep (2000);
