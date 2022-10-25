@@ -33,11 +33,12 @@ public class PassesAndPackages {
    @FindBy(xpath = "//li[text()[normalize-space()='Penguin Encounter']]")
    private WebElement penguinEncounterPassesHeader;
 
-   @FindBy (xpath = "//button[text()[normalize-space()='Buy tickets']]")
+   @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Penguin Encounter\"]]")
    private WebElement penguinEncounterPassBuyButton;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Breakfast with Penguins\"]]")
     private WebElement BreakfastWithPenguinPassBuyButton;
+
 
     // Header tabs locators
     @FindBy(css = ".tabs-list > li:nth-of-type(1)")
@@ -162,4 +163,5 @@ public class PassesAndPackages {
     public void setBreakfastWithPenguinPassBuyButton(WebElement breakfastWithPenguinPassBuyButton) {
         BreakfastWithPenguinPassBuyButton = breakfastWithPenguinPassBuyButton;
     }
+
 }

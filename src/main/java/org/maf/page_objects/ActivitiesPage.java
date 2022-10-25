@@ -16,6 +16,14 @@ public class ActivitiesPage extends BookingSharedComponent{
     @FindBy(xpath = "(//*[@class=\"time-slot-table-container\"]/p)[last()]")
     private WebElement lastTableTitle;
 
+    @FindBy(xpath = "//*[@class=\"time-slot-table\"]//li[last()]")
+    private WebElement lastActivityTimeSlot;
+
+    @FindBy(xpath = "//button[contains(text(), \"Add tickets\")]")
+    private WebElement addTicketButton;
+
+
+
     public ActivitiesPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
@@ -40,5 +48,21 @@ public class ActivitiesPage extends BookingSharedComponent{
 
     public void setLastTableTitle(WebElement lastTableTitle) {
         this.lastTableTitle = lastTableTitle;
+    }
+
+    public WebElement getLastActivityTimeSlot() {
+        return lastActivityTimeSlot;
+    }
+
+    public void setLastActivityTimeSlot(WebElement lastActivityTimeSlot) {
+        this.lastActivityTimeSlot = lastActivityTimeSlot;
+    }
+
+    public WebElement getAddTicketButton() {
+        return addTicketButton;
+    }
+
+    public void setAddTicketButton(WebElement addTicketButton) {
+        this.addTicketButton = addTicketButton;
     }
 }

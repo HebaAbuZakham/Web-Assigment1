@@ -73,7 +73,8 @@ public class SharedSteps {
         personalDetailsPage.getMobileNum().sendKeys (faker.numerify("50#######"));
         personalDetailsPage.getEmail().sendKeys (faker.internet().emailAddress());
         personalDetailsPage.getCountryDropDownList().click();
-        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
+        SharedMethods.threadSleep(2000);
+        SharedMethods.mouseClickAction(personalDetailsPage.getUAECountry());
         SharedMethods.mouseClickAction (personalDetailsPage.getBookingInformation());
         SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
     }

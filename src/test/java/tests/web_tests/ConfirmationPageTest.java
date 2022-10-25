@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+
 @Listeners(TestListener.class)
 public class ConfirmationPageTest  extends base {
     
@@ -302,6 +304,75 @@ public class ConfirmationPageTest  extends base {
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getUsedPromoCode(),objXMLReader.getXMLData("snowParkPartialPromoCode")) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("masterCard")) );
 
+    }
+
+    @Test(description =  "Validate The User user books event - see selected time & date from confirmation screen ")
+    public void validateUserBookEvent ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getPenguinEncounterPassBuyButton());
+        ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
+        SharedSteps.userAddGuestsAs(0,1,1);
+        String selectedTimeSlot = activityPage.getLastActivityTimeSlot().getText();
+        SharedMethods.clickOn(activityPage.getLastActivityTimeSlot());
+        SharedMethods.clickOn(activityPage.getAddTicketButton());
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
+        SharedSteps.userFillGuestFormWithRandomData();
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"), objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(1000);
+        SharedMethods.waitTillClickAble(paymentDetailsPage.getPay());
+        paymentDetailsPage.getPay().click();
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("PenguinEncounter")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), selectedTimeSlot.toLowerCase(Locale.ROOT) ));
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "3 " + objXMLReader.getXMLData("TicketLabel")) );
+
+    }
+
+    // disable till we fix the Add-on payment bug
+    @Test(description =  "Validate The User user books event with add ons - see selected time & date from confirmation screen ", enabled=false)
+    public void validateUserBookEventWithAddOns ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getPenguinEncounterPassBuyButton());
+        ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
+        SharedSteps.userAddGuestsAs(0,1,1);
+        String selectedTimeSlot = activityPage.getLastActivityTimeSlot().getText();
+        SharedMethods.clickOn(activityPage.getLastActivityTimeSlot());
+        SharedMethods.clickOn(activityPage.getAddTicketButton());
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
+        SharedMethods.clickOn(addOnsScreen.getMobileLanyardTicketPlusButton());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
+        SharedSteps.userFillGuestFormWithRandomData();
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"), objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(1000);
+        SharedMethods.waitTillClickAble(paymentDetailsPage.getPay());
+        paymentDetailsPage.getPay().click();
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("PenguinEncounter")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), selectedTimeSlot.toLowerCase(Locale.ROOT) ));
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "3 " + objXMLReader.getXMLData("TicketLabel")) );
     }
 
 }

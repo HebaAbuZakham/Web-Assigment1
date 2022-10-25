@@ -24,7 +24,7 @@ public class ActivitiesTests extends base {
         SharedMethods.threadSleep (1000);
         SharedSteps.userAddGuestsAs(0,3,1);
         ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
-        Assert.assertTrue(SharedMethods.elementContainsText(activityPage.getLastTableTitle(), "Table 2"));
+        Assert.assertTrue(SharedMethods.elementContainsText(activityPage.getLastTableTitle(), objXMLReader.getXMLData("Table") + " 2"));
     }
 
     @Test(description =  "Validate The User Add 4 Guest To Breakfast With Penguin")
@@ -37,7 +37,7 @@ public class ActivitiesTests extends base {
         SharedMethods.threadSleep (1000);
         SharedSteps.userAddGuestsAs(0,3,0);
         ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
-        Assert.assertTrue(SharedMethods.elementContainsText(activityPage.getLastTableTitle(), "Table 1"));
+        Assert.assertTrue(SharedMethods.elementContainsText(activityPage.getLastTableTitle(), objXMLReader.getXMLData("Table") + " 1"));
     }
 
 

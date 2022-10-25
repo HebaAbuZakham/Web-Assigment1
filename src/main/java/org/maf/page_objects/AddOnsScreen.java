@@ -36,6 +36,9 @@ public class AddOnsScreen extends BookingSharedComponent{
     @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]]")
     private WebElement supervisionTicketPlusButton;
 
+    @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Mobile Lanyard\")]]")
+    private WebElement mobileLanyardTicketPlusButton;
+
     @FindBy(xpath = "//*[@class=\"AddOnsSideContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement addedSupervisionToBookingCard;
 
@@ -125,6 +128,14 @@ public class AddOnsScreen extends BookingSharedComponent{
 
     public void setAddedSupervisionToBookingCard(WebElement addedSupervisionToBookingCard) {
         this.addedSupervisionToBookingCard = addedSupervisionToBookingCard;
+    }
+
+    public WebElement getMobileLanyardTicketPlusButton() {
+        return mobileLanyardTicketPlusButton;
+    }
+
+    public void setMobileLanyardTicketPlusButton(WebElement mobileLanyardTicketPlusButton) {
+        this.mobileLanyardTicketPlusButton = mobileLanyardTicketPlusButton;
     }
 
 }
