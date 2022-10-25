@@ -48,31 +48,7 @@ public class SharedSteps {
         paymentDetailsPage.getApplyPromoCode().click();
 
     }
-    public static void newUserSignup()
-    {
-        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
-        sKiHomePage.getAcceptCookiesButton().click();
-        SharedMethods.waitTillClickAble(sKiHomePage.getSignInButton());
-        sKiHomePage.getSignInButton().click();
-        SignUp signupPage = new SignUp(getDriver());
-        signupPage.getSignUpButtton().click();
-        SharedMethods.waitUntilElementVisible (signupPage.getRadiobutton ());
-        signupPage.getRadiobutton().click();
-        signupPage.getFirstname().sendKeys(objXMLReader.getXMLData("firstName"));
-        signupPage.getLastname().sendKeys(objXMLReader.getXMLData("lastName"));
-        signupPage.getEmail().sendKeys(SharedMethods.generateRandomString()+objXMLReader.getXMLData("randomEmailDomain"));
-        signupPage.getPhoneNumber().sendKeys(objXMLReader.getXMLData("phoneNumber"));
-        signupPage.getDate().click();
-        signupPage.getSelectYear().click();
-        signupPage.getYear().click();
-        signupPage.getOkButton().click();
-        signupPage.getNationality().click();
-        signupPage.getDropdownNationality().click();
-        signupPage.getCountryOfResidence().click();
-        signupPage.getDropdownCountry().click();
-        signupPage.getPassword().sendKeys(objXMLReader.getXMLData("password"));
-        signupPage.getSubmit().click();
-    }
+
 
 }
 
