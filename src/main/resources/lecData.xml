@@ -36,6 +36,7 @@
 
     <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
     <FullDaySlope>Full Day Slope Pass</FullDaySlope>
+    <PenguinEncounter>Penguin Encounter</PenguinEncounter>
     <SnowPark>Snow Park</SnowPark>
     <FullDaySlopePrice>340</FullDaySlopePrice>
     <SnowParkPrice>175</SnowParkPrice>
@@ -51,5 +52,6 @@
     <amexCard>376000000000006</amexCard>
     <randomEmailDomain>@gmail.com</randomEmailDomain>
     <password>Test@1234</password>
+    <Table>Table</Table>
 
 </Data>
