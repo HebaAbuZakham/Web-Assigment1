@@ -1,38 +1,22 @@
 package org.maf.page_objects;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddOnsScreen {
-
+@Getter
+@Setter
+public class AddOnsScreen extends BookingSharedComponent{
 
     @FindBy(xpath = "//h1[text()[normalize-space()='add-ons']]")
     private WebElement addOnsLabel;
-    @FindBy(xpath = "//button[contains(@class,'counter-buttons plus-button')]")
+    //@FindBy(xpath = "//button[contains(@class,'counter-buttons plus-button')]")
+    @FindBy(xpath = "//div[contains(@class,'relative counter-number')]/following-sibling::button")
     private WebElement addMainAddOnsButton;
-
-    @FindBy (xpath = "//div[@class='field-row']//button")
-    private WebElement calendarButton;
-
-    @FindBy(className = "mx-icon-right")
-    private WebElement nextMonthButton;
-
-    @FindBy(xpath = "//div[text()='10']")
-    private WebElement monthSelection;
-
-    @FindBy(xpath = "//p[text()[normalize-space()='1 adult']]")
-    private WebElement adultsDropDown;
-
-    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(2)>div>div:nth-of-type(2)>button:nth-of-type(2)")
-    private WebElement numberOfJuniors;
-
-    @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[2]/div[2]/button")
-    private WebElement guestsDropDownList;
-
-    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(1)")
-    private WebElement removeAdultGuest;
 
     @FindBy(xpath = "//div[@class=\"addOnsItem\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement supervisionAddOnsTicket;
@@ -43,7 +27,7 @@ public class AddOnsScreen {
     @FindBy(xpath = "//span[text()=\"This pass requires an adult ticket.\"]")
     private WebElement needAdultTicketMsg;
 
-    @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    @FindBy(xpath = "//button[text()[normalize-space()='Continue']]")
     private WebElement continueButton;
 
     @FindBy(xpath = "//div[@class='mx-calendar mx-calendar-panel-date']")
@@ -52,8 +36,23 @@ public class AddOnsScreen {
     @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]]")
     private WebElement supervisionTicketPlusButton;
 
+    @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Mobile Lanyard\")]]")
+    private WebElement mobileLanyardTicketPlusButton;
+
     @FindBy(xpath = "//*[@class=\"AddOnsSideContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement addedSupervisionToBookingCard;
+
+    @FindBy(css = "div#tickets-container button[type=\"button\"].counter-buttons.minus-button.active-button")
+    @CacheLookup
+    private WebElement removeIcon;
+
+    @FindBy(css = "div#tickets-container ul#booking-bar-guest-ddl > .lg\\:py-4.opacity-0.py-\\[2\\.563rem\\] > .ticket-count-container > .flex.flex-row.lg\\:ltr\\:mr-0.lg\\:rtl\\:ml-0.ltr\\:mr-\\[-3px\\].rtl\\:ml-\\[-3px\\].ticket-counter-container > .counter-buttons.plus-button")
+    @CacheLookup
+    private WebElement AddJunior;
+
+    @FindBy(css = "div#tickets-container ul#booking-bar-guest-ddl > li:nth-of-type(3)  .flex.flex-row.lg\\:ltr\\:mr-0.lg\\:rtl\\:ml-0.ltr\\:mr-\\[-3px\\].rtl\\:ml-\\[-3px\\].ticket-counter-container > .counter-buttons.plus-button")
+    @CacheLookup
+    private WebElement AddChild;
 
     public AddOnsScreen (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -74,56 +73,6 @@ public class AddOnsScreen {
 
     public void setContinueButton (WebElement continueButton) {
         this.continueButton = continueButton;
-    }
-
-    public WebElement getCalendarButton () {
-        return calendarButton;
-    }
-
-    public void setCalendarButton (WebElement calendarButton) {
-        this.calendarButton = calendarButton;
-    }
-
-    public WebElement getNextMonthButton () {
-        return nextMonthButton;
-    }
-
-    public void setNextMonthButton (WebElement nextMonthButton) {
-        this.nextMonthButton = nextMonthButton;
-    }
-
-    public WebElement getMonthSelection () {
-        return monthSelection;
-    }
-
-    public void setMonthSelection (WebElement monthSelection) {
-        this.monthSelection = monthSelection;
-    }
-
-    public WebElement getAdultsDropDown () {
-        return adultsDropDown;
-    }
-
-    public void setAdultsDropDown (WebElement adultsDropDown) {
-        this.adultsDropDown = adultsDropDown;
-    }
-
-    public WebElement getNumberOfJuniors () {
-        return numberOfJuniors;
-    }
-
-    public void setNumberOfJuniors (WebElement numberOfJuniors) {
-        this.numberOfJuniors = numberOfJuniors;
-    }
-
-    public WebElement getGuestsDropDownList () {return guestsDropDownList;}
-
-    public  void setGuestsDropDownList (WebElement guestsDropDownList){ this.guestsDropDownList = guestsDropDownList;}
-
-    public WebElement getRemoveAdultGuest () {return removeAdultGuest;}
-
-    public void setRemoveAdultGuest(WebElement removeAdultGuest) {
-        this.removeAdultGuest = removeAdultGuest;
     }
 
     public WebElement getAddOnsLabel () {
@@ -180,4 +129,13 @@ public class AddOnsScreen {
     public void setAddedSupervisionToBookingCard(WebElement addedSupervisionToBookingCard) {
         this.addedSupervisionToBookingCard = addedSupervisionToBookingCard;
     }
+
+    public WebElement getMobileLanyardTicketPlusButton() {
+        return mobileLanyardTicketPlusButton;
+    }
+
+    public void setMobileLanyardTicketPlusButton(WebElement mobileLanyardTicketPlusButton) {
+        this.mobileLanyardTicketPlusButton = mobileLanyardTicketPlusButton;
+    }
+
 }

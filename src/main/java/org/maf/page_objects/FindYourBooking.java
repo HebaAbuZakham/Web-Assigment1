@@ -16,6 +16,9 @@ public class FindYourBooking {
     @CacheLookup
     private WebElement FindYourBookingHeader;
 
+    @FindBy(css = "Booking ID")
+    private WebElement findYourBookingField;
+
     public FindYourBooking (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }

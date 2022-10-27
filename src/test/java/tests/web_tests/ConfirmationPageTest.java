@@ -9,6 +9,8 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+
 @Listeners(TestListener.class)
 public class ConfirmationPageTest  extends base {
     
@@ -62,7 +64,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description = "Validate User book Pass - check ticket, date, payment method,  from booking confirmation")
+    @Test(description = "Validate User book Pass - check ticket & date from booking confirmation")
     public void validateThatTheUserBookPass ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -100,12 +102,49 @@ public class ConfirmationPageTest  extends base {
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("FullDaySlope")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "1 " + objXMLReader.getXMLData("TicketLabel")) );
+
+    }
+
+    @Test(description = "Validate User book Pass - check Master Card payment method from booking confirmation")
+    public void validateThatTheUserBookPassWithMasterCard ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton ());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.waitTillClickAble (personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        personalDetailsPage.getContinueToPayment ().click ();
+        SharedMethods.threadSleep (3000);
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (5000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        SharedMethods.threadSleep (2000);
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("FullDaySlope")) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("masterCard")) );
 
     }
 
-<<<<<<< HEAD
-=======
     @Test(description = "Validate User book Pass - check Visa payment method from booking confirmation")
     public void validateThatTheUserBookPassWithVisa ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
@@ -188,6 +227,151 @@ public class ConfirmationPageTest  extends base {
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(), objXMLReader.getXMLData("FullDaySlope")) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getTotalPriceAmount(), String.format("%2d", Integer.parseInt(objXMLReader.getXMLData("FullDaySlopePrice"))*2)));
     }
->>>>>>> 6c6b45d (Validate User book Pass - check Visa payment method from booking confirmation)
+
+    @Test(description = "Validate User book Pass with Promo Code 100% - check Payment method from booking confirmation")
+    public void validateThatTheUserBookPassWithPromoCode ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowParkOption ());
+        sKiHomePage.getSnowParkOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowParkPassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getSnowParkPassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton ());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        SharedMethods.threadSleep (3000);
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedSteps.userFillPromoCodePayment(objXMLReader.getXMLData ("snowParkFullPromoCode"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (5000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        SharedMethods.threadSleep (2000);
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("coupon")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getUsedPromoCode(),objXMLReader.getXMLData("snowParkFullPromoCode")) );
+
+    }
+
+    @Test(description = "Validate User book Pass with Promo Code 50% - check Payment method from booking confirmation")
+    public void validateThatTheUserBookPassWithPartialPromoCode ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowParkOption ());
+        sKiHomePage.getSnowParkOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowParkPassesHeader ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getSnowParkPassBuyButton ());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton ());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        SharedMethods.threadSleep (3000);
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedSteps.userFillPromoCodePayment(objXMLReader.getXMLData ("snowParkPartialPromoCode"));
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (20000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        SharedMethods.threadSleep (2000);
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getUsedPromoCode(),objXMLReader.getXMLData("snowParkPartialPromoCode")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("masterCard")) );
+
+    }
+
+    @Test(description =  "Validate The User user books event - see selected time & date from confirmation screen ")
+    public void validateUserBookEvent ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getPenguinEncounterPassBuyButton());
+        ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
+        SharedSteps.userAddGuestsAs(0,1,1);
+        String selectedTimeSlot = activityPage.getLastActivityTimeSlot().getText();
+        SharedMethods.clickOn(activityPage.getLastActivityTimeSlot());
+        SharedMethods.clickOn(activityPage.getAddTicketButton());
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
+        SharedSteps.userFillGuestFormWithRandomData();
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"), objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(1000);
+        SharedMethods.waitTillClickAble(paymentDetailsPage.getPay());
+        paymentDetailsPage.getPay().click();
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("PenguinEncounter")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), selectedTimeSlot.toLowerCase(Locale.ROOT) ));
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "3 " + objXMLReader.getXMLData("TicketLabel")) );
+
+    }
+
+    @Test(description =  "Validate The User user books event with add ons - see selected time & date from confirmation screen ")
+    public void validateUserBookEventWithAddOns ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getPenguinEncounterPassBuyButton());
+        ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
+        SharedSteps.userAddGuestsAs(0,1,1);
+        String selectedTimeSlot = activityPage.getLastActivityTimeSlot().getText();
+        SharedMethods.clickOn(activityPage.getLastActivityTimeSlot());
+        SharedMethods.clickOn(activityPage.getAddTicketButton());
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
+        SharedMethods.clickOn(addOnsScreen.getMobileLanyardTicketPlusButton());
+        SharedMethods.clickOn(addOnsScreen.getContinueButton());
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
+        SharedSteps.userFillGuestFormWithRandomData();
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"), objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(1000);
+        SharedMethods.waitTillClickAble(paymentDetailsPage.getPay());
+        paymentDetailsPage.getPay().click();
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("PenguinEncounter")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), selectedTimeSlot.toLowerCase(Locale.ROOT) ));
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "3 " + objXMLReader.getXMLData("TicketLabel")) );
+    }
 
 }

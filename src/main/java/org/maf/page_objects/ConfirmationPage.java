@@ -23,15 +23,30 @@ public class ConfirmationPage {
     @FindBy(xpath = "//div[@class=\"cell w-1/2\"]")
     private WebElement firstActivityDate;
 
-    @FindBy(xpath = "//div[@class=\"payment-details extra-detials\"][//div[contains(text(),\"Payment method\")]]/div[@class=\"value\"]")
+    @FindBy(xpath = "//*[@class=\"payment-details extra-detials\"][div[contains(text(), \"Payment method\")]]/div[@class=\"value\"]")
     private WebElement paymentMethod;
 
     @FindBy(xpath = "//div[@class=\"cell flex items-center w-1/5\"]")
     private WebElement firstTicketNumber;
 
+
     @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a[1]/div[2]")
     @CacheLookup
     private WebElement addGuestButton;
+
+
+    @FindBy(xpath = "//div[@class=\"total-price-details\"]//div[@class=\"total-amount\"]")
+    private WebElement totalPriceAmount;
+
+    @FindBy(xpath = "//*[@class=\"payment-details extra-detials\"][div[contains(text(), \"promo\")]]/div[@class=\"value\"]")
+    private WebElement usedPromoCode;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a[1]")
+    private WebElement assignGuestButton;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a/div[2]/div/h3")
+    @CacheLookup
+    private WebElement nextStepTitle;
 
 
     public ConfirmationPage(WebDriver driver) {
@@ -84,5 +99,21 @@ public class ConfirmationPage {
 
     public void setFirstTicketNumber(WebElement firstTicketNumber) {
         this.firstTicketNumber = firstTicketNumber;
+    }
+
+    public WebElement getTotalPriceAmount() {
+        return totalPriceAmount;
+    }
+
+    public void setTotalPriceAmount(WebElement totalPriceAmount) {
+        this.totalPriceAmount = totalPriceAmount;
+    }
+
+    public WebElement getUsedPromoCode() {
+        return usedPromoCode;
+    }
+
+    public void setUsedPromoCode(WebElement usedPromoCode) {
+        this.usedPromoCode = usedPromoCode;
     }
 }
