@@ -443,6 +443,9 @@ public class SKiHomePage {
     @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]/img[1]")
     private WebElement paymentOption;
 
+    @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
+    private WebElement profileOption;
+
 
 
 
@@ -1359,6 +1362,8 @@ public class SKiHomePage {
     public WebElement getPaymentOption(){return paymentOption;}
 
     public void setPaymentOption(WebElement paymentIcons) {this.paymentIcons=paymentIcons;}
+
+    public WebElement getProfileOption(){return profileOption;}
 
 
 }
