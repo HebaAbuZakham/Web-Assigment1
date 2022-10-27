@@ -145,7 +145,7 @@ public class SKiHomePage {
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e > div > div.navbar-item-menu-tabs-container > div.tabs-list-container > a")
     private WebElement seeAllEventsLink;
 
-    @FindBy(css = "li:nth-of-type(5) > .navbar-item-container > .navbar-item.navbar-item-common-styles")
+    @FindBy(xpath = "//div[@id='layout']/header[1]/div[1]/nav[1]/div[2]/div[1]/div[1]/ul[1]/li[6]/div[1]/a[1]")
     private WebElement planYourVisitNav;
 
     @FindBy(css = "#iteme32c69ce-7580-486f-ae31-e09760e6a75e > div > ul > li:nth-child(1)")
@@ -456,13 +456,20 @@ public class SKiHomePage {
     @FindBy(xpath = "//p[contains(text(),'Snow Cinema')]")
     private WebElement snowCinemaLink;
 
+
+    @FindBy(xpath = "//div[@class='user-avatar-container']//div[1]")
+    private WebElement myAccount;
+
     @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
     private WebElement profileOption;
 
 
 
+    @FindBy(xpath = "//a[@href='/en/accounts/dashboard']")
+    private WebElement dashboard;
 
-
+    @FindBy(xpath = "//button[@type='button']")
+    private WebElement logout;
 
     public SKiHomePage (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -1387,6 +1394,20 @@ public class SKiHomePage {
     public WebElement getProfileOption(){return profileOption;}
 
     public WebElement getSnowCinemaLink(){return snowCinemaLink;}
+
+
+    public WebElement getMyAccount(){return myAccount;}
+
+    public void setMyAccount( WebElement myAccount) {this.myAccount=myAccount;}
+
+    public WebElement getDashboard (){return dashboard;}
+
+    public void setDashboard ( WebElement dashboard) {this.dashboard=dashboard;}
+
+    public WebElement getLogout (){return logout;}
+
+    public void setLogout ( WebElement logout) {this.logout=logout;}
+
 
 
     public WebElement getLadiesNightCard() {

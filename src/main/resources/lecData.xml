@@ -29,6 +29,8 @@
     <userName>pahosov850@exoacre.com</userName>
     <passWord>P@ssw0rd147</passWord>
 
+    <userName1>rznyousef@yahoo.com</userName1>
+    <passWord1>Test@123</passWord1>
 
     <guestFirstName>Ali</guestFirstName>
     <guestLastName>Mohammad</guestLastName>
@@ -52,6 +54,10 @@
     <amexCard>376000000000006</amexCard>
     <randomEmailDomain>@gmail.com</randomEmailDomain>
     <password>Test@1234</password>
+
+    <bookingRegBelongForAnother>852210240079</bookingRegBelongForAnother>
+    <invalidBooking>852210030096</invalidBooking>
+
     <Table>Table</Table>
 
     <subFirstName>Safa</subFirstName>

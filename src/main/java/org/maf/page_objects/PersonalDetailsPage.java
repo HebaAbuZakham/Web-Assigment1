@@ -36,7 +36,7 @@ public class PersonalDetailsPage {
     WebElement countryDropDownList;
 
 
-    @FindBy(xpath = "(//span[contains(@class,'text-dark-blue ltr:ml-4')])[3]")
+    @FindBy(xpath = "//span[text()='United Arab Emirates']")
     private WebElement andoraCountry ;
 
     @FindBy(xpath = "//span[text()=\"United Arab Emirates\"]")
