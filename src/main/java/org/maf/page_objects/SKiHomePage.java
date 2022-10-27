@@ -2,6 +2,7 @@ package org.maf.page_objects;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -129,6 +130,9 @@ public class SKiHomePage {
     @FindBy(css = "li:nth-of-type(4) > .navbar-item-container > .navbar-item.navbar-item-common-styles")
     private WebElement whatsOnNav;
 
+    @FindBy(xpath = "//p[@class=\"title\"][contains(text(),\"Ladies' Night\")]")
+    private WebElement ladiesNightCard;
+
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e .navbar-item-menu-container")
     private WebElement whatsOnPopUp;
 
@@ -181,7 +185,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement passesAndPackages;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/ski-snowboard']")
+    @FindBy(xpath = "//a[@href='/en/passes-packages/slope']")
     @CacheLookup
     private WebElement slopeOption;
 
@@ -196,7 +200,7 @@ public class SKiHomePage {
     @FindBy(xpath = "//a[@href='/en/passes-packages/snowpark']")
     private WebElement snowParkOption;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/snowcinema']")
+    @FindBy(xpath = "//a[@href='/en/passes-packages/snow-cinema']")
     private WebElement snowCinemaOption;
 
     @FindBy(xpath = "(//p[@class='name'])[3]")
@@ -442,6 +446,15 @@ public class SKiHomePage {
 
     @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]/img[1]")
     private WebElement paymentOption;
+
+//    Penguin encounter tab
+    @FindBy(xpath = "//a[@href='/en/passes-packages/penguin-encounters']")
+    @CacheLookup
+    private WebElement penguinEncountersOption;
+
+    //    Snow Cinema tab
+    @FindBy(xpath = "//p[contains(text(),'Snow Cinema')]")
+    private WebElement snowCinemaLink;
 
     @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
     private WebElement profileOption;
@@ -1357,6 +1370,14 @@ public class SKiHomePage {
 
     public WebElement getLocationsListLink(){ return locationsListLink; }
 
+    public WebElement getPenguinEncountersOption() {
+        return penguinEncountersOption;
+    }
+
+    public void setPenguinEncountersOption(WebElement penguinEncountersOption) {
+        this.penguinEncountersOption = penguinEncountersOption;
+    }
+
     //public WebElement getDubaiLocation(){return dubaiLocation;}
 
     public WebElement getPaymentOption(){return paymentOption;}
@@ -1365,5 +1386,14 @@ public class SKiHomePage {
 
     public WebElement getProfileOption(){return profileOption;}
 
+    public WebElement getSnowCinemaLink(){return snowCinemaLink;}
 
+
+    public WebElement getLadiesNightCard() {
+        return ladiesNightCard;
+    }
+
+    public void setLadiesNightCard(WebElement ladiesNightCard) {
+        this.ladiesNightCard = ladiesNightCard;
+    }
 }
