@@ -456,6 +456,9 @@ public class SKiHomePage {
     @FindBy(xpath = "//p[contains(text(),'Snow Cinema')]")
     private WebElement snowCinemaLink;
 
+    @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
+    private WebElement profileOption;
+
 
 
 
@@ -1380,6 +1383,8 @@ public class SKiHomePage {
     public WebElement getPaymentOption(){return paymentOption;}
 
     public void setPaymentOption(WebElement paymentIcons) {this.paymentIcons=paymentIcons;}
+
+    public WebElement getProfileOption(){return profileOption;}
 
     public WebElement getSnowCinemaLink(){return snowCinemaLink;}
 

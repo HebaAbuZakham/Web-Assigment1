@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class PaymentMethodsPage {
 
     @FindBy(xpath = "//h1[@class='title']")
@@ -37,7 +38,10 @@ public class PaymentMethodsPage {
     @FindBy(className = "card-masked-number")
     private WebElement cardInfo;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//*[@id=\"simulatorFrame\"]")
+    private WebElement threeDsFrame;
+
+    @FindBy(xpath = "//button[contains(@class,'btn btn-primary')]")
     private WebElement submitButton;
 
     @FindBy(xpath = "//p[text()='Card authentication failed']")
@@ -84,4 +88,15 @@ public class PaymentMethodsPage {
     public WebElement getAuthenticationMsg(){return authenticationMsg;}
 
     public WebElement getDefaultLabel(){return defaultLabel;}
+
+
+    //public WebElement getThreeDsWindow(){return threeDsFrame;}
+
+    public void clickSubmitButton(WebDriver driver){
+
+        driver.switchTo().frame(threeDsFrame);
+        submitButton.click();
+        driver.switchTo().defaultContent();
+    }
+
 }
