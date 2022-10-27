@@ -48,6 +48,10 @@ public class ConfirmationPage {
     @CacheLookup
     private WebElement nextStepTitle;
 
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[1]/div")
+    private WebElement bookingRef;
+
+
 
     public ConfirmationPage(WebDriver driver) {
         PageFactory.initElements (driver, this);
@@ -116,4 +120,14 @@ public class ConfirmationPage {
     public void setUsedPromoCode(WebElement usedPromoCode) {
         this.usedPromoCode = usedPromoCode;
     }
+
+    public WebElement getBookingRef() {
+        return bookingRef;
+    }
+
+    public void setBookingRef(WebElement bookingRef) {
+        this.bookingRef = bookingRef;
+    }
+
+
 }
