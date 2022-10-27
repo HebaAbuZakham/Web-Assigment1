@@ -38,6 +38,7 @@
 
     <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
     <FullDaySlope>Full Day Slope Pass</FullDaySlope>
+    <PenguinEncounter>Penguin Encounter</PenguinEncounter>
     <SnowPark>Snow Park</SnowPark>
     <FullDaySlopePrice>340</FullDaySlopePrice>
     <SnowParkPrice>175</SnowParkPrice>
@@ -53,8 +54,16 @@
     <amexCard>376000000000006</amexCard>
     <randomEmailDomain>@gmail.com</randomEmailDomain>
     <password>Test@1234</password>
+
     <bookingRegBelongForAnother>852210240079</bookingRegBelongForAnother>
     <invalidBooking>852210030096</invalidBooking>
+
+    <Table>Table</Table>
+
+    <subFirstName>Safa</subFirstName>
+    <subLastName>Safa</subLastName>
+    <birthDate>20 Oct 2000</birthDate>
+    <guestEmail>guest@gmail.com</guestEmail>
 
 
 </Data>

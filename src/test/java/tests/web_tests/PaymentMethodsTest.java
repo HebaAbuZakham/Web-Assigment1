@@ -1,7 +1,6 @@
 package tests.web_tests;
 
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.maf.core.instance.BetaDriver.base;
 import org.maf.page_objects.LoginPage;
 import org.maf.page_objects.PaymentMethodsPage;
@@ -76,7 +75,6 @@ public class PaymentMethodsTest extends base {
         paymentMethodsPage.getSaveButton().click();
         SharedMethods.threadSleep (3000);
         SharedMethods.waitUntilElementVisible(paymentMethodsPage.getCardInfo());
-        System.out.println(paymentMethodsPage.getCardInfo().getText());
         Assert.assertTrue(paymentMethodsPage.getCardInfo().isDisplayed());
 
     }
@@ -209,8 +207,105 @@ public class PaymentMethodsTest extends base {
         SharedMethods.threadSleep (3000);
         Assert.assertTrue(paymentMethodsPage.getDefaultLabel().isDisplayed());
 
+    }
+
+    @Test(description = "Validate that the user is able to delete card card")
+    public void validateThatTheUserCanDeleteCard(){
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        SharedMethods.threadSleep (12000);
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
+        SharedMethods.clickAction(sKiHomePage.getUserAvatar());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPaymentOption());
+        sKiHomePage.getPaymentOption().click();
+        PaymentMethodsPage paymentMethodsPage= new PaymentMethodsPage(getDriver());
+        SharedMethods.threadSleep (3000);
+        //Old cards deletion
+        try {
+
+            if (paymentMethodsPage.getDeleteCardButton().isDisplayed()){
+                while (paymentMethodsPage.getDeleteCardButton().isDisplayed()){
+                    paymentMethodsPage.getDeleteCardButton().click();
+                    SharedMethods.waitUntilElementVisible(paymentMethodsPage.getDeleteConfirmationButton());
+                    paymentMethodsPage.getDeleteConfirmationButton().click();
+                    SharedMethods.threadSleep (1000);
+                }}}
+        catch (Exception e){
+            System.out.println("no added cards");
+        }
+
+        paymentMethodsPage.getAddCardRadio().click();
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getAddCardRadio());
+        paymentMethodsPage.getCardNumberField().sendKeys(objXMLReader.getXMLData("visaCard1"));
+        paymentMethodsPage.getCardExpiryField().sendKeys(objXMLReader.getXMLData("cardExp"));
+        paymentMethodsPage.getCardCvcField().sendKeys(objXMLReader.getXMLData("cardCSV"));
+        paymentMethodsPage.getSaveButton().click();
+        SharedMethods.threadSleep (3000);
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getCardInfo());
+        Assert.assertTrue(paymentMethodsPage.getCardInfo().isDisplayed());
+        SharedMethods.threadSleep(5000);
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getDeleteCardButton());
+        paymentMethodsPage.getDeleteCardButton().click();
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getDeleteConfirmationButton());
+        paymentMethodsPage.getDeleteConfirmationButton().click();
+        SharedMethods.threadSleep (1000);
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getAddCardRadio());
+        Assert.assertTrue(paymentMethodsPage.getAddCardRadio().isDisplayed());
 
     }
+
+    @Test(description = "Validate that the user is able to add new 3ds card")
+    public void validateThatTheUserIsAbleToAddNew3dsCard(){
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        SharedMethods.threadSleep (12000);
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
+        SharedMethods.clickAction(sKiHomePage.getUserAvatar());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPaymentOption());
+        sKiHomePage.getPaymentOption().click();
+        PaymentMethodsPage paymentMethodsPage= new PaymentMethodsPage(getDriver());
+        SharedMethods.threadSleep (3000);
+        //Old cards deletion
+        try {
+
+            if (paymentMethodsPage.getDeleteCardButton().isDisplayed()){
+                while (paymentMethodsPage.getDeleteCardButton().isDisplayed()){
+                    paymentMethodsPage.getDeleteCardButton().click();
+                    SharedMethods.waitUntilElementVisible(paymentMethodsPage.getDeleteConfirmationButton());
+                    paymentMethodsPage.getDeleteConfirmationButton().click();
+                    SharedMethods.threadSleep (1000);
+                }}}
+        catch (Exception e){
+            System.out.println("no added cards");
+        }
+
+        paymentMethodsPage.getAddCardRadio().click();
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getAddCardRadio());
+        paymentMethodsPage.getCardNumberField().sendKeys(objXMLReader.getXMLData("ThreeDSCard"));
+        paymentMethodsPage.getCardExpiryField().sendKeys(objXMLReader.getXMLData("cardExp"));
+        paymentMethodsPage.getCardCvcField().sendKeys(objXMLReader.getXMLData("cardCSV"));
+        paymentMethodsPage.getSaveButton().click();
+        SharedMethods.threadSleep (13000);
+        paymentMethodsPage.clickSubmitButton(getDriver());
+       // SharedMethods.waitUntilElementClickable(paymentMethodsPage.getSubmitButton());
+       // paymentMethodsPage.getSubmitButton().click();
+        SharedMethods.waitUntilElementVisible(paymentMethodsPage.getCardInfo());
+        Assert.assertTrue(paymentMethodsPage.getCardInfo().isDisplayed());
+
+    }
+
 
 
 }

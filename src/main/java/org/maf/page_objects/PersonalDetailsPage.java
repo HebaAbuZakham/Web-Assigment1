@@ -39,6 +39,9 @@ public class PersonalDetailsPage {
     @FindBy(xpath = "//span[text()='United Arab Emirates']")
     private WebElement andoraCountry ;
 
+    @FindBy(xpath = "//span[text()=\"United Arab Emirates\"]")
+    private WebElement UAECountry ;
+
     @FindBy(xpath="//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div/span/form/div[4]/button[2]")
     WebElement saveButton;
 
@@ -192,5 +195,13 @@ public class PersonalDetailsPage {
 
     public WebElement getNameLabel () {
         return nameLabel;
+    }
+
+    public WebElement getUAECountry() {
+        return UAECountry;
+    }
+
+    public void setUAECountry(WebElement UAECountry) {
+        this.UAECountry = UAECountry;
     }
 }
