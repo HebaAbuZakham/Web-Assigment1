@@ -1,10 +1,15 @@
 package org.maf.page_objects;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
+@Setter
 public class ConfirmationPage {
     @FindBy(xpath = "//h2[contains(text(),\"Booking confirmed\")]")
     private WebElement bookingConfirmation;
@@ -18,11 +23,35 @@ public class ConfirmationPage {
     @FindBy(xpath = "//div[@class=\"cell w-1/2\"]")
     private WebElement firstActivityDate;
 
-    @FindBy(xpath = "//div[@class=\"payment-details extra-detials\"][//div[contains(text(),\"Payment method\")]]/div[@class=\"value\"]")
+    @FindBy(xpath = "//*[@class=\"payment-details extra-detials\"][div[contains(text(), \"Payment method\")]]/div[@class=\"value\"]")
     private WebElement paymentMethod;
 
     @FindBy(xpath = "//div[@class=\"cell flex items-center w-1/5\"]")
     private WebElement firstTicketNumber;
+
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a[1]/div[2]")
+    @CacheLookup
+    private WebElement addGuestButton;
+
+
+    @FindBy(xpath = "//div[@class=\"total-price-details\"]//div[@class=\"total-amount\"]")
+    private WebElement totalPriceAmount;
+
+    @FindBy(xpath = "//*[@class=\"payment-details extra-detials\"][div[contains(text(), \"promo\")]]/div[@class=\"value\"]")
+    private WebElement usedPromoCode;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a[1]")
+    private WebElement assignGuestButton;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a/div[2]/div/h3")
+    @CacheLookup
+    private WebElement nextStepTitle;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[1]/div")
+    private WebElement bookingRef;
+
+
 
     public ConfirmationPage(WebDriver driver) {
         PageFactory.initElements (driver, this);
@@ -75,4 +104,30 @@ public class ConfirmationPage {
     public void setFirstTicketNumber(WebElement firstTicketNumber) {
         this.firstTicketNumber = firstTicketNumber;
     }
+
+    public WebElement getTotalPriceAmount() {
+        return totalPriceAmount;
+    }
+
+    public void setTotalPriceAmount(WebElement totalPriceAmount) {
+        this.totalPriceAmount = totalPriceAmount;
+    }
+
+    public WebElement getUsedPromoCode() {
+        return usedPromoCode;
+    }
+
+    public void setUsedPromoCode(WebElement usedPromoCode) {
+        this.usedPromoCode = usedPromoCode;
+    }
+
+    public WebElement getBookingRef() {
+        return bookingRef;
+    }
+
+    public void setBookingRef(WebElement bookingRef) {
+        this.bookingRef = bookingRef;
+    }
+
+
 }

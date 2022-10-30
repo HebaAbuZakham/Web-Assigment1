@@ -15,11 +15,9 @@ import org.testng.annotations.Test;
 
 @Listeners({TestListener.class})
 public class SignUpTest extends base {
-    public SignUpTest() {
-    }
 
     @Test(description = "Validate that user is able to signup and fill all needed data properly")
-    public void validateThatUserIsAbleToSignUp() throws InterruptedException {
+    public void validateThatUserIsAbleToSignUp()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitTillClickAble(sKiHomePage.getSignInButton());
@@ -30,7 +28,7 @@ public class SignUpTest extends base {
         signupPage.getRadiobutton().click();
         signupPage.getFirstname().sendKeys(objXMLReader.getXMLData("firstName"));
         signupPage.getLastname().sendKeys(objXMLReader.getXMLData("lastName"));
-        signupPage.getEmail().sendKeys(objXMLReader.getXMLData("email"));
+        signupPage.getEmail().sendKeys(SharedMethods.generateRandomString()+objXMLReader.getXMLData("randomEmailDomain"));
         signupPage.getPhoneNumber().sendKeys(objXMLReader.getXMLData("phoneNumber"));
         signupPage.getDate().click();
         signupPage.getSelectYear().click();

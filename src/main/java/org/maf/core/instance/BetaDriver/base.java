@@ -20,7 +20,7 @@ public static final String xmlPathName = "reengineering";
     }
 
     @BeforeMethod
-    public  void navigateToLeisureURL(){
+    public void navigateToLEcURL(){
 
     //get URL
     WebDriver driver = doBrowserSetup();

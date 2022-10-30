@@ -2,6 +2,7 @@ package org.maf.page_objects;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -129,6 +130,9 @@ public class SKiHomePage {
     @FindBy(css = "li:nth-of-type(4) > .navbar-item-container > .navbar-item.navbar-item-common-styles")
     private WebElement whatsOnNav;
 
+    @FindBy(xpath = "//p[@class=\"title\"][contains(text(),\"Ladies' Night\")]")
+    private WebElement ladiesNightCard;
+
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e .navbar-item-menu-container")
     private WebElement whatsOnPopUp;
 
@@ -141,7 +145,7 @@ public class SKiHomePage {
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e > div > div.navbar-item-menu-tabs-container > div.tabs-list-container > a")
     private WebElement seeAllEventsLink;
 
-    @FindBy(css = "li:nth-of-type(5) > .navbar-item-container > .navbar-item.navbar-item-common-styles")
+    @FindBy(xpath = "//div[@id='layout']/header[1]/div[1]/nav[1]/div[2]/div[1]/div[1]/ul[1]/li[6]/div[1]/a[1]")
     private WebElement planYourVisitNav;
 
     @FindBy(css = "#iteme32c69ce-7580-486f-ae31-e09760e6a75e > div > ul > li:nth-child(1)")
@@ -173,7 +177,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement signInButton;
 
-    @FindBy(className = "user-avatar")
+    @FindBy(xpath = "//div[@class='user-avatar-container']//div[1]")
     @CacheLookup
     private  WebElement userAvatar;
 
@@ -181,7 +185,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement passesAndPackages;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/ski-snowboard']")
+    @FindBy(xpath = "//a[@href='/en/passes-packages/slope']")
     @CacheLookup
     private WebElement slopeOption;
 
@@ -196,7 +200,7 @@ public class SKiHomePage {
     @FindBy(xpath = "//a[@href='/en/passes-packages/snowpark']")
     private WebElement snowParkOption;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/snowcinema']")
+    @FindBy(xpath = "//a[@href='/en/passes-packages/snow-cinema']")
     private WebElement snowCinemaOption;
 
     @FindBy(xpath = "(//p[@class='name'])[3]")
@@ -440,10 +444,32 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement rejectCookies;
 
+    @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]/img[1]")
+    private WebElement paymentOption;
+
+//    Penguin encounter tab
+    @FindBy(xpath = "//a[@href='/en/passes-packages/penguin-encounters']")
+    @CacheLookup
+    private WebElement penguinEncountersOption;
+
+    //    Snow Cinema tab
+    @FindBy(xpath = "//p[contains(text(),'Snow Cinema')]")
+    private WebElement snowCinemaLink;
+
+
+    @FindBy(xpath = "//div[@class='user-avatar-container']//div[1]")
+    private WebElement myAccount;
+
+    @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
+    private WebElement profileOption;
 
 
 
+    @FindBy(xpath = "//a[@href='/en/accounts/dashboard']")
+    private WebElement dashboard;
 
+    @FindBy(xpath = "//button[@type='button']")
+    private WebElement logout;
 
     public SKiHomePage (WebDriver driver) {
         PageFactory.initElements (driver,this);
@@ -1351,7 +1377,44 @@ public class SKiHomePage {
 
     public WebElement getLocationsListLink(){ return locationsListLink; }
 
+    public WebElement getPenguinEncountersOption() {
+        return penguinEncountersOption;
+    }
+
+    public void setPenguinEncountersOption(WebElement penguinEncountersOption) {
+        this.penguinEncountersOption = penguinEncountersOption;
+    }
+
     //public WebElement getDubaiLocation(){return dubaiLocation;}
 
+    public WebElement getPaymentOption(){return paymentOption;}
 
+    public void setPaymentOption(WebElement paymentIcons) {this.paymentIcons=paymentIcons;}
+
+    public WebElement getProfileOption(){return profileOption;}
+
+    public WebElement getSnowCinemaLink(){return snowCinemaLink;}
+
+
+    public WebElement getMyAccount(){return myAccount;}
+
+    public void setMyAccount( WebElement myAccount) {this.myAccount=myAccount;}
+
+    public WebElement getDashboard (){return dashboard;}
+
+    public void setDashboard ( WebElement dashboard) {this.dashboard=dashboard;}
+
+    public WebElement getLogout (){return logout;}
+
+    public void setLogout ( WebElement logout) {this.logout=logout;}
+
+
+
+    public WebElement getLadiesNightCard() {
+        return ladiesNightCard;
+    }
+
+    public void setLadiesNightCard(WebElement ladiesNightCard) {
+        this.ladiesNightCard = ladiesNightCard;
+    }
 }
