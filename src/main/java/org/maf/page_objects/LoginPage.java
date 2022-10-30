@@ -17,6 +17,14 @@ public class LoginPage {
     @FindBy(id = "submit-button")
     private WebElement gender;
 
+    @FindBy(xpath = "//span[contains(@class,'mr-2 ml-2')]/following-sibling::p[1]")
+    private WebElement wrongMessage;
+
+    @FindBy(xpath = "(//div[contains(@class,'text-left rtl:text-right')])[2]")
+    private WebElement notFilledEmail;
+
+    @FindBy(xpath = "(//div[contains(@class,'text-left rtl:text-right')])[3]")
+    private WebElement notFilledPassword;
     public WebElement getUserName () {
         return userName;
     }
@@ -49,6 +57,29 @@ public class LoginPage {
         this.gender = gender;
     }
 
+    public WebElement getWrongMessage () {
+        return wrongMessage;
+    }
+
+    public void setWrongMessage (WebElement wrongMessage) {
+        this.wrongMessage = wrongMessage;
+    }
+
+    public WebElement getNotFilledEmail () {
+        return notFilledEmail;
+    }
+
+    public void setNotFilledEmail (WebElement notFilledEmail) {
+        this.notFilledEmail = notFilledEmail;
+    }
+
+    public WebElement getNotFilledPassword () {
+        return notFilledPassword;
+    }
+
+    public void setNotFilledPassword (WebElement notFilledPassword) {
+        this.notFilledPassword= notFilledPassword;
+    }
     public LoginPage (WebDriver driver) {
 
         PageFactory.initElements (driver, this);

@@ -7,6 +7,7 @@
     <lastName>ahmad</lastName>
     <email>aya@yahoo.com</email>
     <phone>501234567</phone>
+    <randomEmailDomain>@gmail.com</randomEmailDomain>
     <message>This message for testing purpose</message>
     <ShowProgramName>Test Program</ShowProgramName>
     <TheApplicationNam>MAF APP</TheApplicationNam>
