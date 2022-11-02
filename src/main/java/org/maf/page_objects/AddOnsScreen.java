@@ -10,38 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 @Setter
-public class AddOnsScreen {
-
+public class AddOnsScreen extends BookingSharedComponent{
 
     @FindBy(xpath = "//h1[text()[normalize-space()='add-ons']]")
     private WebElement addOnsLabel;
     //@FindBy(xpath = "//button[contains(@class,'counter-buttons plus-button')]")
     @FindBy(xpath = "//div[contains(@class,'relative counter-number')]/following-sibling::button")
     private WebElement addMainAddOnsButton;
-
-    @FindBy (xpath = "//div[@class='field-row']//button")
-    private WebElement calendarButton;
-
-    @FindBy(className = "mx-icon-right")
-    private WebElement nextMonthButton;
-
-    @FindBy(xpath = "//div[text()='10']")
-    private WebElement monthSelection;
-
-    @FindBy(xpath = "//p[text()[normalize-space()='1 adult']]")
-    private WebElement adultsDropDown;
-
-    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(2)>div>div:nth-of-type(2)>button:nth-of-type(2)")
-    private WebElement numberOfJuniors;
-
-    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(2)")
-    private WebElement addAdultGuest;
-
-    @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[2]/div[2]/button")
-    private WebElement guestsDropDownList;
-
-    @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(1)")
-    private WebElement removeAdultGuest;
 
     @FindBy(xpath = "//div[@class=\"addOnsItem\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement supervisionAddOnsTicket;
@@ -60,6 +35,9 @@ public class AddOnsScreen {
 
     @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]]")
     private WebElement supervisionTicketPlusButton;
+
+    @FindBy(xpath = "//button[@aria-label=\"plus\"][ancestor::div[@class=\"addOnsItemContainer\"]//p[contains(text(),\"Mobile Lanyard\")]]")
+    private WebElement mobileLanyardTicketPlusButton;
 
     @FindBy(xpath = "//*[@class=\"AddOnsSideContainer\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement addedSupervisionToBookingCard;
@@ -95,56 +73,6 @@ public class AddOnsScreen {
 
     public void setContinueButton (WebElement continueButton) {
         this.continueButton = continueButton;
-    }
-
-    public WebElement getCalendarButton () {
-        return calendarButton;
-    }
-
-    public void setCalendarButton (WebElement calendarButton) {
-        this.calendarButton = calendarButton;
-    }
-
-    public WebElement getNextMonthButton () {
-        return nextMonthButton;
-    }
-
-    public void setNextMonthButton (WebElement nextMonthButton) {
-        this.nextMonthButton = nextMonthButton;
-    }
-
-    public WebElement getMonthSelection () {
-        return monthSelection;
-    }
-
-    public void setMonthSelection (WebElement monthSelection) {
-        this.monthSelection = monthSelection;
-    }
-
-    public WebElement getAdultsDropDown () {
-        return adultsDropDown;
-    }
-
-    public void setAdultsDropDown (WebElement adultsDropDown) {
-        this.adultsDropDown = adultsDropDown;
-    }
-
-    public WebElement getNumberOfJuniors () {
-        return numberOfJuniors;
-    }
-
-    public void setNumberOfJuniors (WebElement numberOfJuniors) {
-        this.numberOfJuniors = numberOfJuniors;
-    }
-
-    public WebElement getGuestsDropDownList () {return guestsDropDownList;}
-
-    public  void setGuestsDropDownList (WebElement guestsDropDownList){ this.guestsDropDownList = guestsDropDownList;}
-
-    public WebElement getRemoveAdultGuest () {return removeAdultGuest;}
-
-    public void setRemoveAdultGuest(WebElement removeAdultGuest) {
-        this.removeAdultGuest = removeAdultGuest;
     }
 
     public WebElement getAddOnsLabel () {
@@ -202,11 +130,12 @@ public class AddOnsScreen {
         this.addedSupervisionToBookingCard = addedSupervisionToBookingCard;
     }
 
-    public WebElement getAddAdultGuest() {
-        return addAdultGuest;
+    public WebElement getMobileLanyardTicketPlusButton() {
+        return mobileLanyardTicketPlusButton;
     }
 
-    public void setAddAdultGuest(WebElement addAdultGuest) {
-        this.addAdultGuest = addAdultGuest;
+    public void setMobileLanyardTicketPlusButton(WebElement mobileLanyardTicketPlusButton) {
+        this.mobileLanyardTicketPlusButton = mobileLanyardTicketPlusButton;
     }
+
 }

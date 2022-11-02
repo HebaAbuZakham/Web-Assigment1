@@ -192,6 +192,13 @@ public class SharedMethods extends SelInstance {
         String locatorText = locator.getText();
         return locatorText.contains(text);
     }
+
+    public static String FieldValue (WebElement locator) {
+        waitUntilElementVisible(locator);
+        threadSleep(1000);
+        String locatorText = locator.getText();
+        return locatorText;
+    }
     private static final long MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
 
     public static String findNextDay(int days)

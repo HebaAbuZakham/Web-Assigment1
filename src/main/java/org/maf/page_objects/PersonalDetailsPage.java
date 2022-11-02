@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 public class PersonalDetailsPage {
 
@@ -36,8 +35,12 @@ public class PersonalDetailsPage {
     WebElement countryDropDownList;
 
 
-    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div[2]/div[2]/span/form/div[4]/div/div/div[2]/div[2]/div/ul/li[1]/span")
+
+    @FindBy(xpath = "//span[text()='United Arab Emirates']")
     private WebElement andoraCountry ;
+
+    @FindBy(xpath = "//span[text()=\"United Arab Emirates\"]")
+    private WebElement UAECountry ;
 
     @FindBy(xpath="//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div/span/form/div[4]/button[2]")
     WebElement saveButton;
@@ -194,4 +197,11 @@ public class PersonalDetailsPage {
         return nameLabel;
     }
 
+    public WebElement getUAECountry() {
+        return UAECountry;
+    }
+
+    public void setUAECountry(WebElement UAECountry) {
+        this.UAECountry = UAECountry;
+    }
 }
