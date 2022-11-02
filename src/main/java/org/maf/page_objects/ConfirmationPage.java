@@ -34,6 +34,10 @@ public class ConfirmationPage {
     @CacheLookup
     private WebElement addGuestButton;
 
+    @FindBy(css = "#submit-btn")
+    @CacheLookup
+    private WebElement addGearButton;
+
 
     @FindBy(xpath = "//div[@class=\"total-price-details\"]//div[@class=\"total-amount\"]")
     private WebElement totalPriceAmount;

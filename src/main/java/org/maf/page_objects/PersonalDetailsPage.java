@@ -36,7 +36,7 @@ public class PersonalDetailsPage {
     WebElement countryDropDownList;
 
 
-    @FindBy(xpath = "(//span[contains(@class,'text-dark-blue ltr:ml-4')])[3]")
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div[2]/div[2]/span/form/div[4]/div/div/div[2]/div[2]/div/ul/li[1]/span")
     private WebElement andoraCountry ;
 
     @FindBy(xpath="//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/section/div/div/div/div/div/span/form/div[4]/button[2]")
@@ -193,4 +193,5 @@ public class PersonalDetailsPage {
     public WebElement getNameLabel () {
         return nameLabel;
     }
+
 }
