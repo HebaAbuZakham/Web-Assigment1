@@ -145,7 +145,7 @@ public class SKiHomePage {
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e > div > div.navbar-item-menu-tabs-container > div.tabs-list-container > a")
     private WebElement seeAllEventsLink;
 
-    @FindBy(xpath = "//div[@id='layout']/header[1]/div[1]/nav[1]/div[2]/div[1]/div[1]/ul[1]/li[6]/div[1]/a[1]")
+    @FindBy(css = "div#layout>header>div>nav>div:nth-of-type(2)>div>div>ul>li:nth-of-type(6)>div>a")
     private WebElement planYourVisitNav;
 
     @FindBy(css = "#iteme32c69ce-7580-486f-ae31-e09760e6a75e > div > ul > li:nth-child(1)")
@@ -467,6 +467,9 @@ public class SKiHomePage {
 
     @FindBy(xpath = "//a[@href='/en/accounts/dashboard']")
     private WebElement dashboard;
+
+    @FindBy(xpath = "//a[@href='/en/accounts/transactions']")
+    private WebElement transaction;
 
     @FindBy(xpath = "//button[@type='button']")
     private WebElement logout;
@@ -1403,6 +1406,13 @@ public class SKiHomePage {
     public WebElement getDashboard (){return dashboard;}
 
     public void setDashboard ( WebElement dashboard) {this.dashboard=dashboard;}
+
+    public WebElement getTransaction (){return transaction;}
+
+    public void setTransaction ( WebElement transaction) {this.transaction=transaction;}
+
+
+
 
     public WebElement getLogout (){return logout;}
 

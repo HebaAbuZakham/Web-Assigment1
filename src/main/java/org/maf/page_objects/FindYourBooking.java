@@ -22,14 +22,15 @@ public class FindYourBooking {
     @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
     private WebElement submitAndContinue;
 
-    @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    @FindBy(xpath = "(//button[@type='button'])[2]")
     private WebElement signinButton;
 
-    @FindBy   (xpath ="//div[contains(@class,'text-left mt-1')]")
+    @FindBy   (xpath ="//div[contains(@class,'ltr:text-left rtl:text-right')]")
     private WebElement validationMessage;
 
     @FindBy   (xpath ="//h1[@class='title']")
-    private WebElement guestUserFindBooking;
+    private WebElement guestUserFindBookingHeader;
+
 
 
     public FindYourBooking (WebDriver driver) {
@@ -69,10 +70,12 @@ public class FindYourBooking {
 
 
     public WebElement getGuestUserFindBooking() {
-        return guestUserFindBooking;
+        return guestUserFindBookingHeader;
     }
 
-    public void seGuestUserFindBooking (WebElement guestUserFindBooking) {
-        this.guestUserFindBooking = guestUserFindBooking;
+    public void setGuestUserFindBookingHeader (WebElement guestUserFindBookingHeader) {
+        this.guestUserFindBookingHeader = guestUserFindBookingHeader;
     }
+
+
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class DashboardPage {
 
 
-    @FindBy(css = "//p[contains(@class,'font-inter-bold text-base')]")
+    @FindBy(xpath = "//p[contains(@class,'ltr:font-inter-bold rtl:font-noto-sans-arabic-bold')]")
     private WebElement bookingRef;
 
 

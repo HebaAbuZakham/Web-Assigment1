@@ -51,6 +51,21 @@ public class TransactionsPage {
 
     @FindBy(xpath = "//a[@href='/en/accounts/ski-school/snowboard-passport']")
     private WebElement snowboardPassport;
+
+    @FindBy(xpath = "empty-transactions-title")
+    private WebElement noTransaction;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div/div/div[2]/a")
+    private WebElement haveALookLink;
+
+
+
+    @FindBy(xpath = "//div[contains(@class,'flex gap-x-2')]/following-sibling::div")
+    private WebElement arrowButton;
+
+
+
+
     public WebElement getDashboard () {
         return dashboard;
     }
@@ -159,9 +174,29 @@ public class TransactionsPage {
     public void setYourDashboard (WebElement yourDashboard) {
         this.yourDashboard = yourDashboard;
     }
+
+    public WebElement getNoTransaction() {
+        return noTransaction;
+    }
+    public void setNoTransaction (WebElement noTransaction) {
+        this.noTransaction = noTransaction;
+    }
+
+    public WebElement getHaveALookLink() {
+        return haveALookLink; }
+    public void setHaveALookLink (WebElement haveALookLink) {
+        this.haveALookLink = haveALookLink;
+    }
     public TransactionsPage (WebDriver driver) {
 
         PageFactory.initElements (driver, this);
 
     }
+
+    public WebElement getArrowButton() {
+        return arrowButton; }
+    public void setArrowButton (WebElement arrowButton) {
+        this.arrowButton = arrowButton;
+    }
+
 }

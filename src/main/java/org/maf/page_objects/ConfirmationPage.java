@@ -11,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 @Getter
 @Setter
 public class ConfirmationPage {
-    @FindBy(xpath = "//h2[contains(text(),\"Booking confirmed\")]")
-    private WebElement bookingConfirmation;
+    @FindBy(xpath = "//div[contains(@class,'ltr:font-inter-reguler rtl:font-noto-sans-arabic-reguler')]//div[1]")
+    private WebElement bookingConfirmationNum;
 
     @FindBy(xpath = "//div[@class=\"collection-name add-on\" and contains(text(), \"supervision ticket\")]")
     private WebElement supervisionTicket;
@@ -66,11 +66,11 @@ public class ConfirmationPage {
     }
 
     public WebElement getBookingConfirmation() {
-        return bookingConfirmation;
+        return bookingConfirmationNum;
     }
 
-    public void setBookingConfirmation(WebElement bookingConfirmation) {
-        this.bookingConfirmation = bookingConfirmation;
+    public void setBookingConfirmation (WebElement bookingConfirmationNum) {
+        this.bookingConfirmationNum = bookingConfirmationNum;
     }
 
     public WebElement getFirstActivityName() {
