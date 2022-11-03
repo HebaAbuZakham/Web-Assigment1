@@ -27,18 +27,19 @@ public class FindYourBookingTest extends base {
         SharedMethods.waitUntilElementVisible (sKiHomePage.getMyAccount());
         SharedMethods.clickAction (sKiHomePage.getMyAccount());
         SharedMethods.clickAction ( sKiHomePage.getDashboard());
-        SharedMethods.threadSleep (1200);
         DashboardPage dashboard= new DashboardPage(getDriver());
+        SharedMethods.waitUntilElementVisible ( dashboard.getBookingRef());
         String FieldValue= dashboard.getBookingRef().getText();
-        SharedMethods.threadSleep (1200);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPlanYourVisitNav ());
         sKiHomePage.getPlanYourVisitNav ().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getFindYourBookingLink());
         sKiHomePage.getFindYourBookingLink().click();
         FindYourBooking findYourBooking= new FindYourBooking(getDriver());
         findYourBooking.getFindYourBookingField().sendKeys(FieldValue);
-        SharedMethods.waitUntilElementVisible(findYourBooking.getValidationMessage());
-        Assert.assertTrue (findYourBooking.getValidationMessage().isDisplayed());
+        findYourBooking.getSubmitAndContinue().click();
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
+        SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
+        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
 
 
     }
@@ -65,8 +66,6 @@ public class FindYourBookingTest extends base {
         findYourBooking.getSubmitAndContinue().click();
         SharedMethods.waitUntilElementVisible(findYourBooking.getValidationMessage());
         Assert.assertTrue (findYourBooking.getValidationMessage().isDisplayed());
-
-
     }
 
     @Test(description = "Logged in user- Verify that the user is not able to search on  booking reference belong to another user")
@@ -86,7 +85,11 @@ public class FindYourBookingTest extends base {
         DashboardPage dashboard= new DashboardPage(getDriver());
         String FieldValue= dashboard.getBookingRef().getText();
         SharedMethods.clickAction (sKiHomePage.getMyAccount());
+        SharedMethods.waitTillClickAble (sKiHomePage.getLogout());
         SharedMethods.clickAction ( sKiHomePage.getLogout());
+        SharedMethods.threadSleep (12000);
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
         loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
@@ -99,7 +102,6 @@ public class FindYourBookingTest extends base {
         findYourBooking.getFindYourBookingField().sendKeys(FieldValue);
         SharedMethods.waitUntilElementVisible(findYourBooking.getValidationMessage());
         Assert.assertTrue (findYourBooking.getValidationMessage().isDisplayed());
-
     }
 
     @Test(description = "Guest user- Verify that the user is not able to search on valid booking id")
@@ -126,9 +128,37 @@ public class FindYourBookingTest extends base {
         FindYourBooking findYourBooking= new FindYourBooking(getDriver());
         findYourBooking.getFindYourBookingField().sendKeys(value);
         findYourBooking.getSubmitAndContinue().click();
-        Assert.assertTrue (findYourBooking.getGuestUserFindBooking().isDisplayed());
+        Assert.assertTrue (findYourBooking.getGuestUserFindBookingHeader().isDisplayed());
+    }
 
-
+    @Test(description = "Guest user- Verify that sign in screen display when search using logged in booking id")
+    public void validateLogginInBookingIdOnGuestUser()
+    {
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
+        loginPage.getLoginCTA ().click ();
+        SharedMethods.threadSleep (12000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getDashboard().click();
+        DashboardPage dashboard= new DashboardPage(getDriver());
+        Assert.assertTrue ( dashboard.getBookingRef().isDisplayed());
+        String bookingId= SharedMethods.FieldValue(dashboard.getBookingRef());
+        SharedMethods.clickAction (sKiHomePage.getMyAccount());
+        SharedMethods.clickAction ( sKiHomePage.getLogout());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPlanYourVisitNav ());
+        SharedMethods.clickAction (sKiHomePage.getPlanYourVisitNav ());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getFindYourBookingLink());
+        sKiHomePage.getFindYourBookingLink().click();
+        FindYourBooking findYourBooking= new FindYourBooking(getDriver());
+        findYourBooking.getFindYourBookingField().sendKeys(bookingId);
+        findYourBooking.getSubmitAndContinue().click();
+        SharedMethods.waitUntilElementVisible(findYourBooking.getFSigninButton());
+        Assert.assertTrue (findYourBooking.getFSigninButton().isDisplayed());
     }
 
 
