@@ -22,6 +22,14 @@ public class ActivitiesPage extends BookingSharedComponent{
     @FindBy(xpath = "//button[contains(text(), \"Add tickets\")]")
     private WebElement addTicketButton;
 
+    @FindBy(xpath = "//*[@class=\"activity-content\"][p[contains(text(),\"2 Hours Slope Pass\")]]//button")
+    private WebElement packageSlopePassAddButton;
+
+    @FindBy(xpath = "//*[@class=\"activity-content\"][p[contains(text(),\"Snow Bullet Rides\")]]//button")
+    private WebElement packageSnowBulletRidesPassAddButton;
+
+
+
 
 
     public ActivitiesPage (WebDriver driver) {
@@ -64,5 +72,21 @@ public class ActivitiesPage extends BookingSharedComponent{
 
     public void setAddTicketButton(WebElement addTicketButton) {
         this.addTicketButton = addTicketButton;
+    }
+
+    public WebElement getPackageSlopePassAddButton() {
+        return packageSlopePassAddButton;
+    }
+
+    public void setPackageSlopePassAddButton(WebElement packageSlopePassAddButton) {
+        this.packageSlopePassAddButton = packageSlopePassAddButton;
+    }
+
+    public WebElement getPackageSnowBulletRidesPassAddButton() {
+        return packageSnowBulletRidesPassAddButton;
+    }
+
+    public void setPackageSnowBulletRidesPassAddButton(WebElement packageSnowBulletRidesPassAddButton) {
+        this.packageSnowBulletRidesPassAddButton = packageSnowBulletRidesPassAddButton;
     }
 }

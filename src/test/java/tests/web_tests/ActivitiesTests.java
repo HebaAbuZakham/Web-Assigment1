@@ -57,4 +57,45 @@ public class ActivitiesTests extends base {
         Assert.assertTrue (activitiesPage.getAddAdultGuest ().isEnabled ());
     }
 
+    @Test(description = "Validate 'required Supervision ticket' for Package on Add-Ons ")
+    public void validateThatTheUserSeeSupervisionTicketOnAddOnsForPackage ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getSnowPremiumPassBuyButton());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        ActivitiesPage activitiesPage = new ActivitiesPage(getDriver ());
+        SharedMethods.waitUntilElementClickable (activitiesPage.getGuestsDropDownList ());
+        activitiesPage.getGuestsDropDownList ().click ();
+        SharedMethods.mouseClickAction (activitiesPage.getNumberOfJuniors ());
+        SharedMethods.mouseClickAction (activitiesPage.getRemoveAdultGuest ());
+        SharedMethods.waitUntilElementClickable (activitiesPage.getGuestsDropDownList ());
+        SharedMethods.clickOn(activitiesPage.getLastActivityTimeSlot());
+        SharedMethods.clickOn(activitiesPage.getPackageSlopePassAddButton());
+        SharedMethods.clickOn(activitiesPage.getAddTicketButton());
+        SharedMethods.threadSleep (3000);
+        SharedMethods.clickOn(addOnsScreen.getSupervisionTicketPlusButton ());
+        Assert.assertTrue (addOnsScreen.getAddedSupervisionToBookingCard().isDisplayed ());
+    }
+
+    @Test(description = "Validate 'required Adult ticket' for Package on Add-Ons ")
+    public void validateThatTheUserSeeNeedAdultTicketOnAddOnsForPackage ()  {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getSnowDaycationPassBuyButton());
+        SharedMethods.threadSleep (3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        ActivitiesPage activitiesPage = new ActivitiesPage(getDriver ());
+        SharedMethods.waitUntilElementClickable (activitiesPage.getGuestsDropDownList ());
+        activitiesPage.getGuestsDropDownList ().click ();
+        SharedMethods.mouseClickAction (activitiesPage.getNumberOfJuniors ());
+        SharedMethods.mouseClickAction (activitiesPage.getRemoveAdultGuest ());
+        SharedMethods.waitUntilElementClickable (activitiesPage.getGuestsDropDownList ());
+        SharedMethods.clickOn(activitiesPage.getPackageSnowBulletRidesPassAddButton());
+        Assert.assertTrue (addOnsScreen.getNeedAdultTicketMsg().isDisplayed ());
+    }
 }
