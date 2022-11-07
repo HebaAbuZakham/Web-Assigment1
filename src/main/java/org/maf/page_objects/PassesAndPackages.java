@@ -39,6 +39,11 @@ public class PassesAndPackages {
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Breakfast with Penguins\"]]")
     private WebElement BreakfastWithPenguinPassBuyButton;
 
+    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Premium\"]]")
+    private WebElement  SnowPremiumPassBuyButton;
+
+    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Daycation\"]]")
+    private WebElement  SnowDaycationPassBuyButton;
 
     // Header tabs locators
     @FindBy(css = ".tabs-list > li:nth-of-type(1)")
@@ -164,4 +169,19 @@ public class PassesAndPackages {
         BreakfastWithPenguinPassBuyButton = breakfastWithPenguinPassBuyButton;
     }
 
+    public WebElement getSnowPremiumPassBuyButton() {
+        return SnowPremiumPassBuyButton;
+    }
+
+    public void setSnowPremiumPassBuyButton(WebElement snowPremiumPassBuyButton) {
+        SnowPremiumPassBuyButton = snowPremiumPassBuyButton;
+    }
+
+    public WebElement getSnowDaycationPassBuyButton() {
+        return SnowDaycationPassBuyButton;
+    }
+
+    public void setSnowDaycationPassBuyButton(WebElement snowDaycationPassBuyButton) {
+        SnowDaycationPassBuyButton = snowDaycationPassBuyButton;
+    }
 }
