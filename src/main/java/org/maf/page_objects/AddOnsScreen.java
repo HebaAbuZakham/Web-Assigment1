@@ -18,6 +18,9 @@ public class AddOnsScreen extends BookingSharedComponent{
     @FindBy(xpath = "//div[contains(@class,'relative counter-number')]/following-sibling::button")
     private WebElement addMainAddOnsButton;
 
+    @FindBy(className = "package-title")
+    private WebElement packageTitle;
+
     @FindBy(xpath = "//div[@class=\"addOnsItem\"]//p[contains(text(),\"Slope adult supervision ticket\")]")
     private WebElement supervisionAddOnsTicket;
 
@@ -137,5 +140,7 @@ public class AddOnsScreen extends BookingSharedComponent{
     public void setMobileLanyardTicketPlusButton(WebElement mobileLanyardTicketPlusButton) {
         this.mobileLanyardTicketPlusButton = mobileLanyardTicketPlusButton;
     }
+
+    public WebElement getPackageTitle(){return packageTitle;}
 
 }
