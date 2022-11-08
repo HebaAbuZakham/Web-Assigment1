@@ -33,17 +33,24 @@
     <userName1>rznyousef@yahoo.com</userName1>
     <passWord1>Test@123</passWord1>
 
+    <userName2>ski.test.dubai.4@gmail.com</userName2>
+    <passWord2>Test@123</passWord2>
+
     <guestFirstName>Ali</guestFirstName>
     <guestLastName>Mohammad</guestLastName>
 
 
     <VOX-URL>https://uae.voxcinemas.com</VOX-URL>
     <FullDaySlope>Full Day Slope Pass</FullDaySlope>
+    <TwoHoursSlopePass>2 Hours Slope Pass</TwoHoursSlopePass>
     <PenguinEncounter>Penguin Encounter</PenguinEncounter>
+    <AllGuests>All Guests</AllGuests>
     <SnowPark>Snow Park</SnowPark>
     <FullDaySlopePrice>340</FullDaySlopePrice>
     <SnowParkPrice>175</SnowParkPrice>
     <AdultLabel>Adult</AdultLabel>
+    <JuniorLabel>Junior</JuniorLabel>
+
     <TicketLabel>Ticket</TicketLabel>
     <masterCard>mastercard</masterCard>
     <visaCard>visa</visaCard>
