@@ -43,7 +43,7 @@ public class PaymentDetailsPage {
     @FindBy(xpath = "//button[text()[normalize-space()='Apply']]\n")
     private WebElement applyRedeemPoints;
 
-    @FindBy(xpath = "//button[text()[normalize-space()='Pay']]")
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/div[2]/div/div/div[1]/div[2]/button")
     private WebElement pay;
 
     @FindBy(xpath = "//button[@type='submit']")

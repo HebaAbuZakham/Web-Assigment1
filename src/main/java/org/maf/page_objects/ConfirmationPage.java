@@ -11,8 +11,13 @@ import org.openqa.selenium.support.PageFactory;
 @Getter
 @Setter
 public class ConfirmationPage {
+
+    @FindBy(css = "div#layout div.general-info > h2")
+    private WebElement bookingConfirmation;
+
     @FindBy(xpath = "//div[contains(@class,'ltr:font-inter-reguler rtl:font-noto-sans-arabic-reguler')]//div[1]")
     private WebElement bookingConfirmationNum;
+
 
     @FindBy(xpath = "//div[@class=\"collection-name add-on\" and contains(text(), \"supervision ticket\")]")
     private WebElement supervisionTicket;
@@ -33,6 +38,10 @@ public class ConfirmationPage {
     @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[2]/div/div/div[2]/ul/a[1]/div[2]")
     @CacheLookup
     private WebElement addGuestButton;
+
+    @FindBy(css = "#submit-btn")
+    @CacheLookup
+    private WebElement addGearButton;
 
 
     @FindBy(xpath = "//div[@class=\"total-price-details\"]//div[@class=\"total-amount\"]")

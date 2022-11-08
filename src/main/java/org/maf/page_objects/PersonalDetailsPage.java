@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 public class PersonalDetailsPage {
 
@@ -36,6 +35,7 @@ public class PersonalDetailsPage {
     WebElement countryDropDownList;
 
 
+
     @FindBy(xpath = "//span[text()='United Arab Emirates']")
     private WebElement andoraCountry ;
 
@@ -64,7 +64,7 @@ public class PersonalDetailsPage {
 
     @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[1]/div/a")
     WebElement editTicketInfo;
-    @FindBy(xpath = "(//button[@class='gs-base-button-default-styles w-fit'])[2]")
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/div[2]/div/div/div[1]/div[2]/button")
     private WebElement continueToPayment ;
 
 
