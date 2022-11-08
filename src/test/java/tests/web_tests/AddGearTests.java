@@ -260,6 +260,7 @@ public class AddGearTests extends base {
         addGearPage.getDay().click();
         addGearPage.getSizeChart().click();
         addGearPage.getSizesTable().isDisplayed();
+        Assert.assertEquals(addGearPage.getChartTitle().getText(),"ADULT LONG JACKET SIZE");
 
     }
 
@@ -458,6 +459,7 @@ public class AddGearTests extends base {
         addGearPage.getDay().click();
         addGearPage.getSizeChart().click();
         addGearPage.getSizesTable().isDisplayed();
+        Assert.assertEquals(addGearPage.getChartTitle().getText(),"JUNIOR JUMPSUIT SIZE");
     }
 
     @Test(description = "Validate That The Junior should not be able to book  jump suite and jacket/trouser at the same time")
@@ -623,7 +625,6 @@ public class AddGearTests extends base {
         SharedMethods.waitUntilElementVisible(personalDetailsPage.getContinueToPayment());
         Assert.assertTrue(personalDetailsPage.getContinueToPayment().isDisplayed());
         SharedMethods.threadSleep(7000);
-        personalDetailsPage.getContinueToPayment().click();
         SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
         personalDetailsPage.clickingMissRadioButton();
         personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData("firstName"));
@@ -662,6 +663,7 @@ public class AddGearTests extends base {
         addGearPage.getDay().click();
         addGearPage.getSizeChart().click();
         addGearPage.getSizesTable().isDisplayed();
+        Assert.assertEquals(addGearPage.getChartTitle().getText(),"CHILD JUMPSUIT SIZE");
     }
 
 }

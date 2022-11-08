@@ -143,6 +143,10 @@ public class AddGearPage {
     @CacheLookup
     private WebElement unSelectLongJacket;
 
+    @FindBy(css = ".capitalize.modal-header")
+    @CacheLookup
+    private WebElement chartTitle;
+
 
 
 
