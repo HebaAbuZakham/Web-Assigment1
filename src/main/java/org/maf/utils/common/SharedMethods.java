@@ -207,4 +207,10 @@ public class SharedMethods extends SelInstance {
         String timeStamp = new SimpleDateFormat("dd MMM yyyy").format(nextDate);
         return timeStamp;
     }
+    public static void forceClickOnElement(WebElement locator) {
+        Actions builder = new Actions(getDriver());
+        builder.moveToElement( locator ).click( locator );
+        builder.perform();
+
+    }
 }

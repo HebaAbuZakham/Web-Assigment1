@@ -83,6 +83,9 @@ public class AddGuestPage {
     @CacheLookup
     private WebElement guestMember;
 
+    @FindBy(xpath = "//*[@id=\"booking-bar-date\"]/div/div/div/div/div/div[2]/table/tr[1]/td[2]")
+    @CacheLookup
+    private WebElement lessThanTwelve;
 
 
 

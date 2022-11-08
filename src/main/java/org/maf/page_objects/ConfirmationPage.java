@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 @Getter
 @Setter
 public class ConfirmationPage {
-    @FindBy(xpath = "//h2[contains(text(),\"Booking confirmed\")]")
+    @FindBy(css = "div#layout div.general-info > h2")
     private WebElement bookingConfirmation;
 
     @FindBy(xpath = "//div[@class=\"collection-name add-on\" and contains(text(), \"supervision ticket\")]")

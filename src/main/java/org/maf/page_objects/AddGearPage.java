@@ -58,7 +58,7 @@ public class AddGearPage {
     @CacheLookup
     private WebElement longJacket;
 
-    @FindBy(css = ".gears-items-list-wrapper > div:nth-of-type(1) .sizes-container > div:nth-of-type(1)")
+    @FindBy(css = ".gears-items-list-wrapper > div:nth-of-type(1) .sizes-wrapper .sizes-container .size-item:nth-child(2)")
     @CacheLookup
     private WebElement longJacketSize;
 
@@ -66,7 +66,7 @@ public class AddGearPage {
     @CacheLookup
     private WebElement trousers;
 
-    @FindBy(css = "div:nth-of-type(2) > .gear-wrapper > .product-wrapper > .sizes-wrapper > .sizes-container > div:nth-of-type(2)")
+    @FindBy(css = ".gears-items-list-wrapper > div:nth-of-type(2) .sizes-wrapper .sizes-container .size-item:nth-child(3)")
     @CacheLookup
     private WebElement trousersSize;
 
@@ -74,7 +74,7 @@ public class AddGearPage {
     @CacheLookup
     private WebElement shortJacket;
 
-    @FindBy(css = "div:nth-of-type(3) > .gear-wrapper > .product-wrapper > .sizes-wrapper > .sizes-container > div:nth-of-type(2)")
+    @FindBy(css = ".gears-items-list-wrapper > div:nth-of-type(3) .sizes-wrapper .sizes-container .size-item:nth-child(3)")
     @CacheLookup
     private WebElement shortJacketSize;
 
@@ -105,6 +105,48 @@ public class AddGearPage {
     @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div/div[2]")
     @CacheLookup
     private WebElement checkedGearBox;
+
+
+    @FindBy(id = "submit-btn")
+    @CacheLookup
+    private WebElement continueButton;
+
+    @FindBy(css = "div#layout h3")
+    @CacheLookup
+    private WebElement confirmationTitle;
+
+    @FindBy(css = "div:nth-of-type(1) > .md\\:mt-4.mt-2 > .flex.gear-deatils.items-center.justify-between > .description")
+    @CacheLookup
+    private WebElement dressLabel;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div[2]/span/div/div[6]/div[2]/div[1]/div[2]/div[1]/div[2]")
+    @CacheLookup
+    private WebElement sizeChart;
+
+    @FindBy(css = ".text-center.mt-8.w-full")
+    @CacheLookup
+    private WebElement sizesTable;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div[2]/span/div/div[6]/div[2]/div[2]/span")
+    @CacheLookup
+    private WebElement disabledTrousers;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div[2]/span/div/div[6]/div[2]/div[3]/span")
+    @CacheLookup
+    private WebElement disabledJacket;
+
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[3]/div/div[1]/div/div[2]/div/div[2]/div/div[2]/span/div/div[6]/div[2]/div[1]/span")
+    @CacheLookup
+    private WebElement disabledLongJacket;
+
+    @FindBy(css = "div:nth-of-type(1) .product-wrapper.selected")
+    @CacheLookup
+    private WebElement unSelectLongJacket;
+
+
+
+
+
 
 
 
