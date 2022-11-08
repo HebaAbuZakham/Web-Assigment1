@@ -139,7 +139,7 @@ public class AddGearPage {
     @CacheLookup
     private WebElement disabledLongJacket;
 
-    @FindBy(css = "div:nth-of-type(1) .product-wrapper.selected")
+    @FindBy(css = "div:nth-child(1) .gear-wrapper .icon-wrapper.selected")
     @CacheLookup
     private WebElement unSelectLongJacket;
 
