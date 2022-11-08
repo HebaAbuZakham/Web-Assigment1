@@ -21,6 +21,9 @@ public class PaymentDetailsPage {
     @FindBy(id = "cardCvc")
     private WebElement cardCSV;
 
+    @FindBy(xpath = "//*[@placeholder=\"CVC/CVV\"]")
+    private WebElement savedCardCSV;
+
     @FindBy(xpath = "//*[@id=\"promoCode\"]/div[1]/span")
     private WebElement promoCodeRadio;
 
@@ -205,5 +208,13 @@ public class PaymentDetailsPage {
 
     public void setSaveCCDetailsCheckbox(WebElement saveCCDetailsCheckbox) {
         this.saveCCDetailsCheckbox = saveCCDetailsCheckbox;
+    }
+
+    public WebElement getSavedCardCSV() {
+        return savedCardCSV;
+    }
+
+    public void setSavedCardCSV(WebElement savedCardCSV) {
+        this.savedCardCSV = savedCardCSV;
     }
 }

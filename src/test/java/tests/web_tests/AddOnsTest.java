@@ -137,4 +137,32 @@ public class AddOnsTest extends base {
         Assert.assertTrue (addOnsScreen.getAddedSupervisionToBookingCard().isDisplayed ());
 
     }
+
+    @Test(description = "Validate Booking Bar selected data reflects on Booking")
+    public void validateTheBookingBarSelectedDateReflectsOnTheBooking(){
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        SharedMethods.threadSleep (2000);
+        BookingBarPage bookingBarPage = new BookingBarPage(getDriver());
+        bookingBarPage.getExperienceDll().click();
+        SharedMethods.waitUntilElementVisible(bookingBarPage.getSnowParkExperience());
+        bookingBarPage.getSnowParkExperience().click();
+        SharedMethods.waitUntilElementVisible(bookingBarPage.getDateDll());
+        bookingBarPage.getDateDll().click();
+        String selectedDate = bookingBarPage.getDateSelection().getText();
+        SharedMethods.mouseClickAction(bookingBarPage.getDateSelection());
+        SharedMethods.mouseClickAction(bookingBarPage.getGuestsDll());
+        SharedMethods.waitUntilElementVisible(bookingBarPage.getBookingButton());
+        bookingBarPage.getBookingButton().click();
+        SharedMethods.threadSleep (700);
+        PassesAndPackages passesAndPackages=new PassesAndPackages(getDriver());
+        SharedMethods.jsScrollDown(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowParkPassBuyButton());
+        passesAndPackages.getSnowParkPassBuyButton().click();
+        SharedMethods.threadSleep(700);
+        AddOnsScreen addOnsScreen=new AddOnsScreen(getDriver());
+        Assert.assertTrue(SharedMethods.elementContainsText(addOnsScreen.getCalendarButton(), selectedDate));
+    }
 }

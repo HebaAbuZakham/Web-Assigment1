@@ -51,7 +51,11 @@ public class ConfirmationPage {
     @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/main/section/div/div[2]/div[1]/div[1]/div/div[1]/div[2]/div[1]/div")
     private WebElement bookingRef;
 
+    @FindBy(xpath = "(//*[@class=\"cell activity w-1/2\"])[1]")
+    private WebElement firstBookingPackageLine;
 
+    @FindBy(xpath = "(//*[@class=\"cell activity w-1/2\"])[2]")
+    private WebElement secondBookingPackageLine;
 
     public ConfirmationPage(WebDriver driver) {
         PageFactory.initElements (driver, this);
@@ -67,6 +71,22 @@ public class ConfirmationPage {
 
     public WebElement getBookingConfirmation() {
         return bookingConfirmationNum;
+    }
+
+    public void setSecondBookingPackageLine(WebElement secondBookingPackageLine) {
+        this.secondBookingPackageLine = secondBookingPackageLine;
+    }
+
+    public WebElement getSecondBookingPackageLine() {
+        return secondBookingPackageLine;
+    }
+
+    public void setFirstBookingPackageLine(WebElement firstBookingPackageLine) {
+        this.firstBookingPackageLine = firstBookingPackageLine;
+    }
+
+    public WebElement getFirstBookingPackageLine() {
+        return firstBookingPackageLine;
     }
 
     public void setBookingConfirmation (WebElement bookingConfirmationNum) {
