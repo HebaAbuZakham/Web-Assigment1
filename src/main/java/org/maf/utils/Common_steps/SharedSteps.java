@@ -81,6 +81,7 @@ public class SharedSteps {
 
     public static void userAddGuestsAs(int Adults, int Junior, int Children) {
         ActivitiesPage activityPage = new ActivitiesPage(getDriver());
+        SharedMethods.waitUntilElementVisible(activityPage.getGuestsDropDownList());
         SharedMethods.waitUntilElementClickable(activityPage.getGuestsDropDownList());
         SharedMethods.clickOn(activityPage.getGuestsDropDownList());
         for (int i = 0; i < Adults; i++) {

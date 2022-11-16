@@ -64,7 +64,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description = "Validate User book Pass - check ticket & date from booking confirmation")
+    @Test(description = "Validate user book Pass - check ticket & date from booking confirmation")
     public void validateThatTheUserBookPass ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -105,7 +105,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description = "Validate User book Pass - check Master Card payment method from booking confirmation")
+    @Test(description = "Validate user book Pass - check Master Card payment method from booking confirmation")
     public void validateThatTheUserBookPassWithMasterCard ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -145,7 +145,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description = "Validate User book Pass - check Visa payment method from booking confirmation")
+    @Test(description = "Validate user book Pass - check Visa payment method from booking confirmation")
     public void validateThatTheUserBookPassWithVisa ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -185,7 +185,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description = "Validate User book Pass - check Price from booking confirmation")
+    @Test(description = "Validate user book Pass - check Price from booking confirmation")
     public void validateThatTheUserBookPassSeeRightPrice ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -228,7 +228,7 @@ public class ConfirmationPageTest  extends base {
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getTotalPriceAmount(), String.format("%2d", Integer.parseInt(objXMLReader.getXMLData("FullDaySlopePrice"))*2)));
     }
 
-    @Test(description = "Validate User book Pass with Promo Code 100% - check Payment method from booking confirmation")
+    @Test(description = "Validate user book Pass with Promo Code 100% - check Payment method from booking confirmation")
     public void validateThatTheUserBookPassWithPromoCode ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -266,7 +266,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description = "Validate User book Pass with Promo Code 50% - check Payment method from booking confirmation")
+    @Test(description = "Validate user book Pass with Promo Code 50% - check Payment method from booking confirmation")
     public void validateThatTheUserBookPassWithPartialPromoCode ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
@@ -306,7 +306,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description =  "Validate The User user books event - see selected time & date from confirmation screen ")
+    @Test(description =  "Validate The user books event - see selected time & date from confirmation screen")
     public void validateUserBookEvent ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         SharedMethods.threadSleep (2000);
@@ -340,7 +340,7 @@ public class ConfirmationPageTest  extends base {
 
     }
 
-    @Test(description =  "Validate The User user books event with add ons - see selected time & date from confirmation screen ")
+    @Test(description =  "Validate The user books event with add ons - see selected time & date from confirmation screen")
     public void validateUserBookEventWithAddOns ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         SharedMethods.threadSleep (2000);
@@ -374,7 +374,7 @@ public class ConfirmationPageTest  extends base {
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "3 " + objXMLReader.getXMLData("TicketLabel")) );
     }
     
-    @Test(description = "Validate 'required Supervision ticket' for Package on Add-Ons appears on Confirmation Screen  ")
+    @Test(description = "Validate 'required Supervision ticket' for Package on Add-Ons appears on Confirmation Screen")
     public void validateThatTheUserSeeSupervisionTicketOnAddOnsForPackageAppearsOnConfirmationScreen ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         SharedMethods.threadSleep (2000);
@@ -467,4 +467,67 @@ public class ConfirmationPageTest  extends base {
                 confirmationPage.getSecondBookingPackageLine (),
                 objXMLReader.getXMLData ("TwoHoursSlopePass") + " - 1 " + objXMLReader.getXMLData ("AdultLabel")));
     }
+
+    @Test(description = "Validate that the guest user add user info same as registered user")
+    public void validateThatTheGuestUserAddUserInfoSamAsRegisteredUser(){
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton ().click ();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
+        personalDetailsPage.clickingMissRadioButton();
+        personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData ("firstName"));
+        personalDetailsPage.getLastName().sendKeys (objXMLReader.getXMLData ("lastName"));
+        personalDetailsPage.getMobileNum().sendKeys (objXMLReader.getXMLData ("phone"));
+        personalDetailsPage.getEmail().sendKeys (objXMLReader.getXMLData ("email"));
+        personalDetailsPage.getCountryDropDownList().click();
+        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
+        SharedMethods.mouseClickAction (personalDetailsPage.getBookingInformation());
+        SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
+        SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment ());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
+        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
+    }
+
+    @Test(description = "Validate that the guest user add user email same as registered user but diff name")
+    public void validateThatTheGuestUserAddUserEmailSameAsRegisteredUserButDiffName(){
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton ().click ();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
+        personalDetailsPage.clickingMissRadioButton();
+        personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData ("firstName")+"test");
+        personalDetailsPage.getLastName().sendKeys (objXMLReader.getXMLData ("lastName")+"test");
+        personalDetailsPage.getMobileNum().sendKeys (objXMLReader.getXMLData ("phone"));
+        personalDetailsPage.getEmail().sendKeys (objXMLReader.getXMLData ("email"));
+        personalDetailsPage.getCountryDropDownList().click();
+        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
+        SharedMethods.mouseClickAction (personalDetailsPage.getBookingInformation());
+        SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
+        SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment ());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
+        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
+    }
+
 }
