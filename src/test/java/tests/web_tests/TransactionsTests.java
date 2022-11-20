@@ -8,15 +8,20 @@ import org.maf.page_objects.TransactionsPage;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
 import org.maf.utils.error_handlers.RetryAnalyzer;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.openqa.selenium.WebElement;
+
 
 import static org.maf.core.instance.SelInstance.getDriver;
 import static org.maf.core.instance.SelInstance.objXMLReader;
 
 @Listeners(TestListener.class)
 public class TransactionsTests extends base {
+
+
 
     @Test(description = "Verify the guest user can not access Transactions page")
     public void verifyTheGuestUserCanNotAccessTransactions() {
@@ -38,9 +43,12 @@ public class TransactionsTests extends base {
         loginPage.getUserName().sendKeys(objXMLReader.getXMLData("userName"));
         loginPage.getPassword().sendKeys(objXMLReader.getXMLData("passWord"));
         loginPage.getLoginCTA().click();
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getUserAvatar());
-        Assert.assertTrue(sKiHomePage.getUserAvatar().isDisplayed());
-        sKiHomePage.getUserAvatar().click();
+        SharedMethods.threadSleep (12000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getTransaction().click();
+        TransactionsPage transactionsPage= new TransactionsPage(getDriver());
+        SharedMethods.waitUntilElementVisible(transactionsPage.getTransactionTitle());
+
     }
 
     @Test(description = "Verify the navigation to transactions page from header")
@@ -188,26 +196,27 @@ public class TransactionsTests extends base {
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
         sKiHomePage.getSignInButton ().click ();
         LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
         sKiHomePage.getMyAccount().click();
         sKiHomePage.getTransaction().click();
         TransactionsPage transactionsPage= new TransactionsPage(getDriver());
-        SharedMethods.waitUntilElementVisible(transactionsPage.getNoTransaction());
-        transactionsPage.getHaveALookLink().click();
-        PassesAndPackages passesAndPackages=new PassesAndPackages (getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getPenguinEncounterTab());
-        Assert.assertTrue(passesAndPackages.getPenguinEncounterTab().isDisplayed());
+        SharedMethods.waitUntilElementVisible(transactionsPage.getTransactionTitle());
+        Assert.assertEquals(transactionsPage.getLocationName().getText(),"Ski Dubai");
+
+
     }
 
-    @Test(description = "verify a Transaction for pass non time based ticket ")
+    @Test(description = "verify a Transaction for pass non time based ticket")
     public void VerifyTransactionForPassNonTimeBased()
     {
+        ConfirmationPageTest confirmationPageTest= new ConfirmationPageTest();
+        confirmationPageTest.validateThatTheUserBookPassWithPromoCode();
         SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton());
         sKiHomePage.getSignInButton ().click ();
         LoginPage loginPage = new LoginPage (getDriver ());
         loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
@@ -217,16 +226,67 @@ public class TransactionsTests extends base {
         sKiHomePage.getMyAccount().click();
         sKiHomePage.getTransaction().click();
         TransactionsPage transactionsPage= new TransactionsPage(getDriver());
-        SharedMethods.waitUntilElementVisible(transactionsPage.getNoTransaction());
-        transactionsPage.getHaveALookLink().click();
-        PassesAndPackages passesAndPackages=new PassesAndPackages (getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getPenguinEncounterTab());
-        Assert.assertTrue(passesAndPackages.getPenguinEncounterTab().isDisplayed());
+        SharedMethods.waitUntilElementVisible(transactionsPage.getArrowButton());
+        transactionsPage.getArrowButton().click();
+       Assert.assertFalse(isElementPresent(transactionsPage.getTimeValue()));
+
     }
 
-    @Test(description = "verify a Transaction for pass  time based ticket")
+    @Test(description = "verify a Transaction for pass time based ticket")
     public void VerifyTransactionForPassTimeBased()
     {
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
+        loginPage.getLoginCTA ().click ();
+        ConfirmationPageTest confirmationPageTest= new ConfirmationPageTest();
+        confirmationPageTest.validateUserBookEvent();
+        SharedMethods.threadSleep (12000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getTransaction().click();
+        TransactionsPage transactionsPage= new TransactionsPage(getDriver());
+        SharedMethods.waitUntilElementVisible(transactionsPage.getArrowButton());
+        transactionsPage.getArrowButton().click();
+        Assert.assertTrue(transactionsPage.getTimeValue().isDisplayed());
+
+
+
+    }
+    @Test (description = "verify a Transaction for a package without bonus activity" )
+    public void VerifyTransactionForPackageWithBonus()
+    {
+        PassesAndPackagesTest passesAndPackagesTest=new PassesAndPackagesTest ();
+        passesAndPackagesTest.validateThatUserBuyPackageWithBonusActivity();
+        SKiHomePage sKiHomePage= new SKiHomePage (getDriver());
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getTransaction().click();
+        TransactionsPage transactionsPage= new TransactionsPage(getDriver());
+        Assert.assertFalse(isElementPresent(transactionsPage.getTimeValue()));
+
+
+    }
+
+   @Test (description = "verify a Transaction for a package without bonus activity" )
+   public void VerifyTransactionForPackageWithoutBonus()
+   {
+       PassesAndPackagesTest passesAndPackagesTest=new PassesAndPackagesTest ();
+       passesAndPackagesTest.validateThatUserBuyPackageWithoutBonusActivity();
+       SKiHomePage sKiHomePage= new SKiHomePage (getDriver());
+       sKiHomePage.getMyAccount().click();
+       sKiHomePage.getTransaction().click();
+       TransactionsPage transactionsPage= new TransactionsPage(getDriver());
+       Assert.assertFalse(isElementPresent(transactionsPage.getTimeValue()));
+
+
+
+   }
+
+    @Test (description = "verify user with Transactions that the transactions are collapsed by default" )
+    public void VerifyTransactionAreCollapsed() {
         SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
@@ -239,13 +299,38 @@ public class TransactionsTests extends base {
         sKiHomePage.getMyAccount().click();
         sKiHomePage.getTransaction().click();
         TransactionsPage transactionsPage= new TransactionsPage(getDriver());
-        SharedMethods.clickAction(transactionsPage.getArrowButton());
-        SharedMethods.threadSleep (300000);
-        PassesAndPackages passesAndPackages=new PassesAndPackages (getDriver());
-        Assert.assertTrue(passesAndPackages.getPenguinEncounterTab().isDisplayed());
+        SharedMethods.waitUntilElementVisible(transactionsPage.getArrowButton());
+        Assert.assertTrue(transactionsPage.getArrowButton().isDisplayed());
+
+    }
+    @Test (description = "verify if user reached last transaction the page hides the “View more” link or disables it" )
+    public void VerifyViewMoreIsHidden() {
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        SharedMethods.threadSleep (12000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getTransaction().click();
+        TransactionsPage transactionsPage= new TransactionsPage(getDriver());
+        SharedMethods.waitUntilElementVisible(transactionsPage.getViewMore());
+        Assert.assertTrue(transactionsPage.getViewMore().isDisplayed());
+        transactionsPage.getViewMore().click();
+
 
 
     }
-
-
+    protected boolean isElementPresent(WebElement el){
+        try{
+            el.isDisplayed();
+            return true;
+        }
+        catch(NoSuchElementException e){
+            return false;
+        }
+    }
 }

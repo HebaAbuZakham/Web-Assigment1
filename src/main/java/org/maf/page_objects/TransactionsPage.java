@@ -63,6 +63,15 @@ public class TransactionsPage {
     @FindBy(xpath = "//div[contains(@class,'flex gap-x-2')]/following-sibling::div")
     private WebElement arrowButton;
 
+    @FindBy(xpath = "//div[@class='location-name']")
+    private WebElement locationName;
+
+
+    @FindBy(xpath = "//span[@class='time']")
+    private WebElement timeValue;
+
+    @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    private WebElement viewMore;
 
 
 
@@ -198,5 +207,23 @@ public class TransactionsPage {
     public void setArrowButton (WebElement arrowButton) {
         this.arrowButton = arrowButton;
     }
+
+    public WebElement getLocationName() {
+        return locationName; }
+    public void setLocationName (WebElement locationName) {
+        this.locationName = locationName;}
+
+    public WebElement getTimeValue() {
+        return timeValue; }
+
+    public void setTimeValue (WebElement timeValue) {
+        this.timeValue = timeValue;}
+
+    public WebElement getViewMore() {
+        return viewMore; }
+
+    public void setViewMore (WebElement viewMore) {
+        this.viewMore = viewMore;}
+
 
 }

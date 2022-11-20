@@ -22,6 +22,11 @@ public class ActivitiesPage extends BookingSharedComponent{
     @FindBy(xpath = "//button[contains(text(), \"Add tickets\")]")
     private WebElement addTicketButton;
 
+    @FindBy(xpath = "//button[@class='activity-add-button']")
+    private WebElement slopeActivity2HoursSlope ;
+
+
+
     @FindBy(xpath = "//*[@class=\"activity-content\"][p[contains(text(),\"2 Hours Slope Pass\")]]//button")
     private WebElement packageSlopePassAddButton;
 
@@ -89,4 +94,14 @@ public class ActivitiesPage extends BookingSharedComponent{
     public void setPackageSnowBulletRidesPassAddButton(WebElement packageSnowBulletRidesPassAddButton) {
         this.packageSnowBulletRidesPassAddButton = packageSnowBulletRidesPassAddButton;
     }
+    public WebElement getSlopeActivity2HoursSlopeButton() {
+        return slopeActivity2HoursSlope;
+    }
+
+    public void setSlopeActivity2HoursSlopeButton(WebElement slopeActivity2HoursSlope) {
+        this.slopeActivity2HoursSlope = slopeActivity2HoursSlope;
+    }
+
+
+
 }
