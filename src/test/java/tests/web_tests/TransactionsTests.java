@@ -167,17 +167,12 @@ public class TransactionsTests extends base {
         Assert.assertTrue(transactionsPage.getNoTransaction().isDisplayed());
     }
 
-    @Test(description = "verify the have a look at our tickets“ link will lead to the “Passes & Packages/Explore” page")
+    @Test(description = "verify that have a look at our tickets“ link will lead to the “Passes & Packages/Explore” page")
     public void VerifyHaveAlookLink()
     {
         SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
-        sKiHomePage.getAcceptCookiesButton().click();
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
-        sKiHomePage.getSignInButton ().click ();
-        LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
-        loginPage.getLoginCTA ().click ();
+        SignUpTest signupTest = new SignUpTest ();
+        signupTest.validateThatUserIsAbleToSignUp();
         SharedMethods.threadSleep (12000);
         sKiHomePage.getMyAccount().click();
         sKiHomePage.getTransaction().click();
@@ -205,6 +200,8 @@ public class TransactionsTests extends base {
         TransactionsPage transactionsPage= new TransactionsPage(getDriver());
         SharedMethods.waitUntilElementVisible(transactionsPage.getTransactionTitle());
         Assert.assertEquals(transactionsPage.getLocationName().getText(),"Ski Dubai");
+        Assert.assertEquals(transactionsPage.getAdultGuest().getText(),"1 Adult");
+
 
 
     }
@@ -256,7 +253,7 @@ public class TransactionsTests extends base {
 
 
     }
-    @Test (description = "verify a Transaction for a package without bonus activity" )
+    @Test (description = "verify a Transaction for a package with bonus activity" )
     public void VerifyTransactionForPackageWithBonus()
     {
         PassesAndPackagesTest passesAndPackagesTest=new PassesAndPackagesTest ();
@@ -265,7 +262,7 @@ public class TransactionsTests extends base {
         sKiHomePage.getMyAccount().click();
         sKiHomePage.getTransaction().click();
         TransactionsPage transactionsPage= new TransactionsPage(getDriver());
-        Assert.assertFalse(isElementPresent(transactionsPage.getTimeValue()));
+        Assert.assertTrue(transactionsPage.getBonusTicket().isDisplayed());
 
 
     }
@@ -279,7 +276,7 @@ public class TransactionsTests extends base {
        sKiHomePage.getMyAccount().click();
        sKiHomePage.getTransaction().click();
        TransactionsPage transactionsPage= new TransactionsPage(getDriver());
-       Assert.assertFalse(isElementPresent(transactionsPage.getTimeValue()));
+       Assert.assertFalse(isElementPresent(transactionsPage.getBonusTicket()));
 
 
 
@@ -320,6 +317,7 @@ public class TransactionsTests extends base {
         SharedMethods.waitUntilElementVisible(transactionsPage.getViewMore());
         Assert.assertTrue(transactionsPage.getViewMore().isDisplayed());
         transactionsPage.getViewMore().click();
+        Assert.assertFalse(isElementPresent(transactionsPage.getViewMore()));
 
 
 

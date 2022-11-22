@@ -73,7 +73,11 @@ public class TransactionsPage {
     @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
     private WebElement viewMore;
 
+    @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    private WebElement bonusTicket;
 
+    @FindBy(xpath = "//p[text()[normalize-space()='1 Adult']]")
+    private WebElement adultGuest;
 
     public WebElement getDashboard () {
         return dashboard;
@@ -224,6 +228,21 @@ public class TransactionsPage {
 
     public void setViewMore (WebElement viewMore) {
         this.viewMore = viewMore;}
+
+
+    public WebElement getBonusTicket() {
+        return bonusTicket; }
+
+    public void setBonusTicket (WebElement bonusTicket) {
+        this.bonusTicket = bonusTicket;}
+
+    public WebElement getAdultGuest() {
+        return adultGuest; }
+
+    public void setAdultGuest (WebElement adultGuest) {
+        this.adultGuest = adultGuest;}
+
+
 
 
 }
