@@ -152,13 +152,8 @@ public class TransactionsTests extends base {
     public void VerifyTransactionsAreCollapsed()
     {
         SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
-        sKiHomePage.getAcceptCookiesButton().click();
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
-        sKiHomePage.getSignInButton ().click ();
-        LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
-        loginPage.getLoginCTA ().click ();
+        SignUpTest signupTest = new SignUpTest ();
+        signupTest.validateThatUserIsAbleToSignUp();
         SharedMethods.threadSleep (12000);
         sKiHomePage.getMyAccount().click();
         sKiHomePage.getTransaction().click();
