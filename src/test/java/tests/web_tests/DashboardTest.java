@@ -74,7 +74,27 @@ public class DashboardTest extends base {
         Assert.assertTrue(dashboardPage.getAddGuestCircleActive().isDisplayed());
         Assert.assertTrue(dashboardPage.getChooseGearActive().isDisplayed());
     }
-
+    @Test(description = "booking - all post booking steps done")
+    public void VerifyAllStepsDone()
+    {
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        SharedMethods.threadSleep (12000);
+        AddGearTests addGearTests = new AddGearTests();
+        addGearTests.validateThatTheUserIsAbleToAddGear ();
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getDashboard().click();
+        DashboardPage dashboardPage=new DashboardPage(getDriver());
+        SharedMethods.waitUntilElementVisible(dashboardPage.getAddGuestCircleNotActive());
+        Assert.assertTrue(dashboardPage.getAddGuestCircleActive().isDisplayed());
+        Assert.assertTrue(dashboardPage.getChooseGearActive().isDisplayed());
+    }
 
 
 }

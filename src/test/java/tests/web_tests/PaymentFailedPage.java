@@ -1,4 +1,4 @@
-package org.maf.page_objects;
+package tests.web_tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

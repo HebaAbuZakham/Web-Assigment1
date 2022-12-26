@@ -444,7 +444,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement rejectCookies;
 
-    @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[4]/a[1]/span[1]/img[1]")
+    @FindBy(xpath = "//a[@href='/en-ae/ski-dubai/accounts/payments']")
     private WebElement paymentOption;
 
 //    Penguin encounter tab

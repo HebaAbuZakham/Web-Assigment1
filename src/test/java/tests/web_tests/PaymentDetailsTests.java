@@ -2,11 +2,9 @@ package tests.web_tests;
 
 import org.maf.core.instance.BetaDriver.base;
 import org.maf.page_objects.*;
-import org.maf.page_objects.PaymentFailedPage;
 import org.maf.utils.Common_steps.SharedSteps;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
-import org.maf.utils.error_handlers.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -402,7 +400,15 @@ public class PaymentDetailsTests extends base {
         SharedMethods.threadSleep (5000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
         SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
-        Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
+        SharedMethods.threadSleep (12000);
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
+        SharedMethods.clickAction(sKiHomePage.getUserAvatar());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getPaymentOption());
+        sKiHomePage.getPaymentOption().click();
+        PaymentMethodsPage paymentMethodsPage= new PaymentMethodsPage(getDriver());
+        SharedMethods.threadSleep (3000);
+        Assert.assertEquals (paymentMethodsPage.getCardExpiryField(),objXMLReader.getXMLData ("cardCSV"));
+        //
 
     }
     @Test(description = "Verify that the website handle the failed payments (2.55)")
