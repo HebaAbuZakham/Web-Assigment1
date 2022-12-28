@@ -20,6 +20,12 @@ public class DashboardPage {
     @FindBy(xpath ="(//div[@class='circles active'])[3]")
     private WebElement chooseGearActive;
 
+    @FindBy(xpath ="//div[@class=\"card-container\"][//p[contains(text(), \"Welcome back!\")]]")
+    private WebElement welcomeBackBox;
+
+    @FindBy(xpath ="//section[//h2[contains(., \"Popular passes\")]]")
+    private WebElement PopularPassesBox;
+
     public DashboardPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
@@ -53,5 +59,21 @@ public class DashboardPage {
 
     public void setChooseGearActive(WebElement chooseGearActive) {
         this.chooseGearActive = chooseGearActive;
+    }
+
+    public WebElement getWelcomeBackBox() {
+        return welcomeBackBox;
+    }
+
+    public void setWelcomeBackBox(WebElement welcomeBackBox) {
+        this.welcomeBackBox = welcomeBackBox;
+    }
+
+    public WebElement getPopularPassesBox() {
+        return PopularPassesBox;
+    }
+
+    public void setPopularPassesBox(WebElement popularPassesBox) {
+        PopularPassesBox = popularPassesBox;
     }
 }

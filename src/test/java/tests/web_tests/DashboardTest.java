@@ -96,6 +96,47 @@ public class DashboardTest extends base {
         Assert.assertTrue(dashboardPage.getChooseGearActive().isDisplayed());
     }
 
+    @Test(description = "Dashboard - verify new user Empty state ")
+    public void VerifySignedUpUserVisitDashboard(){
+
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble(sKiHomePage.getSignInButton());
+        sKiHomePage.getSignInButton().click();
+        SignUp signupPage = new SignUp(getDriver());
+        signupPage.getSignUpButtton().click();
+        SharedMethods.waitUntilElementVisible (signupPage.getRadiobutton ());
+        signupPage.getRadiobutton().click();
+        signupPage.getFirstname().sendKeys(objXMLReader.getXMLData("firstName"));
+        signupPage.getLastname().sendKeys(objXMLReader.getXMLData("lastName"));
+        signupPage.getEmail().sendKeys(SharedMethods.generateRandomString()+objXMLReader.getXMLData("randomEmailDomain"));
+        signupPage.getPhoneNumber().sendKeys(objXMLReader.getXMLData("phoneNumber"));
+        signupPage.getDate().click();
+        signupPage.getSelectYear().click();
+        signupPage.getYear().click();
+        signupPage.getOkButton().click();
+        SharedMethods.threadSleep (1000);
+        signupPage.getNationality().click();
+        SharedMethods.threadSleep (2000);
+        signupPage.getDropdownNationality().click();
+        SharedMethods.threadSleep (1000);
+        signupPage.getCountryOfResidence().click();
+        SharedMethods.threadSleep (2000);
+        signupPage.getDropdownCountry().click();
+        signupPage.getPassword().sendKeys(objXMLReader.getXMLData("password"));
+        signupPage.getSubmit().click();
+        SharedMethods.threadSleep (2000);
+        SharedMethods.mouseClickAction (signupPage.getOkEmailPopUpButton());
+        SharedMethods.threadSleep (29000);
+        SharedMethods.clickOn(sKiHomePage.getMyAccount());
+        sKiHomePage.getDashboard().click();
+        DashboardPage dashboardPage=new DashboardPage(getDriver());
+        SharedMethods.threadSleep (1000);
+        Assert.assertTrue(dashboardPage.getPopularPassesBox().isDisplayed());
+        Assert.assertTrue(dashboardPage.getWelcomeBackBox().isDisplayed());
+
+    }
+
 
 }
 
