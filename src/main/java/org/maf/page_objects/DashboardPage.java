@@ -26,6 +26,14 @@ public class DashboardPage {
     @FindBy(xpath ="//section[//h2[contains(., \"Popular passes\")]]")
     private WebElement PopularPassesBox;
 
+    @FindBy(xpath ="(//*[@class=\"card-container\"][//h3[contains(text(), \"Snow Premium\")]]//div[@class=\"activity-card product-card\"])[1]")
+    private WebElement snowPremiumCardFirstActivity;
+
+    @FindBy(xpath ="(//*[@class=\"card-container\"][//h3[contains(text(), \"Snow Premium\")]]//div[@class=\"activity-card product-card\"])[2]")
+    private WebElement snowPremiumCardSecondActivity;
+
+
+
     public DashboardPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
@@ -75,5 +83,21 @@ public class DashboardPage {
 
     public void setPopularPassesBox(WebElement popularPassesBox) {
         PopularPassesBox = popularPassesBox;
+    }
+
+    public WebElement getSnowPremiumCardFirstActivity() {
+        return snowPremiumCardFirstActivity;
+    }
+
+    public void setSnowPremiumCardFirstActivity(WebElement snowPremiumCardFirstActivity) {
+        this.snowPremiumCardFirstActivity = snowPremiumCardFirstActivity;
+    }
+
+    public WebElement getSnowPremiumCardSecondActivity() {
+        return snowPremiumCardSecondActivity;
+    }
+
+    public void setSnowPremiumCardSecondActivity(WebElement snowPremiumCardSecondActivity) {
+        this.snowPremiumCardSecondActivity = snowPremiumCardSecondActivity;
     }
 }

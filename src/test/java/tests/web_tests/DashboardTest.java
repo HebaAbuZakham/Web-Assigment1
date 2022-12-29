@@ -134,7 +134,45 @@ public class DashboardTest extends base {
         SharedMethods.threadSleep (1000);
         Assert.assertTrue(dashboardPage.getPopularPassesBox().isDisplayed());
         Assert.assertTrue(dashboardPage.getWelcomeBackBox().isDisplayed());
+    }
 
+    @Test(description = "Dashboard - Verify User Book Snow Premium")
+    public void VerifyUserBookSnowPremium()
+    {
+        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName2"),  objXMLReader.getXMLData ("passWord2"));
+        PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
+        SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getSnowPremiumPackageBuyButton());
+        AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
+        ActivitiesPage activitiesPage = new ActivitiesPage(getDriver ());
+        SharedMethods.threadSleep (10000);
+        String selectedTimeSlot = activitiesPage.getLastActivityTimeSlot().getText();
+        SharedMethods.clickOn(activitiesPage.getLastActivityTimeSlot());
+        SharedMethods.clickOn(activitiesPage.getPackageSlopePassAddButton());
+        SharedMethods.clickOn(activitiesPage.getAddTicketButton());
+        SharedMethods.threadSleep (4000);
+        SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton ().click ();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
+        SharedMethods.waitTillClickAble (personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
+        personalDetailsPage.getContinueToPayment ().click ();
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep (3000);
+        SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));        SharedMethods.threadSleep (1000);
+        SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
+        SharedMethods.clickOn(paymentDetailsPage.getPay ());
+        SharedMethods.threadSleep (5000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getDashboard().click();
+        DashboardPage dashboardPage=new DashboardPage(getDriver());
+        Assert.assertTrue(SharedMethods.elementContainsText(dashboardPage.getSnowPremiumCardFirstActivity(), selectedTimeSlot));
+        Assert.assertTrue(SharedMethods.elementContainsText(dashboardPage.getSnowPremiumCardFirstActivity(),"Penguin Encounter"));
+        Assert.assertTrue(SharedMethods.elementContainsText(dashboardPage.getSnowPremiumCardSecondActivity(),"2 Hours Slope Pass"));
     }
 
 
