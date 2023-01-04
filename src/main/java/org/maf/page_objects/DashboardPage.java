@@ -20,6 +20,20 @@ public class DashboardPage {
     @FindBy(xpath ="(//div[@class='circles active'])[3]")
     private WebElement chooseGearActive;
 
+    @FindBy(xpath ="//div[@class=\"card-container\"][//p[contains(text(), \"Welcome back!\")]]")
+    private WebElement welcomeBackBox;
+
+    @FindBy(xpath ="//section[//h2[contains(., \"Popular passes\")]]")
+    private WebElement PopularPassesBox;
+
+    @FindBy(xpath ="(//*[@class=\"card-container\"][//h3[contains(text(), \"Snow Premium\")]]//div[@class=\"activity-card product-card\"])[1]")
+    private WebElement snowPremiumCardFirstActivity;
+
+    @FindBy(xpath ="(//*[@class=\"card-container\"][//h3[contains(text(), \"Snow Premium\")]]//div[@class=\"activity-card product-card\"])[2]")
+    private WebElement snowPremiumCardSecondActivity;
+
+
+
     public DashboardPage (WebDriver driver) {
         PageFactory.initElements (driver,this);
     }
@@ -53,5 +67,37 @@ public class DashboardPage {
 
     public void setChooseGearActive(WebElement chooseGearActive) {
         this.chooseGearActive = chooseGearActive;
+    }
+
+    public WebElement getWelcomeBackBox() {
+        return welcomeBackBox;
+    }
+
+    public void setWelcomeBackBox(WebElement welcomeBackBox) {
+        this.welcomeBackBox = welcomeBackBox;
+    }
+
+    public WebElement getPopularPassesBox() {
+        return PopularPassesBox;
+    }
+
+    public void setPopularPassesBox(WebElement popularPassesBox) {
+        PopularPassesBox = popularPassesBox;
+    }
+
+    public WebElement getSnowPremiumCardFirstActivity() {
+        return snowPremiumCardFirstActivity;
+    }
+
+    public void setSnowPremiumCardFirstActivity(WebElement snowPremiumCardFirstActivity) {
+        this.snowPremiumCardFirstActivity = snowPremiumCardFirstActivity;
+    }
+
+    public WebElement getSnowPremiumCardSecondActivity() {
+        return snowPremiumCardSecondActivity;
+    }
+
+    public void setSnowPremiumCardSecondActivity(WebElement snowPremiumCardSecondActivity) {
+        this.snowPremiumCardSecondActivity = snowPremiumCardSecondActivity;
     }
 }

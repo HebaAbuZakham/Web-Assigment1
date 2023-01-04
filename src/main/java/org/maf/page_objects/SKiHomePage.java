@@ -197,13 +197,13 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement heroBannerTitle;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/snowpark']")
+    @FindBy(xpath = "//p[contains(text(), \"Snow Park\")]")
     private WebElement snowParkOption;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/snow-cinema']")
+    @FindBy(xpath = "//p[contains(text(), \"Snow Cinema\")]")
     private WebElement snowCinemaOption;
 
-    @FindBy(xpath = "(//p[@class='name'])[3]")
+    @FindBy(xpath = "//p[contains(text(), \"Penguin Encounters\")]")
     private WebElement penguinEncounterOption;
 
     @FindBy(css = "#hero-subtitle")
@@ -465,7 +465,7 @@ public class SKiHomePage {
 
 
 
-    @FindBy(xpath = "//a[@href='/en/accounts/dashboard']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/dashboard')]")
     private WebElement dashboard;
 
     @FindBy(xpath = "//a[@href='/en/accounts/transactions']")
