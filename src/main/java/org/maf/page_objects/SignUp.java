@@ -36,6 +36,9 @@ public class SignUp {
     @FindBy(xpath = "//button[@class='text-primary']/following-sibling::button[1]")
     private WebElement okButton;
 
+    @FindBy(id = "submit-button")
+    private WebElement okEmailPopUpButton;
+
     @FindBy(xpath = "//div[@id='app']/div[1]/div[1]/main[1]/div[1]/span[1]/form[1]/div[5]/div[2]/div[1]/div[1]/div[1]/div[1]/span[1]/div[2]")
     private WebElement nationality;
 
@@ -183,5 +186,13 @@ public class SignUp {
     public SignUp (WebDriver driver) {
 
         PageFactory.initElements (driver, this);
+    }
+
+    public WebElement getOkEmailPopUpButton() {
+        return okEmailPopUpButton;
+    }
+
+    public void setOkEmailPopUpButton(WebElement okEmailPopUpButton) {
+        this.okEmailPopUpButton = okEmailPopUpButton;
     }
 }
