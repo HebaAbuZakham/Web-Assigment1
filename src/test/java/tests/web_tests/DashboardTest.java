@@ -96,6 +96,48 @@ public class DashboardTest extends base {
         Assert.assertTrue(dashboardPage.getChooseGearActive().isDisplayed());
     }
 
+
+    @Test(description = "booking - pass ticket")
+    public void VerifyPassTicket()
+    {
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        ConfirmationPageTest confirmationPageTest= new ConfirmationPageTest();
+        confirmationPageTest.validateThatTheUserBookPassWithPartialPromoCode ();
+        SharedMethods.threadSleep (12000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getDashboard().click();
+        DashboardPage dashboardPage=new DashboardPage(getDriver());
+        SharedMethods.waitUntilElementVisible(dashboardPage.getAddGuestCircleNotActive());
+        Assert.assertTrue(dashboardPage.getAddGuestCircleActive().isDisplayed());
+    }
+
+    @Test(description = "booking - Event ticket")
+    public void VerifyEventTicket()
+    {
+        SKiHomePage sKiHomePage= new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
+        sKiHomePage.getSignInButton ().click ();
+        LoginPage loginPage = new LoginPage (getDriver ());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        loginPage.getLoginCTA ().click ();
+        ConfirmationPageTest confirmationPageTest= new ConfirmationPageTest();
+        confirmationPageTest.validateUserBookEvent ();
+        SharedMethods.threadSleep (12000);
+        sKiHomePage.getMyAccount().click();
+        sKiHomePage.getDashboard().click();
+        DashboardPage dashboardPage=new DashboardPage(getDriver());
+        SharedMethods.waitUntilElementVisible(dashboardPage.getAddGuestCircleNotActive());
+        Assert.assertTrue(dashboardPage.getAddGuestCircleActive().isDisplayed());    }
+
     @Test(description = "Dashboard - verify new user Empty state ")
     public void VerifySignedUpUserVisitDashboard(){
 
