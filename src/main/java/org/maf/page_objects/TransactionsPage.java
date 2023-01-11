@@ -13,7 +13,7 @@ public class TransactionsPage {
     @FindBy(className = "side-list-category")
     private WebElement sideList;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/transactions']")
+    @FindBy(xpath = "//*[@id=\"layout\"]/header/div/nav/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/ul/a")
     private WebElement transactionLeftSide;
 
     @FindBy(xpath = "(//li[@class='cta-link-wrapper']//a)[3]")

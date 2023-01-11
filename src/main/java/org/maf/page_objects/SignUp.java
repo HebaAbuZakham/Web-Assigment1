@@ -28,7 +28,7 @@ public class SignUp {
     @FindBy(xpath = "(//div[contains(@class,'absolute top-0')]/following-sibling::div)[3]")
     private WebElement date;
 
-    @FindBy(xpath = "//h3[text()[normalize-space()='2022']]")
+    @FindBy(xpath = "//h3[text()[normalize-space()='2023']]")
     private WebElement selectYear;
     @FindBy(xpath = "//div[@id='1995-calendar-year']")
     private WebElement year;

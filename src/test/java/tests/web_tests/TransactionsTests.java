@@ -29,9 +29,8 @@ public class TransactionsTests extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitTillClickAble(sKiHomePage.getSignInButton());
         String buttonValue = sKiHomePage.getSignInButton().getText();
-        Assert.assertEquals(buttonValue, "Sign in");
-
-    }//not working
+        Assert.assertEquals(buttonValue, "Sign In");
+    }
 
     @Test(description = "Verify the logged user can access Transactions page")
     public void verifyTheLoggedUserCanAccessTransactions() {
@@ -45,11 +44,12 @@ public class TransactionsTests extends base {
         loginPage.getLoginCTA().click();
         SharedMethods.threadSleep (12000);
         sKiHomePage.getMyAccount().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getTransaction());
         sKiHomePage.getTransaction().click();
         TransactionsPage transactionsPage= new TransactionsPage(getDriver());
         SharedMethods.waitUntilElementVisible(transactionsPage.getTransactionTitle());
 
-    }
+    }// transactions link xpath needs to be updated
 
     @Test(description = "Verify the navigation to transactions page from header")
     public void VerifyTheNavigationToTransactionsPageFromHeader() throws InterruptedException {
@@ -63,7 +63,8 @@ public class TransactionsTests extends base {
         loginPage.getLoginCTA().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getUserAvatar());
         Assert.assertTrue(sKiHomePage.getUserAvatar().isDisplayed());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getUserAvatar());
+        SharedMethods.threadSleep(10000);
+        SharedMethods.waitUntilElementClickable(sKiHomePage.getUserAvatar());
         sKiHomePage.getUserAvatar().click();
         TransactionsPage transactionsPage = new TransactionsPage(getDriver());
         transactionsPage.getTransactionBtn().click();
@@ -83,6 +84,7 @@ public class TransactionsTests extends base {
         loginPage.getUserName().sendKeys(objXMLReader.getXMLData("userName"));
         loginPage.getPassword().sendKeys(objXMLReader.getXMLData("passWord"));
         loginPage.getLoginCTA().click();
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(sKiHomePage.getUserAvatar());
         Assert.assertTrue(sKiHomePage.getUserAvatar().isDisplayed());
         sKiHomePage.getUserAvatar().click();
@@ -104,6 +106,7 @@ public class TransactionsTests extends base {
         loginPage.getUserName().sendKeys(objXMLReader.getXMLData("userName"));
         loginPage.getPassword().sendKeys(objXMLReader.getXMLData("passWord"));
         loginPage.getLoginCTA().click();
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(sKiHomePage.getUserAvatar());
         Assert.assertTrue(sKiHomePage.getUserAvatar().isDisplayed());
         sKiHomePage.getUserAvatar().click();
@@ -132,6 +135,7 @@ public class TransactionsTests extends base {
         loginPage.getUserName().sendKeys(objXMLReader.getXMLData("userName"));
         loginPage.getPassword().sendKeys(objXMLReader.getXMLData("passWord"));
         loginPage.getLoginCTA().click();
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(sKiHomePage.getUserAvatar());
         TransactionsPage transactionsPage = new TransactionsPage(getDriver());
         Assert.assertTrue(sKiHomePage.getUserAvatar().isDisplayed());
