@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 @Listeners({TestListener.class})
 public class SignUpTest extends base {
-
+    //Maintained
     @Test(description = "Validate that user is able to signup and fill all needed data properly")
     public void validateThatUserIsAbleToSignUp()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());

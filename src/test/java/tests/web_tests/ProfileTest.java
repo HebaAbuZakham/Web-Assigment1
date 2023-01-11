@@ -27,7 +27,7 @@ public class ProfileTest extends base {
         SharedMethods.threadSleep (10000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
         SharedMethods.clickAction(sKiHomePage.getUserAvatar());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
+        //SharedMethods.waitUntilElementClickable (sKiHomePage.getProfileOption());
         sKiHomePage.getProfileOption().click();
         ProfilePage profilePage = new ProfilePage(getDriver());
         SharedMethods.threadSleep(600);
