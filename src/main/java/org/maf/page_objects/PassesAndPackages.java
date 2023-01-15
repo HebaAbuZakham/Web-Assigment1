@@ -9,28 +9,28 @@ import org.openqa.selenium.support.PageFactory;
 public class PassesAndPackages {
 
 //    Slope tab
-    @FindBy(xpath = "//li[text()[normalize-space()='Slope']]")
+    @FindBy(xpath = "//h2[text()[normalize-space()='Slope Passes']]")
     private WebElement slopePassesHeader;
 
     @FindBy (xpath = "//span[@class='passes-price']/following-sibling::button")
     private WebElement fullDaySlopePassBuyButton;
 
 //    Snow park tab
-    @FindBy(xpath = "//p[text()[normalize-space()='Snow Park']]")
+    @FindBy(xpath = "//h2[text()[normalize-space()='Snow Park Passes']]")
     private WebElement SnowParkPassesHeader;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")
     private WebElement SnowParkPassBuyButton;
 
     //    Snow cinema tab
-    @FindBy(xpath = "//li[contains(text(),'Snow Cinema')]")
+    @FindBy(xpath = "//h2[text()[normalize-space()='Snow Cinema Passes']]")
     private WebElement SnowCinemaPassesHeader;
 
    @FindBy(xpath = "//a[@class='passes-btn']")
     private WebElement snowCinemaPassBuyButton;
 
    // Penguin Encounter tab
-   @FindBy(xpath = "//li[text()[normalize-space()='Penguin Encounter']]")
+   @FindBy(xpath = "//h2[text()[normalize-space()='Penguin passes']]")
    private WebElement penguinEncounterPassesHeader;
 
    @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Penguin Encounter\"]]")
@@ -44,6 +44,9 @@ public class PassesAndPackages {
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"package-card\"]//p[contains(text(),\"Snow Premium\")]]")
     private WebElement  SnowPremiumPackageBuyButton;
+
+    @FindBy(xpath = "//button[ancestor::div[@class=\"package-card\"]//p[contains(text(),\"Snow Daycation\")]]")
+    private WebElement  SnowDaycationPackageBuyButton;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Daycation\"]]")
     private WebElement  SnowDaycationPassBuyButton;
@@ -194,5 +197,13 @@ public class PassesAndPackages {
 
     public void setSnowPremiumPackageBuyButton(WebElement snowPremiumPackageBuyButton) {
         SnowPremiumPackageBuyButton = snowPremiumPackageBuyButton;
+    }
+
+    public WebElement getSnowDaycationPackageBuyButton() {
+        return SnowDaycationPackageBuyButton;
+    }
+
+    public void setSnowDaycationPackageBuyButton(WebElement snowDaycationPackageBuyButton) {
+        SnowDaycationPackageBuyButton = snowDaycationPackageBuyButton;
     }
 }
