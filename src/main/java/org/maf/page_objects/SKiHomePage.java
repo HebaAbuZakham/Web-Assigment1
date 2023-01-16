@@ -79,7 +79,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement callLink;
 
-    @FindBy (css = ".global-header-container .cta-items-container > div:nth-child(2) a")
+    @FindBy (xpath = "//a[contains(text(),'Contact us')]")
     @CacheLookup
     private WebElement contactUsLink;
 
@@ -145,8 +145,9 @@ public class SKiHomePage {
     @FindBy(css = "#item1f88dba3-e14e-48db-ade9-f289ebaa987e > div > div.navbar-item-menu-tabs-container > div.tabs-list-container > a")
     private WebElement seeAllEventsLink;
 
-    @FindBy(css = "div#layout>header>div>nav>div:nth-of-type(2)>div>div>ul>li:nth-of-type(6)>div>a")
+    @FindBy(xpath = "//header/div[1]/nav[1]/div[2]/div[1]/div[1]/ul[1]/li[5]/div[1]/a[1]")
     private WebElement planYourVisitNav;
+    ////header/div[1]/nav[1]/div[2]/div[1]/div[1]/ul[1]/li[5]/div[1]/a[1]
 
     @FindBy(css = "#iteme32c69ce-7580-486f-ae31-e09760e6a75e > div > ul > li:nth-child(1)")
     private WebElement comePreparedLink;
@@ -210,11 +211,11 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement heroBannerSubTitle;
 
-    @FindBy(css = "#hero-section > div.hero-section-container > img")
+    @FindBy(xpath = "//body/div[@id='__nuxt']/div[@id='__layout']/div[@id='layout']/div[2]/main[1]/section[1]/div[1]/div[1]/img[1]")
     @CacheLookup
     private WebElement heroBannerImage;
 
-    @FindBy(css = "#hero-section > div.scroll-to-continue > p")
+    @FindBy(xpath = "//body/div[@id='__nuxt']/div[@id='__layout']/div[@id='layout']/div[2]/main[1]/section[1]/div[1]/div[2]")
     @CacheLookup
     private WebElement scrollDownButton;
 
@@ -230,7 +231,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement activitySectionDescription;
 
-    @FindBy(css = "div#layout section.activity-section-wrapper.second-section > div > div.activtiy-section-part-wrapper.px-5.md\\3a px-0.md\\3a ltr\\3a pl-10.xl\\3a ltr\\3a pl-43.md\\3a rtl\\3a pr-10.xl\\3a rtl\\3a pr-43 > div > div.base-button > a")
+    @FindBy(xpath = "//a[contains(text(),'Ready to chill?')]")
     @CacheLookup
     private WebElement activitySectionButton;
 

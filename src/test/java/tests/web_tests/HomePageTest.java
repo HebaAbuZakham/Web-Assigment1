@@ -42,7 +42,6 @@ public class HomePageTest extends base {
         sKiHomePage.getLocationsListLink().click();
         sKiHomePage.getSnowAbuDhabiLink().click();
         SharedMethods.threadSleep(3000);
-//        sKiHomePage.getCloseCookiesBanner().click();
         sKiHomePage.getCloseYellowBanner().click();
         softAssert.assertEquals(sKiHomePage.getLocalizationLink().getText(), "Snow Abu Dhabi");
 
@@ -58,7 +57,6 @@ public class HomePageTest extends base {
         sKiHomePage.getLocationsListLink().click();
         sKiHomePage.getSnowOmanLink().click();
         SharedMethods.threadSleep(3000);
-//        sKiHomePage.getCloseCookiesBanner().click();
         softAssert.assertEquals(sKiHomePage.getLocalizationOman().getText(), "Snow Oman");
 
 
@@ -166,7 +164,6 @@ public class HomePageTest extends base {
         SkiAcademy skiAcademy = new SkiAcademy(getDriver());
         SharedMethods.waitUntilElementVisible(skiAcademy.getSnowboardLessonsHeader());
         softAssert.assertEquals(skiAcademy.getSnowboardLessonsHeader().getText(), "WHAT LEVEL ARE YOU?");
-
     }
 
     @Test(description = "Validate that Our Events is exist in the What's On Nav ")
@@ -180,8 +177,8 @@ public class HomePageTest extends base {
 
     }
 
-    @Test(description = "Validate that Fitness And Wellbeing is exist in the What's On Nav ")
-    public void validateThatFitnessAndWellbeingIsExistInTheWhatsOnNav() {
+    @Test(description = "Validate that Fitness And WellBeing is exist in the What's On Nav ")
+    public void validateThatFitnessAndWellBeingIsExistInTheWhatsOnNav() {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getWhatsOnNav());
@@ -423,8 +420,8 @@ public class HomePageTest extends base {
         sKiHomePage.getLearnToSkiSectionButton().isDisplayed();
 
     }
-
-    @Test(description = "Validate That The User Is Able To Navigate To School Academy Page From Learn To Ski & Board Section Section")
+    //this element has been deleted from the footer
+    /*@Test(description = "Validate That The User Is Able To Navigate To School Academy Page From Learn To Ski & Board Section Section")
     public void validateThatTheUserIsAbleToNavigateToSchoolAcademyPageFromLearnToSkiAndBoardSection() {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
         SkiAcademy skiAcademy = new SkiAcademy(getDriver());
@@ -434,7 +431,7 @@ public class HomePageTest extends base {
         sKiHomePage.getLearnToSkiSectionButton().click();
         skiAcademy.getExploreSkiAcademyHeader().isDisplayed();
 
-    }
+    }*/
 
     @Test(description = "Validate That The User Is Able To Find Tickets From Find Tickets Bar")
     public void validateThatTheUserIsAbleToFindTicketsFromFindTicketsBar() {
