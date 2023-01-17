@@ -33,6 +33,15 @@ public class BookingSharedComponent {
     @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(1)")
     private WebElement removeAdultGuest;
 
+    // calender
+    @FindBy(xpath = "//button/i[@class=\"mx-icon-left\"]")
+    private WebElement calenderLeftArrow;
+
+    @FindBy(xpath = "//button/i[@class=\"mx-icon-right\"]")
+    private WebElement calenderRightArrow;
+
+    @FindBy(xpath = "//td[not(contains(@class, \"disabled\"))]")
+    private WebElement calenderFirstEnabledDate;
 
 
     public WebElement getCalendarButton () {
@@ -99,5 +108,29 @@ public class BookingSharedComponent {
 
     public void setAddChildGuest(WebElement addChildGuest) {
         this.addChildGuest = addChildGuest;
+    }
+
+    public WebElement getCalenderFirstEnabledDate() {
+        return calenderFirstEnabledDate;
+    }
+
+    public void setCalenderFirstEnabledDate(WebElement calenderFirstEnabledDate) {
+        this.calenderFirstEnabledDate = calenderFirstEnabledDate;
+    }
+
+    public WebElement getCalenderRightArrow() {
+        return calenderRightArrow;
+    }
+
+    public void setCalenderRightArrow(WebElement calenderRightArrow) {
+        this.calenderRightArrow = calenderRightArrow;
+    }
+
+    public WebElement getCalenderLeftArrow() {
+        return calenderLeftArrow;
+    }
+
+    public void setCalenderLeftArrow(WebElement calenderLeftArrow) {
+        this.calenderLeftArrow = calenderLeftArrow;
     }
 }

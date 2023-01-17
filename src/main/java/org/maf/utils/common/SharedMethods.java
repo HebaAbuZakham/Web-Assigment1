@@ -129,7 +129,7 @@ public class SharedMethods extends SelInstance {
     public static void jsScrollDown(WebElement Locator)
     {
         JavascriptExecutor js = (JavascriptExecutor) getDriver ();
-        js.executeScript("window.scrollBy(0,350)", Locator);
+        js.executeScript("arguments[0].scrollIntoView(true);", Locator);
     }
 
     public static void mouseClickAction(WebElement Locator)

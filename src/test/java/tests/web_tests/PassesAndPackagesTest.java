@@ -111,7 +111,6 @@ public class PassesAndPackagesTest extends base {
 
     }
     
-    // #TODO reCheck after time slots are added
     @Test(description = "Validate that user can book package with bonus activity")
     public void validateThatUserBuyPackageWithBonusActivity(){
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
@@ -125,7 +124,7 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.threadSleep (12000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        SharedMethods.clickOn(sKiHomePage.getSnowParkOption());
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.SwitchToNewTap(passesAndPackages.getSnowPremiumPackageBuyButton());
@@ -134,7 +133,7 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.waitUntilElementVisible(activitiesPage.getActivitiesTitle());
         Assert.assertTrue(activitiesPage.getActivitiesTitle().isDisplayed());
         AddOnsScreen addOnsScreen= new AddOnsScreen(getDriver()) ;
-        //String selectedTimeSlot = activitiesPage.getLastActivityTimeSlot().getText();
+        SharedSteps.userSearchCalendarForDate();
         SharedMethods.clickOn(activitiesPage.getLastActivityTimeSlot());
         SharedMethods.clickOn(activitiesPage.getPackageSlopePassAddButton());
         SharedMethods.clickOn(activitiesPage.getAddTicketButton());
@@ -143,9 +142,8 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver ());
-        SharedMethods.waitTillClickAble (personalDetailsPage.getContinueToPayment());
-        Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
-        personalDetailsPage.getContinueToPayment ().click ();
+        SharedMethods.threadSleep (1000);
+        SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.threadSleep (3000);
         SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
@@ -160,7 +158,6 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
         Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
 
-
     }
 
     // #TODO reCheck after time slots are added
@@ -174,22 +171,22 @@ public class PassesAndPackagesTest extends base {
         loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (12000);
+        SharedMethods.threadSleep (14000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages());
         SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
-        SharedMethods.threadSleep (1000);
-        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowDaycationPackageBuyButton());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowDaycationPackageBuyButton());
         SharedMethods.jsScrollDown(passesAndPackages.getSnowDaycationPackageBuyButton());
+        SharedMethods.clickOn(passesAndPackages.getSnowDaycationPackageBuyButton());
         ActivitiesPage activitiesPage= new ActivitiesPage(getDriver());
         SharedMethods.waitUntilElementVisible(activitiesPage.getActivitiesTitle());
         Assert.assertTrue(activitiesPage.getActivitiesTitle().isDisplayed());
         AddOnsScreen addOnsScreen= new AddOnsScreen(getDriver()) ;
-        //String selectedTimeSlot = activitiesPage.getLastActivityTimeSlot().getText();
-//        SharedMethods.clickOn(activitiesPage.getLastActivityTimeSlot());
+        SharedMethods.threadSleep (4000);
         SharedMethods.clickOn(activitiesPage.getPackageSlopePassAddButton());
         SharedMethods.clickOn(activitiesPage.getAddTicketButton());
         SharedMethods.threadSleep (4000);
@@ -203,7 +200,8 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.threadSleep (3000);
         SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
         SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
-                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));        SharedMethods.threadSleep (1000);
+                objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
+        SharedMethods.threadSleep (1000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         SharedMethods.clickOn(paymentDetailsPage.getPay ());
         SharedMethods.threadSleep (5000);

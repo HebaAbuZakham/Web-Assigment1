@@ -98,4 +98,25 @@ public class SharedSteps {
         }
     }
 
+    public static void userSearchCalendarForDate(){
+        AddOnsScreen addOnsScreen= new AddOnsScreen(getDriver()) ;
+        SharedMethods.threadSleep (4000);
+
+        SharedMethods.clickOn(addOnsScreen.getCalendarButton());
+        SharedMethods.threadSleep (4000);
+        SharedMethods.clickOn(addOnsScreen.getNextMonthButton());
+        Integer loop = 3;
+
+        while (loop>0) {
+            try {
+                SharedMethods.threadSleep (4000);
+                SharedMethods.clickOn(addOnsScreen.getCalenderFirstEnabledDate());
+                loop = 0;
+            } catch (Exception e) {
+                SharedMethods.clickOn(addOnsScreen.getNextMonthButton());
+                --loop;
+            }
+        }
+    }
+
 }
