@@ -24,13 +24,12 @@ public class AddOnsTest extends base {
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
-//        sKiHomePage.getAcceptCookiesButton ().click ();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
         sKiHomePage.getSlopeOption ().click ();
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
-        SharedMethods.threadSleep (1000);
+        SharedMethods.threadSleep (2000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
         SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
@@ -38,7 +37,7 @@ public class AddOnsTest extends base {
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitUntilElementClickable (addOnsScreen.getAddMainAddOnsButton ());
-        addOnsScreen.getAddMainAddOnsButton ().click ();
+        SharedMethods.mouseClickAction (addOnsScreen.getAddMainAddOnsButton());
         SharedMethods.mouseClickAction (addOnsScreen.getCalendarButton());
         SharedMethods.mouseClickAction (addOnsScreen.getNextMonthButton ());
         SharedMethods.mouseClickAction (addOnsScreen.getMonthSelection ());
@@ -71,11 +70,10 @@ public class AddOnsTest extends base {
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
-        addOnsScreen.getGuestsDropDownList ().click ();
+        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown());
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
         SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.clickOn(addOnsScreen.getAddOnsLabel());
         Assert.assertTrue (addOnsScreen.getSupervisionAddOnsTicket().isDisplayed ());
         Assert.assertTrue (addOnsScreen.getNeedSupervisionTicketMsg().isDisplayed ());
 
@@ -99,11 +97,11 @@ public class AddOnsTest extends base {
         SharedMethods.mouseClickAction (passesAndPackages.getSnowParkPassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
-        addOnsScreen.getGuestsDropDownList ().click ();
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getAdultsDropDown ());
+        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown ());
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
         SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.clickOn(addOnsScreen.getAddOnsLabel());
         Assert.assertTrue (addOnsScreen.getNeedAdultTicketMsg().isDisplayed ());
     }
 
@@ -119,18 +117,18 @@ public class AddOnsTest extends base {
         sKiHomePage.getSlopeOption ().click ();
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
         SharedMethods.threadSleep (2000);
-        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
         SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.waitUntilElementClickable (addOnsScreen.getAdultsDropDown ());
+        SharedMethods.mouseClickAction (addOnsScreen.getAdultsDropDown ());
         SharedMethods.threadSleep (1000);
-        addOnsScreen.getGuestsDropDownList ().click ();
         SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
         SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
-        SharedMethods.clickOn(addOnsScreen.getGuestsDropDownList ());
+        SharedMethods.threadSleep (1000);
+        SharedMethods.clickOn(addOnsScreen.getAddOnsLabel());
         Assert.assertTrue (addOnsScreen.getSupervisionAddOnsTicket().isDisplayed ());
         Assert.assertTrue (addOnsScreen.getNeedSupervisionTicketMsg().isDisplayed ());
         SharedMethods.clickOn(addOnsScreen.getSupervisionTicketPlusButton ());
@@ -158,9 +156,7 @@ public class AddOnsTest extends base {
         SharedMethods.threadSleep (700);
         PassesAndPackages passesAndPackages=new PassesAndPackages(getDriver());
         SharedMethods.jsScrollDown(passesAndPackages.getSnowParkPassBuyButton());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassBuyButton());
-        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowParkPassBuyButton());
-        passesAndPackages.getSnowParkPassBuyButton().click();
+        SharedMethods.clickOn(passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.threadSleep(700);
         AddOnsScreen addOnsScreen=new AddOnsScreen(getDriver());
         Assert.assertTrue(SharedMethods.elementContainsText(addOnsScreen.getCalendarButton(), selectedDate));
