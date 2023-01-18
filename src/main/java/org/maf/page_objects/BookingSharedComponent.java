@@ -27,7 +27,7 @@ public class BookingSharedComponent {
     private WebElement addChildGuest;
 
 
-    @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[3]/div[2]")
+    @FindBy(xpath = "//div[@class='field-row mt-2']//button")
     private WebElement guestsDropDownList;
 
     @FindBy(css = "ul#booking-bar-guest-ddl>li:nth-of-type(1)>div>div:nth-of-type(2)>button:nth-of-type(1)")
