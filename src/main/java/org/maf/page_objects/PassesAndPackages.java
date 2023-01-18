@@ -9,14 +9,18 @@ import org.openqa.selenium.support.PageFactory;
 public class PassesAndPackages {
 
 //    Slope tab
+
     @FindBy(xpath = "//h2[text()[normalize-space()='Slope Passes & Pacakges']]")
+
     private WebElement slopePassesHeader;
 
     @FindBy (css = "div#layout>div:nth-of-type(2)>main>div>div>section>div:nth-of-type(2)>div>div>div:nth-of-type(2)>div>div:nth-of-type(3)>div:nth-of-type(2)>button")
     private WebElement fullDaySlopePassBuyButton;
 
 //    Snow park tab
+
     @FindBy(xpath = "//h2[text()[normalize-space()='Snow Park Passes & Packages']]")
+
     private WebElement SnowParkPassesHeader;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")
@@ -30,7 +34,7 @@ public class PassesAndPackages {
     private WebElement snowCinemaPassBuyButton;
 
    // Penguin Encounter tab
-   @FindBy(xpath = "//h2[text()[normalize-space()='Penguin passes']]")
+   @FindBy(xpath = "//h2[text()[contains(normalize-space(),'Penguin passes')]]")
    private WebElement penguinEncounterPassesHeader;
 
    @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Penguin Encounter\"]]")
