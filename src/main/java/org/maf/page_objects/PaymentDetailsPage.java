@@ -18,7 +18,7 @@ public class PaymentDetailsPage {
     @FindBy(id = "cardExpiry")
     private WebElement cardExpiry;
 
-    @FindBy(id = "cardCvc")
+    @FindBy(xpath = "//input[@id='cardCvc']")
     private WebElement cardCSV;
 
     @FindBy(xpath = "//*[@placeholder=\"CVC/CVV\"]")

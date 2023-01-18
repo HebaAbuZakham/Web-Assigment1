@@ -25,10 +25,10 @@ public class PersonalDetailsPage {
     @FindBy(id="email")
     WebElement email;
 
-    @FindBy(id="bookingInfoCheckbox")
+    @FindBy(xpath="//input[@id='check-box-0']")
     WebElement bookingInformationCheckbox;
 
-    @FindBy(id="termsConditsCheckbox")
+    @FindBy(xpath="//input[@id='check-box-1']")
     WebElement termsConditonsCheckbox;
 
     @FindBy(xpath="//div[contains(@class,'absolute left-0')]")
@@ -64,7 +64,7 @@ public class PersonalDetailsPage {
 
     @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[1]/div/a")
     WebElement editTicketInfo;
-    @FindBy(xpath = "//*[@id=\"layout\"]/div[1]/main/div[2]/div/div/div[1]/div[2]/button")
+    @FindBy(xpath = "//button[contains(text(),'Continue to payment')]")
     private WebElement continueToPayment ;
 
 

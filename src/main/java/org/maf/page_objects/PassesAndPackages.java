@@ -16,10 +16,10 @@ public class PassesAndPackages {
     private WebElement fullDaySlopePassBuyButton;
 
 //    Snow park tab
-    @FindBy(xpath = "//p[text()[normalize-space()='Snow Park']]")
+    @FindBy(xpath = "//li[contains(text(),'Snow Park')]")
     private WebElement SnowParkPassesHeader;
 
-    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")
+    @FindBy(xpath = "//body/div[@id='__nuxt']/div[@id='__layout']/div[@id='layout']/div[2]/main[1]/div[1]/div[1]/section[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/button[1]")
     private WebElement SnowParkPassBuyButton;
 
     //    Snow cinema tab
