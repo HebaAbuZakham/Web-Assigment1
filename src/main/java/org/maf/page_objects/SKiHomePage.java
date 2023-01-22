@@ -174,7 +174,7 @@ public class SKiHomePage {
     @FindBy(css = "#layout > header > div.update-msg-container > button")
     private WebElement closeYellowBanner;
 
-    @FindBy (css = ".btn-sign-in")
+    @FindBy (css = "button.btn-sign-in")
     @CacheLookup
     private WebElement signInButton;
 

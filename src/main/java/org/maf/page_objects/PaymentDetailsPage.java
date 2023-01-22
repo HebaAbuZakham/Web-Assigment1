@@ -9,7 +9,7 @@ public class PaymentDetailsPage {
 
 
 
-    @FindBy(xpath = "//button[@class='uppercase text-light-yellow']")
+    @FindBy(xpath = "//h2[@class=\"title\" and contains(text(),\"PAYMENT DETAILS\")]")
     private WebElement paymentHead;
 
     @FindBy(id = "cardNumber")

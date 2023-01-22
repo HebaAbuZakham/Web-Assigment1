@@ -76,22 +76,24 @@ public class FindYourBookingTest extends base {
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
         sKiHomePage.getSignInButton ().click ();
         LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (12000);
-        sKiHomePage.getMyAccount().click();
-        sKiHomePage.getDashboard().click();
+        SharedMethods.threadSleep (18000);
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getMyAccount());
+        SharedMethods.clickOn(sKiHomePage.getMyAccount());
+        SharedMethods.clickOn(sKiHomePage.getDashboard());
         DashboardPage dashboard= new DashboardPage(getDriver());
         String FieldValue= dashboard.getBookingRef().getText();
         SharedMethods.clickAction (sKiHomePage.getMyAccount());
         SharedMethods.waitTillClickAble (sKiHomePage.getLogout());
         SharedMethods.clickAction ( sKiHomePage.getLogout());
-        SharedMethods.threadSleep (12000);
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
-        sKiHomePage.getSignInButton ().click ();
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
+        SharedMethods.threadSleep (15000);
+        sKiHomePage= new SKiHomePage(getDriver());
+        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton());
+        SharedMethods.clickAction (sKiHomePage.getSignInButton());
+        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName1"));
+        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPlanYourVisitNav ());
@@ -100,7 +102,9 @@ public class FindYourBookingTest extends base {
         sKiHomePage.getFindYourBookingLink().click();
         FindYourBooking findYourBooking= new FindYourBooking(getDriver());
         findYourBooking.getFindYourBookingField().sendKeys(FieldValue);
-        SharedMethods.waitUntilElementVisible(findYourBooking.getValidationMessage());
+        findYourBooking.getSubmitAndContinue().click();
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementVisible(findYourBooking.getOtherAccountBookingHeader());
         Assert.assertTrue (findYourBooking.getValidationMessage().isDisplayed());
     }
 
@@ -115,7 +119,7 @@ public class FindYourBookingTest extends base {
         SharedMethods.threadSleep (1000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         paymentDetailsPage.getPay ().click ();
-        SharedMethods.threadSleep (5000);
+        SharedMethods.threadSleep (6000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
         SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
         Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
@@ -143,10 +147,11 @@ public class FindYourBookingTest extends base {
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord1"));
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
-        sKiHomePage.getMyAccount().click();
-        sKiHomePage.getDashboard().click();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getMyAccount());
+        SharedMethods.clickOn (sKiHomePage.getMyAccount());
+        SharedMethods.clickAction ( sKiHomePage.getDashboard());
         DashboardPage dashboard= new DashboardPage(getDriver());
-        Assert.assertTrue ( dashboard.getBookingRef().isDisplayed());
+        SharedMethods.waitUntilElementVisible ( dashboard.getBookingRef());
         String bookingId= SharedMethods.FieldValue(dashboard.getBookingRef());
         SharedMethods.clickAction (sKiHomePage.getMyAccount());
         SharedMethods.clickAction ( sKiHomePage.getLogout());
@@ -160,7 +165,6 @@ public class FindYourBookingTest extends base {
         SharedMethods.waitUntilElementVisible(findYourBooking.getFSigninButton());
         Assert.assertTrue (findYourBooking.getFSigninButton().isDisplayed());
     }
-
 
 
 }
