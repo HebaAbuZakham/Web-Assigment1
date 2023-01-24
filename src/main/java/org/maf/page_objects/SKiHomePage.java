@@ -461,7 +461,7 @@ public class SKiHomePage {
     @FindBy(xpath = "//div[@class='user-avatar-container']//div[1]")
     private WebElement myAccount;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
+    @FindBy(xpath = "//*[contains(@href,'/accounts/profile/personal-details')]")
     private WebElement profileOption;
 
 
