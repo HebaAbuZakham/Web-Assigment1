@@ -25,10 +25,10 @@ public class PersonalDetailsPage {
     @FindBy(id="email")
     WebElement email;
 
-    @FindBy(id="bookingInfoCheckbox")
+    @FindBy(xpath="(//div[@class=\"checkbox-container\"]/input[@type=\"checkbox\"])[1]")
     WebElement bookingInformationCheckbox;
 
-    @FindBy(id="termsConditsCheckbox")
+    @FindBy(xpath="(//div[@class=\"checkbox-container\"]/input[@type=\"checkbox\"])[2]")
     WebElement termsConditonsCheckbox;
 
     @FindBy(xpath="//div[contains(@class,'absolute left-0')]")

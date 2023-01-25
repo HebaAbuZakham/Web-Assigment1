@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProfilePage {
 
-    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/ul/li[6]/button")
+    @FindBy(xpath = "//button[@aria-label=\"add user\"]")
     private WebElement addIcon;
 
     @FindBy(xpath = "*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/ul")
@@ -75,10 +75,10 @@ public class ProfilePage {
     @FindBy(xpath = "//h1[@class='title']")
     private WebElement pageTitle;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/set-your-gear']")
+    @FindBy(xpath = "(//a[contains(@href,'/accounts/profile/set-your-gear')])[2]")
     private WebElement gearButton;
 
-    @FindBy(xpath = "//div[text()[normalize-space()='Choose your gear']]")
+    @FindBy(xpath = "//div[text()[normalize-space()='CHOOSE YOUR GEAR']]")
     private WebElement gearPageTitle;
 
     @FindBy(xpath = "//button[text()[normalize-space()='Buy now']]")
