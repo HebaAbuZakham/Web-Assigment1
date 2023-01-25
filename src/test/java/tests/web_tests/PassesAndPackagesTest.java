@@ -160,7 +160,6 @@ public class PassesAndPackagesTest extends base {
 
     }
 
-    // #TODO reCheck after time slots are added
     @Test(description = "Validate that user can book package without bonus activity")
     public void validateThatUserBuyPackageWithoutBonusActivity(){
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver());

@@ -31,6 +31,7 @@ public class PersonalDetailsPage {
     @FindBy(id="check-box-1")
     WebElement termsConditonsCheckbox;
 
+
     @FindBy(xpath="//div[contains(@class,'absolute left-0')]")
     WebElement countryDropDownList;
 
