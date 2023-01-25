@@ -40,7 +40,7 @@ public class PassesAndPackages {
    @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Penguin Encounter\"]]")
    private WebElement penguinEncounterPassBuyButton;
 
-    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Breakfast with Penguins\"]]")
+    @FindBy(xpath = "(//button[@class='passes-btn'])[2]")
     private WebElement BreakfastWithPenguinPassBuyButton;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Premium\"]]")
