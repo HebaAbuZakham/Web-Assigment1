@@ -507,10 +507,13 @@ public class ConfirmationPageTest  extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
-        sKiHomePage.getSnowParkOption().click();
-        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
