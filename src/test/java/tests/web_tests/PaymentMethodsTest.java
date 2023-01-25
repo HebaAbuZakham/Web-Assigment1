@@ -3,6 +3,7 @@ package tests.web_tests;
 
 import org.maf.core.instance.BetaDriver.base;
 import org.maf.page_objects.LoginPage;
+import org.maf.page_objects.PaymentDetailsPage;
 import org.maf.page_objects.PaymentMethodsPage;
 import org.maf.page_objects.SKiHomePage;
 import org.maf.utils.ExtentReport.TestListener;
@@ -299,8 +300,7 @@ public class PaymentMethodsTest extends base {
         paymentMethodsPage.getSaveButton().click();
         SharedMethods.threadSleep (13000);
         paymentMethodsPage.clickSubmitButton(getDriver());
-       // SharedMethods.waitUntilElementClickable(paymentMethodsPage.getSubmitButton());
-       // paymentMethodsPage.getSubmitButton().click();
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(paymentMethodsPage.getCardInfo());
         Assert.assertTrue(paymentMethodsPage.getCardInfo().isDisplayed());
 

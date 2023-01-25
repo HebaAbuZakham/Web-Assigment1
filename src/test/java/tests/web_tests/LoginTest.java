@@ -5,7 +5,7 @@ import org.maf.page_objects.LoginPage;
 import org.maf.page_objects.SKiHomePage;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
-import org.maf.utils.error_handlers.RetryAnalyzer;
+//import org.maf.utils.error_handlers.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

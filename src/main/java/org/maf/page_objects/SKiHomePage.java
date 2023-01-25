@@ -186,7 +186,7 @@ public class SKiHomePage {
     @CacheLookup
     private WebElement passesAndPackages;
 
-    @FindBy(xpath = "//a[@href='/en/passes-packages/slope']")
+    @FindBy(xpath = "//p[contains(text(), \"Slope\")]")
     @CacheLookup
     private WebElement slopeOption;
 

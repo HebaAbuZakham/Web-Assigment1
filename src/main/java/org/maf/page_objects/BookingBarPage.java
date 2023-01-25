@@ -16,10 +16,10 @@ public class BookingBarPage {
     @FindBy(xpath = "//*[@id=\"findTicketBar\"]/div/div/div[3]/div[1]/div[2]")
     private WebElement guestsDll;
 
-    @FindBy(xpath = "//*[@id=\"booking-bar-experience\"]/ul/li[3]/div/span[1]")
+    @FindBy(xpath = "//*[@id=\"booking-bar-experience\"]/ul/li[contains(.,\"Park\")]")
     private WebElement snowParkExperience;
 
-    @FindBy(xpath = "//*[@id=\"booking-bar-date\"]/div/div/div/div/div/div[2]/table/tbody/tr[3]/td[2]")
+    @FindBy(xpath = "(//*[@id=\"booking-bar-date\"]//tr/td[not(contains(@class, \"disabled\"))])[1]")
     private WebElement dateSelection;
 
     @FindBy(css = "div#date-text-booking-bar>p:nth-of-type(3)")
