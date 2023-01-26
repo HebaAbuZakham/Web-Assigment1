@@ -24,11 +24,11 @@ public class ProfileTest extends base {
         loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (10000);
+        SharedMethods.threadSleep (15000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
         SharedMethods.clickAction(sKiHomePage.getUserAvatar());
-        //SharedMethods.waitUntilElementClickable (sKiHomePage.getProfileOption());
-        sKiHomePage.getProfileOption().click();
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
+        SharedMethods.clickAction(sKiHomePage.getProfileOption());
         ProfilePage profilePage = new ProfilePage(getDriver());
         SharedMethods.threadSleep(600);
         SharedMethods.waitUntilElementClickable(profilePage.getAddIcon());
@@ -51,9 +51,7 @@ public class ProfileTest extends base {
         profilePage.getSubmitButton().click();
         SharedMethods.threadSleep(5000);
         Assert.assertTrue(profilePage.getPageTitle().isDisplayed());
-
-
-
+        
     }
 
     @Test(description = "Validate that choose gear leading user to choose gear ")
@@ -66,14 +64,15 @@ public class ProfileTest extends base {
         loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (10000);
+        SharedMethods.threadSleep (15000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
         SharedMethods.clickAction(sKiHomePage.getUserAvatar());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
-        sKiHomePage.getProfileOption().click();
+        SharedMethods.clickAction(sKiHomePage.getProfileOption());
         ProfilePage profilePage = new ProfilePage(getDriver());
-        SharedMethods.threadSleep(300);
-        profilePage.getGearButton().click();
+        SharedMethods.threadSleep(1000);
+        SharedMethods.jsScrollDown(profilePage.getGearButton());
+        SharedMethods.clickOn(profilePage.getGearButton());
         SharedMethods.waitUntilElementVisible(profilePage.getGearPageTitle());
         Assert.assertTrue(profilePage.getGearPageTitle().isDisplayed());
 
@@ -89,14 +88,15 @@ public class ProfileTest extends base {
         loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
         loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
         loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (10000);
+        SharedMethods.threadSleep (15000);
         SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
         SharedMethods.clickAction(sKiHomePage.getUserAvatar());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
-        sKiHomePage.getProfileOption().click();
+        SharedMethods.clickAction(sKiHomePage.getProfileOption());
         ProfilePage profilePage = new ProfilePage(getDriver());
-        SharedMethods.threadSleep(300);
-        profilePage.getBuyMembershipButton().click();
+        SharedMethods.threadSleep(1000);
+        SharedMethods.jsScrollDown(profilePage.getBuyMembershipButton());
+        SharedMethods.clickOn(profilePage.getBuyMembershipButton());
         SharedMethods.waitUntilElementVisible(profilePage.getBuyMembershipTitle());
         Assert.assertTrue(profilePage.getBuyMembershipTitle().isDisplayed());
 

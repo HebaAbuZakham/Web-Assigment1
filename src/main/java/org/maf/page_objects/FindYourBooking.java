@@ -20,6 +20,7 @@ public class FindYourBooking {
     private WebElement findYourBookingField;
 
     @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    @CacheLookup
     private WebElement submitAndContinue;
 
     @FindBy(xpath = "(//button[@type='button'])[2]")
@@ -27,6 +28,9 @@ public class FindYourBooking {
 
     @FindBy   (xpath ="//div[contains(@class,'ltr:text-left rtl:text-right')]")
     private WebElement validationMessage;
+
+    @FindBy   (xpath ="//h1[@class=\"title\"][contains(text(),\"ARE YOU SURE THIS IS YOUR BOOKING?\")]")
+    private WebElement otherAccountBookingHeader;
 
     @FindBy   (xpath ="//h1[@class='title']")
     private WebElement guestUserFindBookingHeader;

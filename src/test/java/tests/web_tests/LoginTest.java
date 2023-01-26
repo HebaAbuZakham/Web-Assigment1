@@ -106,9 +106,9 @@ public class LoginTest extends base {
         SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
         sKiHomePage.getSignInButton ().click ();
         LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getNotFilledEmail ().click ();
-        loginPage.getNotFilledPassword().click ();
-        loginPage.getNotFilledEmail ().click ();
+        SharedMethods.clickOn(loginPage.getUserName ());
+        SharedMethods.clickOn(loginPage.getPassword());
+        SharedMethods.clickOn(loginPage.getUserName());
         Assert.assertEquals (loginPage.getNotFilledEmail().getText() , "Please enter the email.");
         Assert.assertEquals (loginPage.getNotFilledPassword().getText() , "Please enter the password.");
 

@@ -27,8 +27,8 @@ public class BookingBarTest extends base {
         loginPage.getLoginCTA ().click ();
         SharedMethods.threadSleep (12000);
         BookingBarPage bookingBarPage = new BookingBarPage(getDriver());
-        SharedMethods.waitUntilElementClickable(bookingBarPage.getExperienceDll());
-        bookingBarPage.getExperienceDll().click();
+        SharedMethods.threadSleep(3000);
+        SharedMethods.clickOn(bookingBarPage.getExperienceDll());
         SharedMethods.waitUntilElementVisible(bookingBarPage.getSnowParkExperience());
         bookingBarPage.getSnowParkExperience().click();
         SharedMethods.waitUntilElementVisible(bookingBarPage.getDateDll());
@@ -90,7 +90,7 @@ public class BookingBarTest extends base {
         SharedMethods.waitUntilElementVisible(bookingBarPage.getBookingButton());
         bookingBarPage.getBookingButton().click();
         SharedMethods.threadSleep (10000);
-        String data= Arrays.toString(bookingBarPage.getDateValue().getText().split(" 2022")) .replace("[","").replace("]","")+", "+bookingBarPage.getGuestsDll().getText().replaceAll("[^0-9]", "")+" GUEST"+"   [UPDATE]";
+        String data= Arrays.toString(bookingBarPage.getDateValue().getText().split(" 2023")) .replace("[","").replace("]","")+", "+bookingBarPage.getGuestsDll().getText().replaceAll("[^0-9]", "")+" GUEST"+"   [UPDATE]";
         Assert.assertEquals(bookingBarPage.getBookingButton().getText().toLowerCase(), data.toLowerCase());
     }
 }

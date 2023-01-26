@@ -25,11 +25,12 @@ public class PersonalDetailsPage {
     @FindBy(id="email")
     WebElement email;
 
-    @FindBy(xpath="//input[@id='check-box-0']")
+    @FindBy(id="check-box-0")
     WebElement bookingInformationCheckbox;
 
-    @FindBy(xpath="//input[@id='check-box-1']")
+    @FindBy(id="check-box-1")
     WebElement termsConditonsCheckbox;
+
 
     @FindBy(xpath="//div[contains(@class,'absolute left-0')]")
     WebElement countryDropDownList;

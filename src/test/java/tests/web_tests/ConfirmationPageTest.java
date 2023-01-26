@@ -19,7 +19,7 @@ public class ConfirmationPageTest  extends base {
 
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
@@ -27,16 +27,16 @@ public class ConfirmationPageTest  extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
         SharedMethods.threadSleep (2000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
-        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
-        SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
         SharedMethods.threadSleep (1000);
-        SharedMethods.clickOn(addOnsScreen.getGuestsDropDownList ());
-        SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
-        SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
+       SharedMethods.waitUntilElementClickable (addOnsScreen.getGuestsDropDownList ());
+       SharedMethods.clickOn(addOnsScreen.getGuestsDropDownList ());
+       SharedMethods.mouseClickAction (addOnsScreen.getNumberOfJuniors ());
+       SharedMethods.mouseClickAction (addOnsScreen.getRemoveAdultGuest ());
         SharedMethods.clickOn(addOnsScreen.getGuestsDropDownList ());
         Assert.assertTrue (addOnsScreen.getSupervisionAddOnsTicket().isDisplayed ());
         Assert.assertTrue (addOnsScreen.getNeedSupervisionTicketMsg().isDisplayed ());
@@ -50,6 +50,7 @@ public class ConfirmationPageTest  extends base {
         personalDetailsPage.getContinueToPayment ().click ();
         SharedMethods.threadSleep (3000);
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.jsScrollDown (paymentDetailsPage.getCardCSV ());
         SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
         SharedSteps.userFillCCPayment(objXMLReader.getXMLData ("masterCard1"),
                 objXMLReader.getXMLData ("cardExp"), objXMLReader.getXMLData ("cardCSV"));
@@ -68,7 +69,7 @@ public class ConfirmationPageTest  extends base {
     public void validateThatTheUserBookPass ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
@@ -76,8 +77,8 @@ public class ConfirmationPageTest  extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
         SharedMethods.threadSleep (2000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
-        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
@@ -99,26 +100,27 @@ public class ConfirmationPageTest  extends base {
         SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
         SharedMethods.threadSleep (2000);
         Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
-        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("FullDaySlope")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
+        SharedMethods.threadSleep (3000);
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("Full Day Slope Pass")+"- 1"+objXMLReader.getXMLData("Adult")) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "1 " + objXMLReader.getXMLData("TicketLabel")) );
-
+//asserion its not passed
     }
 
     @Test(description = "Validate user book Pass - check Master Card payment method from booking confirmation")
     public void validateThatTheUserBookPassWithMasterCard ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
         sKiHomePage.getSlopeOption ().click ();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
-        SharedMethods.threadSleep (2000);
+        SharedMethods.threadSleep (3000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
-        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
@@ -149,7 +151,7 @@ public class ConfirmationPageTest  extends base {
     public void validateThatTheUserBookPassWithVisa ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
@@ -157,6 +159,7 @@ public class ConfirmationPageTest  extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
         SharedMethods.threadSleep (2000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
@@ -189,7 +192,7 @@ public class ConfirmationPageTest  extends base {
     public void validateThatTheUserBookPassSeeRightPrice ()  {
         SKiHomePage sKiHomePage = new SKiHomePage(getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
@@ -197,8 +200,8 @@ public class ConfirmationPageTest  extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
         SharedMethods.threadSleep (2000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
-        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver ());
@@ -241,8 +244,8 @@ public class ConfirmationPageTest  extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
         SharedMethods.threadSleep (1000);
         SharedMethods.waitUntilElementVisible (passesAndPackages.getSnowParkPassesHeader ());
+        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.waitUntilElementClickable (passesAndPackages.getSnowParkPassBuyButton());
-        SharedMethods.jsScrollDown (passesAndPackages.getSnowParkPassBuyButton ());
         SharedMethods.mouseClickAction (passesAndPackages.getSnowParkPassBuyButton ());
         SharedMethods.threadSleep (3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
@@ -270,8 +273,7 @@ public class ConfirmationPageTest  extends base {
     public void validateThatTheUserBookPassWithPartialPromoCode ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName"),  objXMLReader.getXMLData ("passWord"));
-
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
         SharedMethods.waitUntilElementVisible (sKiHomePage.getSnowParkOption ());
@@ -305,12 +307,12 @@ public class ConfirmationPageTest  extends base {
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getPaymentMethod(),objXMLReader.getXMLData("masterCard")) );
 
     }
-
+//need to check with Alaa
     @Test(description =  "Validate The user books event - see selected time & date from confirmation screen")
     public void validateUserBookEvent ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        SharedMethods.threadSleep (2000);
-        SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
+        sKiHomePage.getAcceptCookiesButton ().click ();
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName1"),  objXMLReader.getXMLData ("passWord1"));
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
         SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getPenguinEncounterPassBuyButton());
         ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
@@ -379,7 +381,7 @@ public class ConfirmationPageTest  extends base {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         SharedMethods.threadSleep (2000);
         SharedMethods.clickOn(sKiHomePage.getAcceptCookiesButton ());
-        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName2"),  objXMLReader.getXMLData ("passWord2"));
+        SharedSteps.userLogInToTheSite( objXMLReader.getXMLData ("userName2"),  objXMLReader.getXMLData ("password12"));
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
         SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getSnowPremiumPassBuyButton());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
@@ -478,7 +480,7 @@ public class ConfirmationPageTest  extends base {
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
-        SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.mouseClickAction (passesAndPackages.getSnowParkPassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
@@ -505,10 +507,13 @@ public class ConfirmationPageTest  extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible (sKiHomePage.getPassesAndPackages ());
         SharedMethods.clickAction (sKiHomePage.getPassesAndPackages ());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
-        sKiHomePage.getSnowParkOption().click();
-        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementVisible (sKiHomePage.getSlopeOption ());
+        sKiHomePage.getSlopeOption ().click ();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver ());
+        SharedMethods.threadSleep (2000);
+        SharedMethods.waitUntilElementVisible (passesAndPackages.getSlopePassesHeader ());
+        SharedMethods.jsScrollDown (passesAndPackages.getFullDaySlopePassBuyButton ());
+        SharedMethods.waitUntilElementClickable (passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());

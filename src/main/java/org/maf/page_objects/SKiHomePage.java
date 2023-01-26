@@ -174,7 +174,7 @@ public class SKiHomePage {
     @FindBy(css = "#layout > header > div.update-msg-container > button")
     private WebElement closeYellowBanner;
 
-    @FindBy (css = ".btn-sign-in")
+    @FindBy (css = "button.btn-sign-in")
     @CacheLookup
     private WebElement signInButton;
 
@@ -461,7 +461,7 @@ public class SKiHomePage {
     @FindBy(xpath = "//div[@class='user-avatar-container']//div[1]")
     private WebElement myAccount;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
+    @FindBy(xpath = "//*[contains(@href,'/accounts/profile/personal-details')]")
     private WebElement profileOption;
 
 

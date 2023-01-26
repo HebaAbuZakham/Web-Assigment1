@@ -58,6 +58,7 @@ public class SharedSteps {
         SharedMethods.waitUntilElementVisible(tab);
         SharedMethods.clickOn(tab);
         SharedMethods.threadSleep(1000);
+        SharedMethods.jsScrollDown (passCard);
         SharedMethods.waitUntilElementVisible(passCard);
         SharedMethods.waitUntilElementClickable(passCard);
         SharedMethods.jsScrollDown(passCard);
