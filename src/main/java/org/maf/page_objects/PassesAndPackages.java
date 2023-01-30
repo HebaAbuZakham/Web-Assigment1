@@ -20,7 +20,6 @@ public class PassesAndPackages {
 //    Snow park tab
 
     @FindBy(xpath = "//h2[text()[normalize-space()='Snow Park Passes & Packages']]")
-
     private WebElement SnowParkPassesHeader;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")
