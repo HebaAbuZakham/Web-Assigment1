@@ -7,13 +7,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TransactionsPage {
 
-    @FindBy(xpath = "//a[@class='cta-link']")
+    @FindBy(xpath = "//a[contains(@href,\"/accounts/dashboard\")]")
     private WebElement dashboard;
 
     @FindBy(className = "side-list-category")
     private WebElement sideList;
 
-    @FindBy(xpath = "//*[@id=\"layout\"]/header/div/nav/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/ul/a")
+    @FindBy(xpath = "//a[contains(@href,\"/accounts/transactions\")]")
     private WebElement transactionLeftSide;
 
     @FindBy(xpath = "(//li[@class='cta-link-wrapper']//a)[3]")
