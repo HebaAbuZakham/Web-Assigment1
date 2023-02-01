@@ -16,10 +16,11 @@ public class AddGearTests extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
-        sKiHomePage.getSnowParkOption().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSlopeOption());
+        sKiHomePage.getSlopeOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSlopePassesHeader());
+        SharedMethods.threadSleep(3000);
         SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
         SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
@@ -37,13 +38,11 @@ public class AddGearTests extends base {
         SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+        objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
         paymentDetailsPage.getPay().click();
+        SharedMethods.threadSleep(8000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getBookingConfirmation());
         confirmationPage.getBookingConfirmation().isDisplayed();
@@ -74,6 +73,7 @@ public class AddGearTests extends base {
         addGearPage.getCheckedGearBox().isDisplayed();
         SharedMethods.threadSleep(13000);
         SharedMethods.forceClickOnElement(addGearPage.getContinueButton());
+        SharedMethods.threadSleep(5000);
         Assert.assertEquals(addGearPage.getConfirmationTitle().getText(), "ALL DONE!");
 
     }
@@ -88,14 +88,15 @@ public class AddGearTests extends base {
         loginPage.getUserName().sendKeys(objXMLReader.getXMLData("userName"));
         loginPage.getPassword().sendKeys(objXMLReader.getXMLData("passWord"));
         loginPage.getLoginCTA().click();
-        SharedMethods.threadSleep(9000);
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkPackage());
-        sKiHomePage.getSnowParkPackage().click();
-        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSlopeOption());
+        sKiHomePage.getSlopeOption().click();
         SharedMethods.threadSleep(1000);
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSlopePassesHeader());
+        SharedMethods.threadSleep(1000);
         SharedMethods.waitUntilElementClickable(passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown(passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
@@ -116,11 +117,10 @@ public class AddGearTests extends base {
         SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
         SharedMethods.threadSleep(3000);
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
         paymentDetailsPage.getPay().click();
+        SharedMethods.threadSleep(8000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
         confirmationPage.getBookingConfirmation().isDisplayed();
@@ -145,6 +145,7 @@ public class AddGearTests extends base {
         addGearPage.getCheckedGearBox().isDisplayed();
         SharedMethods.threadSleep(13000);
         SharedMethods.forceClickOnElement(addGearPage.getContinueButton());
+        SharedMethods.threadSleep(5000);
         Assert.assertEquals(addGearPage.getConfirmationTitle().getText(), "ALL DONE!");
     }
 
