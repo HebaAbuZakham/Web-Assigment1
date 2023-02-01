@@ -16,10 +16,11 @@ public class AddGearTests extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
-        sKiHomePage.getSnowParkOption().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSlopeOption());
+        sKiHomePage.getSlopeOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSlopePassesHeader());
+        SharedMethods.threadSleep(3000);
         SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
         SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
@@ -37,13 +38,11 @@ public class AddGearTests extends base {
         SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+        objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
         paymentDetailsPage.getPay().click();
+        SharedMethods.threadSleep(8000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getBookingConfirmation());
         confirmationPage.getBookingConfirmation().isDisplayed();
@@ -74,6 +73,7 @@ public class AddGearTests extends base {
         addGearPage.getCheckedGearBox().isDisplayed();
         SharedMethods.threadSleep(13000);
         SharedMethods.forceClickOnElement(addGearPage.getContinueButton());
+        SharedMethods.threadSleep(5000);
         Assert.assertEquals(addGearPage.getConfirmationTitle().getText(), "ALL DONE!");
 
     }
@@ -88,14 +88,15 @@ public class AddGearTests extends base {
         loginPage.getUserName().sendKeys(objXMLReader.getXMLData("userName"));
         loginPage.getPassword().sendKeys(objXMLReader.getXMLData("passWord"));
         loginPage.getLoginCTA().click();
-        SharedMethods.threadSleep(9000);
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkPackage());
-        sKiHomePage.getSnowParkPackage().click();
-        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSlopeOption());
+        sKiHomePage.getSlopeOption().click();
         SharedMethods.threadSleep(1000);
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSlopePassesHeader());
+        SharedMethods.threadSleep(1000);
         SharedMethods.waitUntilElementClickable(passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.jsScrollDown(passesAndPackages.getFullDaySlopePassBuyButton());
         SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
@@ -116,11 +117,10 @@ public class AddGearTests extends base {
         SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
         SharedMethods.threadSleep(3000);
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
         paymentDetailsPage.getPay().click();
+        SharedMethods.threadSleep(8000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
         confirmationPage.getBookingConfirmation().isDisplayed();
@@ -145,6 +145,7 @@ public class AddGearTests extends base {
         addGearPage.getCheckedGearBox().isDisplayed();
         SharedMethods.threadSleep(13000);
         SharedMethods.forceClickOnElement(addGearPage.getContinueButton());
+        SharedMethods.threadSleep(5000);
         Assert.assertEquals(addGearPage.getConfirmationTitle().getText(), "ALL DONE!");
     }
 
@@ -332,6 +333,133 @@ public class AddGearTests extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.threadSleep(1000);
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.mouseClickAction(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.threadSleep(3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getAddMainAddOnsButton());
+        SharedMethods.mouseClickAction(addOnsScreen.getAdultsDropDown());
+        addOnsScreen.getAddJunior().click();
+        addOnsScreen.getRemoveIcon().click();
+        SharedMethods.threadSleep(7000);
+        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton().click();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
+        SharedMethods.waitUntilElementVisible(personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue(personalDetailsPage.getContinueToPayment().isDisplayed());
+        personalDetailsPage.getContinueToPayment().click();
+        SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
+        personalDetailsPage.clickingMissRadioButton();
+        personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData("firstName"));
+        personalDetailsPage.getLastName().sendKeys(objXMLReader.getXMLData("lastName"));
+        personalDetailsPage.getMobileNum().sendKeys(objXMLReader.getXMLData("phone"));
+        personalDetailsPage.getEmail().sendKeys(objXMLReader.getXMLData("email"));
+        personalDetailsPage.getCountryDropDownList().click();
+        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
+        SharedMethods.mouseClickAction(personalDetailsPage.getBookingInformation());
+        SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
+        SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(2000);
+        SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
+        SharedMethods.threadSleep(8000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
+        SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
+        confirmationPage.getBookingConfirmation().isDisplayed();
+        Assert.assertEquals(confirmationPage.getNextStepTitle().getText(), "Add gear");
+        confirmationPage.getAddGearButton().click();
+        AddGearPage addGearPage = new AddGearPage(getDriver());
+        SharedMethods.waitUntilElementVisible(addGearPage.getAddMember());
+        addGearPage.getAddMember().click();
+        addGearPage.getFirstName().sendKeys(objXMLReader.getXMLData("guestFirstName"));
+        addGearPage.getLastName().sendKeys(objXMLReader.getXMLData("guestLastName"));
+        SharedMethods.jsScrollDown(addGearPage.getBirthOfDatePicker());
+        addGearPage.getBirthOfDatePicker().click();
+        addGearPage.getYearsTab().click();
+        addGearPage.getBackArrow().click();
+        addGearPage.getBackArrow().click();
+        addGearPage.getYear().click();
+        addGearPage.getMonth().click();
+        addGearPage.getDay().click();
+        Assert.assertEquals(addGearPage.getDressLabel().getText(),"Jumpsuit");
+    }
+
+    @Test(description = "Validate That The Junior guest should see only Junior Sizes")
+    public void validateThatTheJuniorLessThanTwelveShouldSeeOnlyJuniorLessThanTwelveSizes() {
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
+        SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
+        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.threadSleep(1000);
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.mouseClickAction(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.threadSleep(3000);
+        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
+        SharedMethods.waitUntilElementClickable(addOnsScreen.getAddMainAddOnsButton());
+        SharedMethods.mouseClickAction(addOnsScreen.getAdultsDropDown());
+        addOnsScreen.getAddJunior().click();
+        addOnsScreen.getRemoveIcon().click();
+        SharedMethods.threadSleep(3000);
+        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
+        addOnsScreen.getContinueButton().click();
+        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
+        SharedMethods.waitUntilElementVisible(personalDetailsPage.getContinueToPayment());
+        Assert.assertTrue(personalDetailsPage.getContinueToPayment().isDisplayed());
+        personalDetailsPage.getContinueToPayment().click();
+        SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
+        SharedSteps.userFillGuestFormWithRandomData();
+        SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
+        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
+        SharedMethods.threadSleep(2000);
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(2000);
+        SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
+        SharedMethods.threadSleep(8000);
+        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
+        SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
+        confirmationPage.getBookingConfirmation().isDisplayed();
+        Assert.assertEquals(confirmationPage.getNextStepTitle().getText(), "Add gear");
+        confirmationPage.getAddGearButton().click();
+        AddGearPage addGearPage = new AddGearPage(getDriver());
+        SharedMethods.waitUntilElementVisible(addGearPage.getAddMember());
+        addGearPage.getAddMember().click();
+        addGearPage.getFirstName().sendKeys(objXMLReader.getXMLData("guestFirstName"));
+        addGearPage.getLastName().sendKeys(objXMLReader.getXMLData("guestLastName"));
+        SharedMethods.jsScrollDown(addGearPage.getBirthOfDatePicker());
+        addGearPage.getBirthOfDatePicker().click();
+        addGearPage.getYearsTab().click();
+        addGearPage.getBackArrow().click();
+        addGearPage.getBackArrow().click();
+        addGearPage.getYear().click();
+        addGearPage.getMonth().click();
+        addGearPage.getDay().click();
+        addGearPage.getSizeChart().click();
+        addGearPage.getSizesTable().isDisplayed();
+        Assert.assertEquals(addGearPage.getChartTitle().getText(),"JUNIOR JUMPSUIT SIZE");
+    }
+
+    @Test(description = "Validate That The Junior should not be able to book  jump suite and jacket/trouser at the same time")
+    public void ValidateThatTheJuniorShouldNotSelectJumpSuiteAndTrouserAtTheSameTime() {
+        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
+        sKiHomePage.getAcceptCookiesButton().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
+        SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
         SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkPackage());
         sKiHomePage.getSnowParkPackage().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
@@ -365,143 +493,12 @@ public class AddGearTests extends base {
         SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(2000);
         SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
-        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
-        SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
-        confirmationPage.getBookingConfirmation().isDisplayed();
-        Assert.assertEquals(confirmationPage.getNextStepTitle().getText(), "Add gear");
-        confirmationPage.getAddGearButton().click();
-        AddGearPage addGearPage = new AddGearPage(getDriver());
-        SharedMethods.waitUntilElementVisible(addGearPage.getAddMember());
-        addGearPage.getAddMember().click();
-        addGearPage.getFirstName().sendKeys(objXMLReader.getXMLData("guestFirstName"));
-        addGearPage.getLastName().sendKeys(objXMLReader.getXMLData("guestLastName"));
-        SharedMethods.jsScrollDown(addGearPage.getBirthOfDatePicker());
-        addGearPage.getBirthOfDatePicker().click();
-        addGearPage.getYearsTab().click();
-        addGearPage.getBackArrow().click();
-        addGearPage.getBackArrow().click();
-        addGearPage.getYear().click();
-        addGearPage.getMonth().click();
-        addGearPage.getDay().click();
-        Assert.assertEquals(addGearPage.getDressLabel().getText(),"Jumpsuit");
-    }
-
-    @Test(description = "Validate That The Junior guest should see only Junior Sizes")
-    public void validateThatTheJuniorLessThanTwelveShouldSeeOnlyJuniorLessThanTwelveSizes() {
-        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
-        sKiHomePage.getAcceptCookiesButton().click();
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
-        SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkPackage());
-        sKiHomePage.getSnowParkPackage().click();
-        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-        SharedMethods.threadSleep(1000);
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSlopePassesHeader());
-        SharedMethods.waitUntilElementClickable(passesAndPackages.getFullDaySlopePassBuyButton());
-        SharedMethods.jsScrollDown(passesAndPackages.getFullDaySlopePassBuyButton());
-        SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
-        SharedMethods.threadSleep(3000);
-        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
-        SharedMethods.waitUntilElementClickable(addOnsScreen.getAddMainAddOnsButton());
-        SharedMethods.mouseClickAction(addOnsScreen.getAdultsDropDown());
-        addOnsScreen.getAddJunior().click();
-        addOnsScreen.getRemoveIcon().click();
-        SharedMethods.threadSleep(3000);
-        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
-        addOnsScreen.getContinueButton().click();
-        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
-        SharedMethods.waitUntilElementVisible(personalDetailsPage.getContinueToPayment());
-        Assert.assertTrue(personalDetailsPage.getContinueToPayment().isDisplayed());
-        personalDetailsPage.getContinueToPayment().click();
-        SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
-        personalDetailsPage.clickingMissRadioButton();
-        personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData("firstName"));
-        personalDetailsPage.getLastName().sendKeys(objXMLReader.getXMLData("lastName"));
-        personalDetailsPage.getMobileNum().sendKeys(objXMLReader.getXMLData("phone"));
-        personalDetailsPage.getEmail().sendKeys(objXMLReader.getXMLData("email"));
-        personalDetailsPage.getCountryDropDownList().click();
-        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
-        SharedMethods.mouseClickAction(personalDetailsPage.getBookingInformation());
-        SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
-        SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
-        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
-        SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
-        ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
-        SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
-        confirmationPage.getBookingConfirmation().isDisplayed();
-        Assert.assertEquals(confirmationPage.getNextStepTitle().getText(), "Add gear");
-        confirmationPage.getAddGearButton().click();
-        AddGearPage addGearPage = new AddGearPage(getDriver());
-        SharedMethods.waitUntilElementVisible(addGearPage.getAddMember());
-        addGearPage.getAddMember().click();
-        addGearPage.getFirstName().sendKeys(objXMLReader.getXMLData("guestFirstName"));
-        addGearPage.getLastName().sendKeys(objXMLReader.getXMLData("guestLastName"));
-        SharedMethods.jsScrollDown(addGearPage.getBirthOfDatePicker());
-        addGearPage.getBirthOfDatePicker().click();
-        addGearPage.getYearsTab().click();
-        addGearPage.getBackArrow().click();
-        addGearPage.getBackArrow().click();
-        addGearPage.getYear().click();
-        addGearPage.getMonth().click();
-        addGearPage.getDay().click();
-        addGearPage.getSizeChart().click();
-        addGearPage.getSizesTable().isDisplayed();
-        Assert.assertEquals(addGearPage.getChartTitle().getText(),"JUNIOR JUMPSUIT SIZE");
-    }
-
-    @Test(description = "Validate That The Junior should not be able to book  jump suite and jacket/trouser at the same time")
-    public void ValidateThatTheJuniorShouldNotSelectJumpSuiteAndTrouserAtTheSameTime() {
-        SKiHomePage sKiHomePage = new SKiHomePage(getDriver());
-        sKiHomePage.getAcceptCookiesButton().click();
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
-        SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
-        sKiHomePage.getSnowParkOption().click();
-        PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
-        SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
-        AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
-        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
-        SharedMethods.waitUntilElementClickable(addOnsScreen.getAddMainAddOnsButton());
-        SharedMethods.mouseClickAction(addOnsScreen.getAdultsDropDown());
-        addOnsScreen.getAddJunior().click();
-        addOnsScreen.getRemoveIcon().click();
-        SharedMethods.threadSleep(3000);
-        SharedMethods.waitTillClickAble(addOnsScreen.getContinueButton());
-        addOnsScreen.getContinueButton().click();
-        PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
-        SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
-        personalDetailsPage.clickingMissRadioButton();
-        personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData("firstName"));
-        personalDetailsPage.getLastName().sendKeys(objXMLReader.getXMLData("lastName"));
-        personalDetailsPage.getMobileNum().sendKeys(objXMLReader.getXMLData("phone"));
-        personalDetailsPage.getEmail().sendKeys(objXMLReader.getXMLData("email"));
-        personalDetailsPage.getCountryDropDownList().click();
-        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
-        SharedMethods.mouseClickAction(personalDetailsPage.getBookingInformation());
-        SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
-        SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
-        PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
-        SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
+        SharedMethods.threadSleep(10000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getBookingConfirmation());
         confirmationPage.getBookingConfirmation().isDisplayed();
@@ -523,13 +520,13 @@ public class AddGearTests extends base {
         addGearPage.getDay().click();
         SharedMethods.forceClickOnElement(addGearPage.getLongJacket());
         SharedMethods.jsScrollDown(addGearPage.getSaveButton());
+        SharedMethods.clickOn(addGearPage.getSaveButton());
+        SharedMethods.threadSleep(3000);
         Assert.assertEquals(addGearPage.getDisabledTrousers().getText(),"You don't need Trousers with a Jumpsuit");
         Assert.assertEquals(addGearPage.getDisabledJacket().getText(),"You don't need Jacket with a Jumpsuit");
         SharedMethods.forceClickOnElement(addGearPage.getUnSelectLongJacket());
         SharedMethods.forceClickOnElement(addGearPage.getTrousers());
         Assert.assertEquals(addGearPage.getDisabledLongJacket().getText(),"You don't need Jumpsuit with a Jacket or Trouser");
-
-
     }
 
     @Test(description = "Validate That The Child guest should see only Child outfit")
@@ -571,13 +568,12 @@ public class AddGearTests extends base {
         SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(2000);
         SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
+        SharedMethods.threadSleep(10000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
         confirmationPage.getBookingConfirmation().isDisplayed();
@@ -604,14 +600,14 @@ public class AddGearTests extends base {
         sKiHomePage.getAcceptCookiesButton().click();
         SharedMethods.waitUntilElementVisible(sKiHomePage.getPassesAndPackages());
         SharedMethods.clickAction(sKiHomePage.getPassesAndPackages());
-        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkPackage());
-        sKiHomePage.getSnowParkPackage().click();
+        SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
+        sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.threadSleep(1000);
-        SharedMethods.waitUntilElementVisible(passesAndPackages.getSlopePassesHeader());
-        SharedMethods.waitUntilElementClickable(passesAndPackages.getFullDaySlopePassBuyButton());
-        SharedMethods.jsScrollDown(passesAndPackages.getFullDaySlopePassBuyButton());
-        SharedMethods.mouseClickAction(passesAndPackages.getFullDaySlopePassBuyButton());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.jsScrollDown(passesAndPackages.getSnowParkPassBuyButton());
+        SharedMethods.mouseClickAction(passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.threadSleep(3000);
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
         SharedMethods.waitUntilElementClickable(addOnsScreen.getAddMainAddOnsButton());
@@ -637,13 +633,12 @@ public class AddGearTests extends base {
         SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
-//        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
-//        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
-//                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
-        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPromoCodeRadio());
-        SharedSteps.userApplyPromoCode(objXMLReader.getXMLData("snowParkFullPromoCode"));
-        SharedMethods.threadSleep(8000);
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
+        SharedSteps.userFillCCPayment(objXMLReader.getXMLData("visaCard1"),
+                objXMLReader.getXMLData("cardExp"), objXMLReader.getXMLData("cardCSV"));
+        SharedMethods.threadSleep(2000);
         SharedMethods.forceClickOnElement(paymentDetailsPage.getPay());
+        SharedMethods.threadSleep(8000);
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver());
         SharedMethods.waitUntilElementVisible(confirmationPage.getAssignGuestButton());
         confirmationPage.getBookingConfirmation().isDisplayed();
