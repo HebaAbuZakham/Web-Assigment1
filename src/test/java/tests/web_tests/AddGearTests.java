@@ -421,15 +421,6 @@ public class AddGearTests extends base {
         personalDetailsPage.getContinueToPayment().click();
         SharedMethods.waitUntilElementVisible(personalDetailsPage.getPersonalDetailsHeader());
         SharedSteps.userFillGuestFormWithRandomData();
-//        personalDetailsPage.clickingMissRadioButton();
-//        personalDetailsPage.getFirstName().sendKeys(objXMLReader.getXMLData("firstName"));
-//        personalDetailsPage.getLastName().sendKeys(objXMLReader.getXMLData("lastName"));
-//        personalDetailsPage.getMobileNum().sendKeys(objXMLReader.getXMLData("phone"));
-//        personalDetailsPage.getEmail().sendKeys(objXMLReader.getXMLData("email"));
-//        personalDetailsPage.getCountryDropDownList().click();
-//        SharedMethods.mouseClickAction(personalDetailsPage.getAndoraCountry());
-//        SharedMethods.mouseClickAction(personalDetailsPage.getBookingInformation());
-//        SharedMethods.mouseClickAction(personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage(getDriver());
         SharedMethods.threadSleep(2000);
