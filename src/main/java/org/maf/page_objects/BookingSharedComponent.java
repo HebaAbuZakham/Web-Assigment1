@@ -8,6 +8,9 @@ public class BookingSharedComponent {
     @FindBy(xpath = "//div[@class='field-row']//button")
     private WebElement calendarButton;
 
+    @FindBy(xpath = "(//p[@class=\"field-title\"])[1]")
+    private WebElement calendarSelectedDate;
+
     @FindBy(className = "mx-icon-right")
     private WebElement nextMonthButton;
 
@@ -132,5 +135,13 @@ public class BookingSharedComponent {
 
     public void setCalenderLeftArrow(WebElement calenderLeftArrow) {
         this.calenderLeftArrow = calenderLeftArrow;
+    }
+
+    public WebElement getCalendarSelectedDate() {
+        return calendarSelectedDate;
+    }
+
+    public void setCalendarSelectedDate(WebElement calendarSelectedDate) {
+        this.calendarSelectedDate = calendarSelectedDate;
     }
 }

@@ -36,7 +36,7 @@ public class PassesAndPackages {
    @FindBy(xpath = "//h2[text()[contains(normalize-space(),'Penguin passes')]]")
    private WebElement penguinEncounterPassesHeader;
 
-   @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Penguin Encounter\"]]")
+   @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Penguin Encounter Pass\"]]")
    private WebElement penguinEncounterPassBuyButton;
 
     @FindBy(xpath = "(//button[@class='passes-btn'])[2]")
@@ -51,7 +51,7 @@ public class PassesAndPackages {
     @FindBy(xpath = "//button[ancestor::div[@class=\"package-card\"]//p[contains(text(),\"Snow Daycation\")]]")
     private WebElement  SnowDaycationPackageBuyButton;
 
-    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Daycation\"]]")
+    @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Daycation Package\"]]")
     private WebElement  SnowDaycationPassBuyButton;
 
     // Header tabs locators

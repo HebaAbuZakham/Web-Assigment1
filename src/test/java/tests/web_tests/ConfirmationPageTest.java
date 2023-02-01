@@ -256,7 +256,7 @@ public class ConfirmationPageTest  extends base {
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.threadSleep (3000);
         SharedSteps.userFillPromoCodePayment(objXMLReader.getXMLData ("snowParkFullPromoCode"));
-        SharedMethods.threadSleep (1000);
+        SharedMethods.threadSleep (3000);
         SharedMethods.waitTillClickAble (paymentDetailsPage.getPay ());
         SharedMethods.clickOn(paymentDetailsPage.getPay ());
         SharedMethods.threadSleep (5000);
@@ -316,6 +316,7 @@ public class ConfirmationPageTest  extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages (getDriver ());
         SharedSteps.userBookPassForm(sKiHomePage.getPenguinEncounterOption (), passesAndPackages.getPenguinEncounterPassBuyButton());
         ActivitiesPage activityPage = new ActivitiesPage (getDriver ());
+        String selectedDate =  SharedSteps.userSearchCalendarForDate();
         SharedSteps.userAddGuestsAs(0,1,1);
         String selectedTimeSlot = activityPage.getLastActivityTimeSlot().getText();
         SharedMethods.clickOn(activityPage.getLastActivityTimeSlot());
@@ -323,7 +324,6 @@ public class ConfirmationPageTest  extends base {
         AddOnsScreen addOnsScreen = new AddOnsScreen(getDriver());
         SharedMethods.clickOn(addOnsScreen.getContinueButton());
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage(getDriver());
-        SharedSteps.userFillGuestFormWithRandomData();
         SharedMethods.clickOn(personalDetailsPage.getContinueToPayment());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
         SharedMethods.waitUntilElementVisible(paymentDetailsPage.getCardCSV());
@@ -332,11 +332,11 @@ public class ConfirmationPageTest  extends base {
         SharedMethods.waitTillClickAble(paymentDetailsPage.getPay());
         paymentDetailsPage.getPay().click();
         ConfirmationPage confirmationPage = new ConfirmationPage(getDriver ());
-        SharedMethods.threadSleep (3000);
+        SharedMethods.threadSleep (7000);
         SharedMethods.waitUntilElementVisible (confirmationPage.getBookingConfirmation ());
         Assert.assertTrue (confirmationPage.getBookingConfirmation ().isDisplayed ());
-        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("PenguinEncounter")+"- 1 "+objXMLReader.getXMLData("AdultLabel")) );
-        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), SharedMethods.findNextDay(1)) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityName(),objXMLReader.getXMLData("PenguinEncounter")+" - 1 "+objXMLReader.getXMLData("AdultLabel")) );
+        Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), selectedDate) );
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstActivityDate(), selectedTimeSlot.toLowerCase(Locale.ROOT) ));
         Assert.assertTrue(SharedMethods.elementContainsText(confirmationPage.getFirstTicketNumber(), "3 " + objXMLReader.getXMLData("TicketLabel")) );
 

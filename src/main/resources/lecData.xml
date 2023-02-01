@@ -36,6 +36,9 @@
     <userName2>ski.test.dubai.4@gmail.com</userName2>
     <passWord2>Test@123</passWord2>
 
+    <userWithNoTransactionsEmail>adx212070+000@gmail.com</userWithNoTransactionsEmail>
+    <userWithNoTransactionsPassWord>Test@123</userWithNoTransactionsPassWord>
+
     <userWithNoSavedCardEmail>adx212070+444@gmail.com</userWithNoSavedCardEmail>
     <userWithNoSavedCardPassWord>Test@123</userWithNoSavedCardPassWord>
 

@@ -22,43 +22,50 @@ public class TransactionsPage {
     @FindBy(xpath = "//h1[@class='title']")
     private WebElement transactionTitle;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/dashboard']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/dashboard')]")
     private WebElement yourDashboard;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/personal-details']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/profile/personal-details')]")
     private WebElement profile;
 
-    @FindBy(xpath = "(//a[@href='/en/accounts/profile/personal-details'])[2]")
+    @FindBy(xpath = "(//a[contains(@href,'/accounts/profile/personal-details')])[2]")
     private WebElement yourDetails;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/waiver-form']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/profile/waiver-form')]")
     private WebElement waiver;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/set-your-gear']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/profile/set-your-gear')]")
     private WebElement gear;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/profile/memberships']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/profile/memberships')]")
     private WebElement membership;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/payments']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/payments')]")
     private WebElement payment;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/share']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/share')]")
     private WebElement share;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/ski-school/ski-passport']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/ski-school/ski-passport')]")
     private WebElement skiPassport;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/ski-school/snowboard-passport']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/ski-school/snowboard-passport')]")
     private WebElement snowboardPassport;
 
-    @FindBy(xpath = "empty-transactions-title")
+    @FindBy(css = ".empty-transactions-title")
     private WebElement noTransaction;
 
     @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div/div/div[2]/a")
     private WebElement haveALookLink;
 
+    @FindBy(xpath = "//div[@class=\"transaction-record-container\"]")
+    private WebElement transactionCards;
 
+
+    @FindBy(xpath = "//div[@class=\"transaction-record-container\"]//div[contains(@class, \"arrow-wrapper\")]")
+    private WebElement transactionCardExpandArrow;
+
+    private String transaction_cards = "//div[@class=\"transaction-record-container\"]";
 
     @FindBy(xpath = "//div[contains(@class,'flex gap-x-2')]/following-sibling::div")
     private WebElement arrowButton;
@@ -73,7 +80,7 @@ public class TransactionsPage {
     @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
     private WebElement viewMore;
 
-    @FindBy(xpath = "//button[@class='gs-base-button-default-styles w-fit']")
+    @FindBy(xpath = "//div[div[contains(text(), \"Penguin Encounter\")]]//p[contains(text(), \"all guest\")]")
     private WebElement bonusTicket;
 
     @FindBy(xpath = "//p[text()[normalize-space()='1 Adult']]")
@@ -243,6 +250,27 @@ public class TransactionsPage {
         this.adultGuest = adultGuest;}
 
 
+    public WebElement getTransactionCards() {
+        return transactionCards;
+    }
 
+    public void setTransactionCards(WebElement transactionCards) {
+        this.transactionCards = transactionCards;
+    }
 
+    public String getTransaction_cards() {
+        return transaction_cards;
+    }
+
+    public void setTransaction_cards(String transaction_cards) {
+        this.transaction_cards = transaction_cards;
+    }
+
+    public WebElement getTransactionCardExpandArrow() {
+        return transactionCardExpandArrow;
+    }
+
+    public void setTransactionCardExpandArrow(WebElement transactionCardExpandArrow) {
+        this.transactionCardExpandArrow = transactionCardExpandArrow;
+    }
 }
