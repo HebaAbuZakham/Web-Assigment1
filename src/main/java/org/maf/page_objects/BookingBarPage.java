@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BookingBarPage {
 
-    @FindBy(xpath = "//*[@id=\"findTicketBar\"]/div/div/div[1]/div[1]/div[3]")
+    @FindBy(xpath = "//div[@id='experience-text-booking-bar']")
     private WebElement experienceDll;
 
     @FindBy(xpath = "//div[@id='findTicketBar']/div[1]/div[1]/div[2]/div[1]/div[3]")

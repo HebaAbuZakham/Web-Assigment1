@@ -33,6 +33,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.threadSleep (10000);
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
@@ -41,6 +42,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.waitUntilElementClickable(addOnsScreen.getContinueButton());
         addOnsScreen.getContinueButton ().click ();
         PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage (getDriver ());
+        SharedMethods.threadSleep (10000);
         SharedMethods.waitUntilElementVisible (personalDetailsPage.getContinueToPayment());
         Assert.assertTrue (personalDetailsPage.getContinueToPayment ().isDisplayed ());
         personalDetailsPage.getContinueToPayment ().click ();
@@ -69,6 +71,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
+        SharedMethods.threadSleep(10000);
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
@@ -98,7 +101,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.waitUntilElementVisible(sKiHomePage.getSnowParkOption());
         sKiHomePage.getSnowParkOption().click();
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
-       SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
+        SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.mouseClickAction (passesAndPackages.getFullDaySlopePassBuyButton ());
         AddOnsScreen addOnsScreen = new AddOnsScreen (getDriver ());
         SharedMethods.waitTillClickAble (addOnsScreen.getContinueButton());
@@ -116,6 +119,7 @@ public class PersonalDetailsTests extends base {
         SharedMethods.mouseClickAction (personalDetailsPage.getTermsConditonsCheckbox());
         SharedMethods.mouseClickAction(personalDetailsPage.getContinueToPayment ());
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
+        SharedMethods.threadSleep(1000);
         SharedMethods.waitUntilElementVisible (paymentDetailsPage.getCardCSV ());
        Assert.assertTrue (paymentDetailsPage.getCardCSV ().isDisplayed ());
     }

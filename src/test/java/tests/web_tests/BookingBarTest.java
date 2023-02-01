@@ -37,7 +37,7 @@ public class BookingBarTest extends base {
         SharedMethods.mouseClickAction(bookingBarPage.getGuestsDll());
         SharedMethods.waitUntilElementVisible(bookingBarPage.getBookingButton());
         bookingBarPage.getBookingButton().click();
-        SharedMethods.threadSleep (700);
+        SharedMethods.threadSleep (10000);
         PassesAndPackages passesAndPackages=new PassesAndPackages(getDriver());
         SharedMethods.jsScrollDown(passesAndPackages.getSnowParkPassBuyButton());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassBuyButton());
