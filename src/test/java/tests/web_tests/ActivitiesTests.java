@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 @Listeners(TestListener.class)
 public class ActivitiesTests extends base {
 
-    @Test(description = "Validate The User Add 5 Guest To Breakfast With Penguin")
+    @Test(description = "Validate The User Add 5 Guest To Breakfast With Penguin", groups = {"smoke_test","regression_test"})
     public void validateThatTheUserAdd5GuestToBreakfastWithPenguin ()  {
         SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
         SharedMethods.threadSleep (2000);

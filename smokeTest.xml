@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="smoke test">
+        <classes>
+            <class name="tests.web_tests.ActivitiesTests"></class>
+            <class name="tests.web_tests.AddGearTests"></class>
+            <class name="tests.web_tests.AddGuestsTest"></class>
+            <class name="tests.web_tests.AddOnsTest"></class>
+            <class name="tests.web_tests.BookingBarTest"></class>
+            <class name="tests.web_tests.ConfirmationPageTest"></class>
+            <class name="tests.web_tests.DashboardTest"></class>
+            <class name="tests.web_tests.FindYourBookingTest"></class>
+            <class name="tests.web_tests.HomePageTest"></class>
+            <class name="tests.web_tests.LoginTest"></class>
+            <class name="tests.web_tests.PassesAndPackagesTest"></class>
+            <class name="tests.web_tests.PaymentDetailsTests"></class>
+            <class name="tests.web_tests.PaymentMethodsTest"></class>
+            <class name="tests.web_tests.PersonalDetailsTests"></class>
+            <class name="tests.web_tests.ProfileTest"></class>
+            <class name="tests.web_tests.SignUpTest"></class>
+            <class name="tests.web_tests.TransactionsTests"></class>
+
+        </classes>
+    </test>
+</suite>
+
