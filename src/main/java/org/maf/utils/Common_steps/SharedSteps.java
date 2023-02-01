@@ -1,11 +1,11 @@
 package org.maf.utils.Common_steps;
 
 import com.github.javafaker.Faker;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.maf.page_objects.*;
 import org.maf.utils.common.SharedMethods;
 import org.openqa.selenium.WebElement;
 
+import static org.apache.commons.lang3.time.DateUtils.parseDate;
 import static org.maf.core.instance.SelInstance.getDriver;
 import static org.maf.core.instance.SelInstance.objXMLReader;
 
@@ -99,7 +99,7 @@ public class SharedSteps {
         }
     }
 
-    public static void userSearchCalendarForDate(){
+    public static String userSearchCalendarForDate(){
         AddOnsScreen addOnsScreen= new AddOnsScreen(getDriver()) ;
         SharedMethods.threadSleep (4000);
 
@@ -107,10 +107,11 @@ public class SharedSteps {
         SharedMethods.threadSleep (4000);
         SharedMethods.clickOn(addOnsScreen.getNextMonthButton());
         Integer loop = 3;
+        addOnsScreen= new AddOnsScreen(getDriver());
 
         while (loop>0) {
             try {
-                SharedMethods.threadSleep (4000);
+                SharedMethods.threadSleep (5000);
                 SharedMethods.clickOn(addOnsScreen.getCalenderFirstEnabledDate());
                 loop = 0;
             } catch (Exception e) {
@@ -118,6 +119,13 @@ public class SharedSteps {
                 --loop;
             }
         }
+        addOnsScreen.getCalendarSelectedDate().getText();
+        SharedMethods.threadSleep(1000);
+        String date = addOnsScreen.getCalendarSelectedDate().getText();
+        String[] _date = date.split(" ");
+        date = _date[0] + " " + _date[1].substring(0,3) + " " + _date[2];
+
+        return date;
     }
 
 }

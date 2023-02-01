@@ -3,10 +3,7 @@ package org.maf.utils.common;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.maf.core.instance.SelInstance;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,9 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -189,8 +184,8 @@ public class SharedMethods extends SelInstance {
     public static boolean elementContainsText(WebElement locator, String text) {
         waitUntilElementVisible(locator);
         threadSleep(1000);
-        String locatorText = locator.getText();
-        return locatorText.contains(text);
+        String locatorText = locator.getText().toLowerCase(Locale.ROOT);
+        return locatorText.contains(text.toLowerCase(Locale.ROOT));
     }
 
     public static String FieldValue (WebElement locator) {
@@ -211,6 +206,13 @@ public class SharedMethods extends SelInstance {
         Actions builder = new Actions(getDriver());
         builder.moveToElement( locator ).click( locator );
         builder.perform();
+
+    }
+
+    public static int getElementCount(String xPath){
+        List<WebElement> elements = getDriver().findElements(By.xpath(xPath));
+        return (int) elements.stream().count();
+
 
     }
 }

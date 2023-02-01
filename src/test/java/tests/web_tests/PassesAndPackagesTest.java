@@ -127,8 +127,7 @@ public class PassesAndPackagesTest extends base {
         SharedMethods.clickOn(sKiHomePage.getSnowParkOption());
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
-        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowPremiumPackageBuyButton());
-        SharedMethods.jsScrollDown(passesAndPackages.getSnowPremiumPackageBuyButton());
+        SharedMethods.SwitchToNewTap(passesAndPackages.getSnowPremiumPassBuyButton());
         ActivitiesPage activitiesPage= new ActivitiesPage(getDriver());
         SharedMethods.waitUntilElementVisible(activitiesPage.getActivitiesTitle());
         Assert.assertTrue(activitiesPage.getActivitiesTitle().isDisplayed());
@@ -178,9 +177,9 @@ public class PassesAndPackagesTest extends base {
         PassesAndPackages passesAndPackages = new PassesAndPackages(getDriver());
         SharedMethods.waitUntilElementVisible(passesAndPackages.getSnowParkPassesHeader());
         SharedMethods.threadSleep (2000);
-        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowDaycationPackageBuyButton());
-        SharedMethods.jsScrollDown(passesAndPackages.getSnowDaycationPackageBuyButton());
-        SharedMethods.clickOn(passesAndPackages.getSnowDaycationPackageBuyButton());
+        SharedMethods.waitUntilElementClickable(passesAndPackages.getSnowDaycationPassBuyButton());
+        SharedMethods.jsScrollDown(passesAndPackages.getSnowDaycationPassBuyButton());
+        SharedMethods.clickOn(passesAndPackages.getSnowDaycationPassBuyButton());
         ActivitiesPage activitiesPage= new ActivitiesPage(getDriver());
         SharedMethods.waitUntilElementVisible(activitiesPage.getActivitiesTitle());
         Assert.assertTrue(activitiesPage.getActivitiesTitle().isDisplayed());

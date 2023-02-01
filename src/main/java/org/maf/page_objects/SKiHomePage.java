@@ -469,7 +469,7 @@ public class SKiHomePage {
     @FindBy(xpath = "//a[contains(@href,'/accounts/dashboard')]")
     private WebElement dashboard;
 
-    @FindBy(xpath = "//a[@href='/en/accounts/transactions']")
+    @FindBy(xpath = "//a[contains(@href,'/accounts/transactions')]")
     private WebElement transaction;
 
     @FindBy(xpath = "//button[@type='button']")
