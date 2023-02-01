@@ -62,7 +62,7 @@ public class PersonalDetailsPage {
 
     @FindBy(xpath = "//*[@id=\"tickets-container\"]/div[1]/div/a")
     WebElement editTicketInfo;
-    @FindBy(xpath = "//button[contains(., \"Continue to payment\")]")
+    @FindBy(xpath = "//button[contains(text(),'Continue to payment')]")
     private WebElement continueToPayment ;
 
 
