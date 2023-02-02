@@ -17,14 +17,7 @@ public class PassesAndPackages {
     @FindBy (xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Full Day Slope Pass\"]]")
     private WebElement fullDaySlopePassBuyButton;
 
-<<<<<<< HEAD
-
-    //    Snow park tab
-    @FindBy(xpath = "//h2[text()[contains(normalize-space(),'Snow Park')]]")
-=======
-//    Snow park tab
     @FindBy(xpath = "//h2[text()[normalize-space()='Snow Park Passes & Packages']]")
->>>>>>> 357700ef8b26b241581ee13c698d561160a2bba1
     private WebElement SnowParkPassesHeader;
 
     @FindBy(xpath = "//button[ancestor::div[@class=\"passes-card-content\"]//div[text()=\"Snow Park\"]]")

@@ -318,7 +318,7 @@ public class PaymentDetailsTests extends base {
         personalDetailsPage.getContinueToPayment ().click ();
         SharedMethods.threadSleep (3000);
         PaymentDetailsPage paymentDetailsPage = new PaymentDetailsPage (getDriver ());
-       SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
+        SharedMethods.waitUntilElementVisible(paymentDetailsPage.getPaymentHead());
         SharedMethods.clickAction(paymentDetailsPage.getPromoCodeRadio());
         paymentDetailsPage.getPromoCodeField ().sendKeys (objXMLReader.getXMLData ("snowParkPartialPromoCode"));
         paymentDetailsPage.getApplyPromoCode().click();
