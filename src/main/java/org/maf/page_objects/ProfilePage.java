@@ -1,144 +1,93 @@
 package org.maf.page_objects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class ProfilePage {
+    @FindBy(xpath = "(//a[@href='/en-ae/ski-dubai/accounts/profile/personal-details'])[2]")
+    private WebElement yourDetails;
+    @FindBy(xpath = "//h1[text()[normalize-space()='YOUR DETAILS']]")
+    private WebElement yourDetailsLabel;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[1]/div[2]")
+    private WebElement firstNameValue;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[2]/div[2]")
+    private WebElement lastNameValue;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[3]/div[2]")
+    private WebElement dateOfBirthValue;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[4]/div[2]")
+    private WebElement emailValue;
 
-    @FindBy(xpath = "//button[@aria-label=\"add user\"]")
-    private WebElement addIcon;
+    public WebElement getYourDetails() {
+        return yourDetails;
+    }
 
-    @FindBy(xpath = "*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/ul")
-    private WebElement usersList;
+    public WebElement getYourDetailsLabel() {
+        return yourDetailsLabel;
+    }
 
+    public WebElement getFirstNameValue() {
+        return firstNameValue;
+    }
 
-    @FindBy(xpath = "//span[contains(@class,'w-2 h-2')]")
-    private WebElement titleMR;
+    public WebElement getLastNameValue() {
+        return lastNameValue;
+    }
 
-    @FindBy(xpath = "(//span[contains(@class,'w-2 h-2')])[2]")
-    private WebElement titleMRs;
+    public WebElement getDateOfBirthValue() {
+        return dateOfBirthValue;
+    }
 
-    @FindBy(xpath = "(//span[contains(@class,'w-2 h-2')])[3]")
-    private WebElement titleMissMs;
+    public WebElement getEmailValue() {
+        return emailValue;
+    }
 
-    @FindBy (id = "first name")
-    private WebElement firstName;
+    public WebElement getPhoneNumberValue() {
+        return phoneNumberValue;
+    }
 
-    @FindBy (id = "last name")
-    private WebElement lastName;
+    public WebElement getNationalityValue() {
+        return nationalityValue;
+    }
 
-    @FindBy(xpath = "//label[@for='date']/following-sibling::div[1]")
-    private WebElement birthDate;
+    public WebElement getCountryOfResidenceValue() {
+        return countryOfResidenceValue;
+    }
 
-    @FindBy(xpath = "(//span[@class='mx-calendar-header-label']//button)[2]")
-    private WebElement year;
+    public WebElement getPasswordValue() {
+        return passwordValue;
+    }
 
-    @FindBy(xpath = "(//button[@type='button'])[2]")
-    private WebElement backIcon;
+    public WebElement getChangeDetailsButton() {
+        return changeDetailsButton;
+    }
 
-    @FindBy(xpath = "//td[@data-year='2010']")
-    private WebElement desiredYear;
+    public WebElement getResetPasswordButton() {
+        return resetPasswordButton;
+    }
 
-    @FindBy(xpath = "//div[text()='Oct']")
-    private WebElement month;
+    public WebElement getResetPasswordSuccessPopUp() {
+        return resetPasswordSuccessPopUp;
+    }
 
-    @FindBy(xpath = "//div[text()='14']")
-    private WebElement day;
-
-
-    @FindBy(xpath = "country-code-box")
-    private WebElement countryCodeBox;
-
-    @FindBy(id = "mobile number")
-    private WebElement mobileNumber;
-
-    @FindBy(xpath = "//input[@id='email']")
-    private WebElement email;
-
-    @FindBy(xpath = "(//div[contains(@class,'absolute left-0')])[2]")
-    private WebElement countryOfResident;
-
-    @FindBy(xpath = "//span[text()='United Arab Emirates']")
-    private WebElement uae;
-
-    @FindBy(xpath = "//label[@for='nationality']/following-sibling::div[1]")
-    private WebElement nationality;
-
-    @FindBy(xpath = "//button[text()[normalize-space()='Cancel']]")
-    private WebElement cancelButton;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    private WebElement submitButton;
-
-    @FindBy(xpath = "//h1[@class='title']")
-    private WebElement pageTitle;
-
-    @FindBy(xpath = "(//a[contains(@href,'/accounts/profile/set-your-gear')])[2]")
-    private WebElement gearButton;
-
-    @FindBy(xpath = "//div[text()[normalize-space()='CHOOSE YOUR GEAR']]")
-    private WebElement gearPageTitle;
-
-    @FindBy(xpath = "//button[text()[normalize-space()='Buy now']]")
-    private WebElement buyMembershipButton;
-
-    @FindBy(xpath = "//h3[text()[normalize-space()='Complete member details']]")
-    private WebElement buyMembershipTitle;
-
-
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[5]/div[2]")
+    private WebElement phoneNumberValue;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[6]/div[2]")
+    private WebElement nationalityValue;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[7]/div[2]")
+    private WebElement countryOfResidenceValue;
+    @FindBy(xpath = "//*[@id=\"layout\"]/div[2]/div/main/section/div/div[1]/div/div/div/div[2]/div[8]/div[2]")
+    private WebElement passwordValue;
+    @FindBy(xpath = "//button[contains(text(),'Change')]")
+    private WebElement changeDetailsButton;
+    @FindBy(xpath = "//button[contains(text(),'Reset password')]")
+    private WebElement resetPasswordButton;
+    @FindBy(xpath = "//p[text()='Password reset code sent!']")
+    private WebElement resetPasswordSuccessPopUp;
     public ProfilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
-    public WebElement getAddIcon(){return addIcon;}
-
-    public WebElement getTitleMR(){return titleMR;}
-
-    public WebElement getTitleMRs(){return titleMRs;}
-
-    public WebElement getTitleMissMs(){return titleMissMs;}
-
-    public WebElement getFirstName(){return firstName;}
-
-    public WebElement getLastName(){return lastName;}
-
-    public WebElement getBirthDate(){return birthDate;}
-
-    public WebElement getCountryCodeBox(){return countryCodeBox;}
-
-    public WebElement getMobileNumber(){return mobileNumber;}
-
-    public WebElement getEmail(){return email;}
-
-    public WebElement getCountryOfResident(){return countryOfResident;}
-
-    public WebElement getNationality(){return nationality;}
-
-    public WebElement getSubmitButton(){return submitButton;}
-
-    public WebElement getCancelButton(){return cancelButton;}
-
-    public WebElement getGearButton(){return gearButton;}
-
-    public WebElement getYear(){return year;}
-
-    public WebElement getBackIcon(){return backIcon;}
-
-    public WebElement getDesiredYear(){return desiredYear;}
-
-    public WebElement getMonth(){return month;}
-
-    public WebElement getDay(){return day;}
-
-    public WebElement getUae(){return uae;}
-
-    public WebElement getPageTitle() { return pageTitle;}
-
-    public WebElement getGearPageTitle(){return gearPageTitle;}
-
-    public WebElement getBuyMembershipButton(){return buyMembershipButton;}
-
-    public WebElement getBuyMembershipTitle(){return buyMembershipTitle;}
 }

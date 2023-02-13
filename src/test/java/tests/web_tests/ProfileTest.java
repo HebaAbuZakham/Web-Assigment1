@@ -1,104 +1,68 @@
 package tests.web_tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.maf.core.instance.BetaDriver.base;
 import org.maf.page_objects.LoginPage;
 import org.maf.page_objects.ProfilePage;
-import org.maf.page_objects.SKiHomePage;
+import org.maf.page_objects.SignUpPage;
+import org.maf.page_objects.SkiHomePage;
 import org.maf.utils.ExtentReport.TestListener;
 import org.maf.utils.common.SharedMethods;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.maf.core.instance.BetaDriver.base;
+import org.testng.asserts.SoftAssert;
 
 @Listeners(TestListener.class)
-public class ProfileTest extends base {
+public class ProfileTest extends base{
 
-    @Test(description = "Validate that user can add new guest")
-    public void validateThatUserCanAddNewGuest(){
-        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
-        sKiHomePage.getSignInButton ().click ();
-        LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
-        loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (15000);
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
-        SharedMethods.clickAction(sKiHomePage.getUserAvatar());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
-        SharedMethods.clickAction(sKiHomePage.getProfileOption());
+    SoftAssert softAssert = new SoftAssert();
+    @Test(description = "Validate the data in the profile")
+    public void ValidateProfileData(){//test1233232@gmail.com
+        SignUpTest signUpTest = new SignUpTest();
         ProfilePage profilePage = new ProfilePage(getDriver());
-        SharedMethods.threadSleep(600);
-        SharedMethods.waitUntilElementClickable(profilePage.getAddIcon());
-        profilePage.getAddIcon().click();
-        profilePage.getTitleMR().click();
-        profilePage.getFirstName().sendKeys(objXMLReader.getXMLData("subFirstName"));
-        profilePage.getLastName().sendKeys(objXMLReader.getXMLData("subLastName"));
-        profilePage.getBirthDate().click();
-        profilePage.getYear().click();
-        profilePage.getBackIcon().click();
-        profilePage.getDesiredYear().click();
-        profilePage.getMonth().click();
-        profilePage.getDay().click();
-        profilePage.getMobileNumber().sendKeys(objXMLReader.getXMLData("phone"));
-        profilePage.getEmail().sendKeys(objXMLReader.getXMLData("guestEmail"));
-        profilePage.getCountryOfResident().click();
-        profilePage.getUae().click();
-        profilePage.getNationality().click();
-        profilePage.getUae().click();
-        profilePage.getSubmitButton().click();
-        SharedMethods.threadSleep(5000);
-        Assert.assertTrue(profilePage.getPageTitle().isDisplayed());
-        
-    }
-
-    @Test(description = "Validate that choose gear leading user to choose gear ")
-    private void validateThatChooseGearLeadingUserToChooseGear(){
-        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
-        sKiHomePage.getSignInButton ().click ();
-        LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
-        loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (15000);
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
-        SharedMethods.clickAction(sKiHomePage.getUserAvatar());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
-        SharedMethods.clickAction(sKiHomePage.getProfileOption());
-        ProfilePage profilePage = new ProfilePage(getDriver());
+        SkiHomePage skiHomePage = new SkiHomePage(getDriver());
+        signUpTest.ValidateThatTheUserCanSignUp();
+        SharedMethods.threadSleep(30000);
+        SharedMethods.waitUntilElementVisible(skiHomePage.getProfileAvatar());
+        skiHomePage.getProfileAvatar().click();
+        SharedMethods.waitUntilElementVisible(skiHomePage.getProfileButton());
+        skiHomePage.getProfileButton().click();
+        SharedMethods.waitUntilElementVisible(profilePage.getChangeDetailsButton());
         SharedMethods.threadSleep(1000);
-        SharedMethods.jsScrollDown(profilePage.getGearButton());
-        SharedMethods.clickOn(profilePage.getGearButton());
-        SharedMethods.waitUntilElementVisible(profilePage.getGearPageTitle());
-        Assert.assertTrue(profilePage.getGearPageTitle().isDisplayed());
-
+        //Assert the First name
+        softAssert.assertTrue(profilePage.getFirstNameValue().getText().equalsIgnoreCase(objXMLReader.getXMLData("firstName")));
+        //Assert the Last name
+        softAssert.assertTrue(profilePage.getLastNameValue().getText().equalsIgnoreCase(objXMLReader.getXMLData("lastName")));
+        //Assert  date of birth
+        softAssert.assertTrue(profilePage.getDateOfBirthValue().getText().equalsIgnoreCase(objXMLReader.getXMLData("birthDate")));
+        //Assert the phone number
+        softAssert.assertTrue(profilePage.getEmailValue().getText().equalsIgnoreCase(randomEmail));
+        //Assert the phone number
+        softAssert.assertTrue((profilePage.getPhoneNumberValue().getText()).equals("+971"+objXMLReader.getXMLData("phone")));
+        //Assert the nationality
+        softAssert.assertTrue((profilePage.getNationalityValue().getText()).equalsIgnoreCase(objXMLReader.getXMLData("UAENationality")));
+        //Assert the Country Of Residence
+        softAssert.assertTrue((profilePage.getCountryOfResidenceValue().getText()).equalsIgnoreCase(objXMLReader.getXMLData("CountryOfResidence")));
+        //Assert that the password is hidden
+        softAssert.assertTrue(profilePage.getPasswordValue().getText().equalsIgnoreCase("*********"));
+        softAssert.assertAll();
     }
+    @Test(description = "Validate the user can reset the password successfully")
+    public void ValidateResetPassword() throws InterruptedException{//test1233232@gmail.com
 
-    @Test(description = "Validate that choose buy membership leading user to the correct screen ")
-    private void validateThatChooseBuyMembershipLeadingTheUserToTheCorrectScreen(){
-        SKiHomePage sKiHomePage = new SKiHomePage (getDriver ());
-        sKiHomePage.getAcceptCookiesButton ().click ();
-        SharedMethods.waitTillClickAble (sKiHomePage.getSignInButton ());
-        sKiHomePage.getSignInButton ().click ();
-        LoginPage loginPage = new LoginPage (getDriver ());
-        loginPage.getUserName ().sendKeys ( objXMLReader.getXMLData ("userName"));
-        loginPage.getPassword ().sendKeys ( objXMLReader.getXMLData ("passWord"));
-        loginPage.getLoginCTA ().click ();
-        SharedMethods.threadSleep (15000);
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getUserAvatar());
-        SharedMethods.clickAction(sKiHomePage.getUserAvatar());
-        SharedMethods.waitUntilElementVisible (sKiHomePage.getProfileOption());
-        SharedMethods.clickAction(sKiHomePage.getProfileOption());
-        ProfilePage profilePage = new ProfilePage(getDriver());
-        SharedMethods.threadSleep(1000);
-        SharedMethods.jsScrollDown(profilePage.getBuyMembershipButton());
-        SharedMethods.clickOn(profilePage.getBuyMembershipButton());
-        SharedMethods.waitUntilElementVisible(profilePage.getBuyMembershipTitle());
-        Assert.assertTrue(profilePage.getBuyMembershipTitle().isDisplayed());
-
+       SignUpTest signUpTest = new SignUpTest();
+       ProfilePage profilePage = new ProfilePage(getDriver());
+       SkiHomePage skiHomePage = new SkiHomePage(getDriver());
+       signUpTest.ValidateThatTheUserCanSignUp();
+       SharedMethods.threadSleep(30000);
+       SharedMethods.waitUntilElementVisible(skiHomePage.getProfileAvatar());
+       skiHomePage.getProfileAvatar().click();
+       SharedMethods.waitUntilElementVisible(skiHomePage.getProfileButton());
+       skiHomePage.getProfileButton().click();
+       SharedMethods.waitUntilElementVisible(profilePage.getChangeDetailsButton());
+       profilePage.getChangeDetailsButton().click();
+       profilePage.getResetPasswordButton().click();
+       SharedMethods.waitUntilElementVisible(profilePage.getResetPasswordSuccessPopUp());
+       profilePage.getResetPasswordSuccessPopUp().getText().contains("Password reset code sent!");
+       softAssert.assertAll();
     }
 }

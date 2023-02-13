@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -215,4 +216,9 @@ public class SharedMethods extends SelInstance {
 
 
     }
+    public static Year getCurrentYear(){
+        Year currentYear = Year.now();
+        return currentYear;
+    }
+
 }
